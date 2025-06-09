@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, ArrowLeft, ChevronDown } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { ImageGallery } from '../components/ui/ImageGallery';
+import { PortfolioGallery } from '../components/PortfolioGallery';
 import { LazyImage } from '../components/LazyImage';
 
 const categories = [
@@ -174,10 +174,10 @@ function CategoryDetail({ categoryId }: { categoryId: string }) {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Dynamic Gallery */}
       <section className="py-12 bg-black">
         <div className="container mx-auto px-4">
-          <ImageGallery category={categoryId} title="" />
+          <PortfolioGallery style={categoryId} />
         </div>
       </section>
 
