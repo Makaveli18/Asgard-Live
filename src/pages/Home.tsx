@@ -178,7 +178,57 @@ function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Testimonials (formerly Warriors' Tales) */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 text-metallic-gold">Warriors' Tales</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <TestimonialCard
+              text="I got my first tattoo here and I couldn't be happier with the result! The atmosphere was very welcoming and professional. The artist took the time to understand exactly what I wanted and made sure I was comfortable throughout the whole process. The end result exceeded my expectations. I highly recommend this studio to anyone looking to get a tattoo!"
+              author="Lex"
+              rating={5}
+              reviewUrl="https://g.co/kgs/ZFH6gdn"
+            />
+            <TestimonialCard
+              text="Amazing experience from start to finish! The artists are incredibly talented and take their time to ensure everything is perfect. The studio is clean and well-maintained, and the staff is friendly and professional. They really listened to what I wanted and delivered exactly that. Will definitely be coming back for my next piece!"
+              author="Sebastian S."
+              rating={5}
+              reviewUrl="https://g.co/kgs/fb1RRZs"
+            />
+            <TestimonialCard
+              text="Absolutely incredible tattoo studio! The attention to detail and professionalism is outstanding. They made me feel completely at ease and walked me through the entire process. The artwork is stunning and healing beautifully. If you're looking for quality work and great service, this is definitely the place to go!"
+              author="Astrid"
+              rating={5}
+              reviewUrl="https://g.co/kgs/HX7iGMa"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Badges */}
+      <section className="py-16 bg-viking-navy">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="flex flex-col items-center">
+              <Shield className="w-12 h-12 text-metallic-gold mb-4" />
+              <h3 className="text-xl font-bold mb-2">Licensed & Certified</h3>
+              <p className="text-gray-300">Highest safety standards</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <Award className="w-12 h-12 text-metallic-gold mb-4" />
+              <h3 className="text-xl font-bold mb-2">Award-Winning Artists</h3>
+              <p className="text-gray-300">Recognized expertise</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <Users className="w-12 h-12 text-metallic-gold mb-4" />
+              <h3 className="text-xl font-bold mb-2">1000+ Happy Body Art Lovers</h3>
+              <p className="text-gray-300">Trust & satisfaction</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section (formerly Our Sacred Arts) */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-metallic-gold">Our Sacred Arts</h2>
@@ -219,56 +269,6 @@ function Home() {
             <p className="text-center text-lg font-semibold italic">
               🔥 <span className="text-metallic-gold">EVERY Consultation and Design Planning is Absolutely FREE</span> 🔥
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Badges */}
-      <section className="py-16 bg-viking-navy">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="flex flex-col items-center">
-              <Shield className="w-12 h-12 text-metallic-gold mb-4" />
-              <h3 className="text-xl font-bold mb-2">Licensed & Certified</h3>
-              <p className="text-gray-300">Highest safety standards</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Award className="w-12 h-12 text-metallic-gold mb-4" />
-              <h3 className="text-xl font-bold mb-2">Award-Winning Artists</h3>
-              <p className="text-gray-300">Recognized expertise</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Users className="w-12 h-12 text-metallic-gold mb-4" />
-              <h3 className="text-xl font-bold mb-2">1000+ Happy Body Art Lovers</h3>
-              <p className="text-gray-300">Trust & satisfaction</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-metallic-gold">Warriors' Tales</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <TestimonialCard
-              text="I got my first tattoo here and I couldn't be happier with the result! The atmosphere was very welcoming and professional. The artist took the time to understand exactly what I wanted and made sure I was comfortable throughout the whole process. The end result exceeded my expectations. I highly recommend this studio to anyone looking to get a tattoo!"
-              author="Lex"
-              rating={5}
-              reviewUrl="https://g.co/kgs/ZFH6gdn"
-            />
-            <TestimonialCard
-              text="Amazing experience from start to finish! The artists are incredibly talented and take their time to ensure everything is perfect. The studio is clean and well-maintained, and the staff is friendly and professional. They really listened to what I wanted and delivered exactly that. Will definitely be coming back for my next piece!"
-              author="Sebastian S."
-              rating={5}
-              reviewUrl="https://g.co/kgs/fb1RRZs"
-            />
-            <TestimonialCard
-              text="Absolutely incredible tattoo studio! The attention to detail and professionalism is outstanding. They made me feel completely at ease and walked me through the entire process. The artwork is stunning and healing beautifully. If you're looking for quality work and great service, this is definitely the place to go!"
-              author="Astrid"
-              rating={5}
-              reviewUrl="https://g.co/kgs/HX7iGMa"
-            />
           </div>
         </div>
       </section>
