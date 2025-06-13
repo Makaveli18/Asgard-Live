@@ -245,128 +245,130 @@ function Portfolio() {
 
   // Otherwise show the main portfolio grid
   return (
-    <div className="min-h-screen bg-black text-gray-100">
-      <Header />
-      
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      {/* Hero Section */}
-      <section className="relative w-full min-h-[70vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
-          <div
-            className={`w-full h-full bg-cover bg-center transition-opacity duration-1000 ${
-              imageLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              backgroundImage: `url('/images/AsgardWall.jpg')`,
-              transform: 'scale(1.05)',
-              backgroundPosition: 'center calc(30% + 30px)',
-            }}
-            role="img"
-            aria-label="Studio background"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
-        </div>
+      <div className="min-h-screen bg-black text-gray-100">
+        <Header />
         
-        {!imageLoaded && (
-          <div className="absolute inset-0 bg-viking-navy/90 flex items-center justify-center">
-            <div className="animate-pulse text-metallic-gold">Loading...</div>
+        {/* Hero Section */}
+        <section className="relative w-full min-h-[70vh] flex items-center overflow-hidden">
+          <div className="absolute inset-0 w-full h-full">
+            <div
+              className={`w-full h-full bg-cover bg-center transition-opacity duration-1000 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `url('/images/AsgardWall.jpg')`,
+                transform: 'scale(1.05)',
+                backgroundPosition: 'center calc(30% + 30px)',
+              }}
+              role="img"
+              aria-label="Studio background"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
           </div>
-        )}
-        
-        <div className="relative z-10 container mx-auto px-4 py-32 md:py-40 mt-24">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-cinzel text-metallic-gold leading-tight mb-6">
-              Portfolio
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-300 font-lora max-w-3xl mx-auto mb-12">
-              Explore our legendary collection of tattoo artistry. From Norse mythology to fine line masterpieces, 
-              each piece tells a warrior's story.
-            </p>
+          
+          {!imageLoaded && (
+            <div className="absolute inset-0 bg-viking-navy/90 flex items-center justify-center">
+              <div className="animate-pulse text-metallic-gold">Loading...</div>
+            </div>
+          )}
+          
+          <div className="relative z-10 container mx-auto px-4 py-32 md:py-40 mt-24">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-cinzel text-metallic-gold leading-tight mb-6">
+                Portfolio
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-gray-300 font-lora max-w-3xl mx-auto mb-12">
+                Explore our legendary collection of tattoo artistry. From Norse mythology to fine line masterpieces, 
+                each piece tells a warrior's story.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a 
-                href="#categories"
-                className="inline-flex items-center justify-center px-8 py-4 bg-firebrick text-white font-bold rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-firebrick/50"
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <a 
+                  href="#categories"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-firebrick text-white font-bold rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-firebrick/50"
+                >
+                  Explore Galleries
+                </a>
+                <Link
+                  to="/booking"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-metallic-gold font-bold rounded-md border-2 border-metallic-gold hover:bg-metallic-gold hover:text-black transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  Book Consultation
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Categories Section */}
+        <section id="categories" className="py-20 bg-black">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-cinzel text-metallic-gold mb-6">
+                Our Tattoo Styles
+              </h2>
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                Each style represents a different path to self-expression. Click on any category to explore 
+                our collection of masterpieces and find your perfect artistic match.
+              </p>
+            </div>
+            
+            <CategoryGrid />
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-16 bg-viking-navy/20">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
+              <div>
+                <div className="text-4xl font-bold text-metallic-gold mb-2">500+</div>
+                <div className="text-gray-300">Masterpieces Created</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-metallic-gold mb-2">9</div>
+                <div className="text-gray-300">Unique Styles</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-metallic-gold mb-2">1000+</div>
+                <div className="text-gray-300">Happy Warriors</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 bg-viking-navy relative overflow-hidden">
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-metallic-gold">
+              Ready to Create Your Masterpiece?
+            </h2>
+            <div className="max-w-4xl mx-auto">
+              <p className="text-xl mb-8 text-gray-300 leading-relaxed">
+                Your story deserves to be told in ink that stands the test of time. Let's create something legendary together.
+              </p>
+              <Link 
+                to="/booking" 
+                className="cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md transition-all duration-300 text-lg inline-flex items-center justify-center space-x-2"
               >
-                Explore Galleries
-              </a>
-              <Link
-                to="/booking"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-metallic-gold font-bold rounded-md border-2 border-metallic-gold hover:bg-metallic-gold hover:text-black transition-all duration-300 transform hover:-translate-y-1"
-              >
-                Book Consultation
+                <span>Start Your Story</span>
+                <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+        </section>
 
-      {/* Categories Section */}
-      <section id="categories" className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-cinzel text-metallic-gold mb-6">
-              Our Tattoo Styles
-            </h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Each style represents a different path to self-expression. Click on any category to explore 
-              our collection of masterpieces and find your perfect artistic match.
-            </p>
-          </div>
-          
-          <CategoryGrid />
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-viking-navy/20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
-            <div>
-              <div className="text-4xl font-bold text-metallic-gold mb-2">500+</div>
-              <div className="text-gray-300">Masterpieces Created</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-metallic-gold mb-2">9</div>
-              <div className="text-gray-300">Unique Styles</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-metallic-gold mb-2">1000+</div>
-              <div className="text-gray-300">Happy Warriors</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-viking-navy relative overflow-hidden">
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-metallic-gold">
-            Ready to Create Your Masterpiece?
-          </h2>
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xl mb-8 text-gray-300 leading-relaxed">
-              Your story deserves to be told in ink that stands the test of time. Let's create something legendary together.
-            </p>
-            <Link 
-              to="/booking" 
-              className="cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md transition-all duration-300 text-lg inline-flex items-center justify-center space-x-2"
-            >
-              <span>Start Your Story</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-      </section>
-
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }
 
