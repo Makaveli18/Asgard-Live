@@ -73,6 +73,25 @@ const categories = [
   }
 ];
 
+const images = categories.map(category => category.thumbnail);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Asgard Tattoo Portfolio",
+  "description": "Gallery of Norse-inspired tattoos by Asgard Tattoo, Landshut",
+  "mainEntity": images.map((imgUrl) => {
+    const fileName = imgUrl.split("/").pop();
+    return {
+      "@type": "ImageObject",
+      "name": fileName.replace(/-/g, " ").replace(/\.\w+$/, ""),
+      "description": captions[fileName] || "",
+      "thumbnailUrl": `${process.env.NEXT_PUBLIC_BASE_URL || "https://asgard-tattoo.com"}${imgUrl}`,
+      "contentUrl": `${process.env.NEXT_PUBLIC_BASE_URL || "https://asgard-tattoo.com"}${imgUrl}`
+    };
+  })
+};
+
 function CategoryGrid() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -228,6 +247,11 @@ function Portfolio() {
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
+      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* Hero Section */}
       <section className="relative w-full min-h-[70vh] flex items-center overflow-hidden">
