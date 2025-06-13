@@ -1,16 +1,35 @@
 import React from 'react';
 
 export const ImageAutoSlider = () => {
-  // Images for the infinite scroll - using actual tattoo-related Unsplash URLs
+  // Real portfolio images from Asgard Tattoo
   const images = [
-    "https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2152&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=2126&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://plus.unsplash.com/premium_photo-1673264933212-d78737f38e48?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://plus.unsplash.com/premium_photo-1711434824963-ca894373272e?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://plus.unsplash.com/premium_photo-1675705721263-0bbeec261c49?q=80&w=1940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1524799526615-766a9833dec0?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg.jpg",
+    "/images/Portfolio/norse/dark-mythic/vegvisir-nordic-rune-chest-symbol-tattoo.jpg.jpg",
+    "/images/Portfolio/norse/realistic-portraits/ragnar-realism-viking-side-torso-finished.jpg.jpg",
+    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design1.png.jpg",
+    "/images/Portfolio/norse/realistic-portraits/odin-viking-god-realism-sleeve-tattoo.jpg.jpg",
+    "/images/Portfolio/abstract/black-ink-phoenix-tattoo-side-ribcage-paintbrush-style.png.jpg",
+    "/images/Portfolio/ornamental/realism-dotwork/feminine-mandala-portrait-tattoo-lotus-and-roses-forearm.png.jpg",
+    "/images/Portfolio/ornamental/realism-dotwork/lion-geometry-dotwork-arm-tattoo.jpg.jpg",
+    "/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png.jpg",
+    "/images/Portfolio/realism/custom ink/dark-realism-reaper-cemetery-full-backpiece.jpg.jpg",
+    "/images/Portfolio/realism/custom ink/realism-jesus-christ-crucifixion-forearm-tattoo.jpg.jpg",
+    "/images/Portfolio/realism/portraits/hyperrealistic-queen-of-earh-afro-sleeve-tattoo3.jpg.jpg",
+    "/images/Portfolio/realism/portraits/realistic-lemmy-kilmister-portrait-arm-tattoo.jpg.jpg",
+    "/images/Portfolio/abstract/phoenix-minimal-abstract-watercolor-red-forearm.jpg.jpg",
+    "/images/Portfolio/blackwork/expressionist-crow-duo-shoulderblade-tattoo.jpg.jpg",
+    "/images/Portfolio/custom fine art/calf-cheetah-heart-tree-geometric-fine-line-tattoo.jpg.jpg",
+    "/images/Portfolio/custom fine art/greek-statue-dual-portrait-surreal-family-code-thigh-tattoo1.jpg.jpg",
+    "/images/Portfolio/custom fine art/arm-angel-dna-raven-geometric-fine-line-tattoo.jpg.jpg",
+    "/images/Portfolio/fine line/floral/lotus-flowers-leg-tattoo.jpg.jpg",
+    "/images/Portfolio/fine line/floral/snake-flowers-fineline-abdominal-side-tattoo.jpg.jpg",
+    "/images/Portfolio/fine line/symbolic - iconic/fineline-colibri-bird-forearm-tattoo.jpg.jpg",
+    "/images/Portfolio/fine line/symbolic - iconic/deathly-hallows-custom-fineline-arm-tattoo2.jpg.jpg",
+    "/images/Portfolio/neo-traditional/neo-traditional-female-portrait-floral-sleeve-tattoo.jpg.jpg",
+    "/images/Portfolio/neo-traditional/pop culture/blackwork-jason-voorhees-horror-sleeve-tattoo.jpg.jpg",
+    "/images/Portfolio/neo-traditional/pop culture/las-vegas-themed-sleeve-tattoo-neon-retro-graffiti-style.png.jpg",
+    "/images/Portfolio/neo-traditional/pop culture/realistic-dobby-portrait-forearm-tattoo.jpg.jpg",
+    "/images/Portfolio/neo-traditional/mythic/neo-traditional-archangel-michael-arm-tattoo1.jpg.jpg"
   ];
 
   // Duplicate images for seamless loop
@@ -77,7 +96,7 @@ export const ImageAutoSlider = () => {
                 >
                   <img
                     src={image}
-                    alt={`Tattoo artwork inspiration ${(index % images.length) + 1}`}
+                    alt={`Asgard Tattoo masterpiece ${(index % images.length) + 1}`}
                     className="w-full h-full object-cover"
                     loading="lazy"
                     decoding="async"
