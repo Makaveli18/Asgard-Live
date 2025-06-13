@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const ImageAutoSlider = () => {
+  const navigate = useNavigate();
+
   // Real portfolio images from Asgard Tattoo
   const images = [
     "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg.jpg",
@@ -35,6 +38,10 @@ export const ImageAutoSlider = () => {
   // Duplicate images for seamless loop
   const duplicatedImages = [...images, ...images];
 
+  const handleImageClick = () => {
+    navigate('/portfolio');
+  };
+
   return (
     <>
       <style>{`
@@ -49,6 +56,10 @@ export const ImageAutoSlider = () => {
 
         .infinite-scroll {
           animation: scroll-right 25s linear infinite;
+        }
+
+        .infinite-scroll:hover {
+          animation: scroll-right 28s linear infinite;
         }
 
         .scroll-container {
@@ -71,6 +82,7 @@ export const ImageAutoSlider = () => {
         .image-item {
           transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
           border: 2px solid rgba(212, 175, 55, 0.3);
+          cursor: pointer;
         }
 
         .image-item:hover {
@@ -78,6 +90,10 @@ export const ImageAutoSlider = () => {
           filter: brightness(1.15) contrast(1.1);
           border-color: #D4AF37;
           box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .image-item:active {
+          transform: scale(1.05);
         }
       `}</style>
       
@@ -93,11 +109,20 @@ export const ImageAutoSlider = () => {
                 <div
                   key={index}
                   className="image-item flex-shrink-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-xl overflow-hidden shadow-xl bg-black/20"
+                  onClick={handleImageClick}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      handleImageClick();
+                    }
+                  }}
+                  aria-label={`View portfolio - Asgard Tattoo masterpiece ${(index % images.length) + 1}`}
                 >
                   <img
                     src={image}
                     alt={`Asgard Tattoo masterpiece ${(index % images.length) + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover pointer-events-none"
                     loading="lazy"
                     decoding="async"
                   />
