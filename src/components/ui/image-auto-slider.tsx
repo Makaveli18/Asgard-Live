@@ -90,10 +90,6 @@ export const ImageAutoSlider = () => {
         
         {/* Bottom gradient overlay */}
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent z-20" />
-        
-        {/* Optional decorative elements */}
-        <div className="absolute top-4 left-4 w-8 h-8 border-2 border-metallic-gold/30 rounded-full opacity-30" />
-        <div className="absolute bottom-4 right-4 w-6 h-6 border-2 border-firebrick/30 rounded-full opacity-30" />
       </div>
     </>
   );
