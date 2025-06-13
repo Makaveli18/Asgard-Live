@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { PortfolioGallery } from '../components/PortfolioGallery';
 import { LazyImage } from '../components/LazyImage';
+import captions from '../data/portfolio-captions';
 
 const categories = [
   {
