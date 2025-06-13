@@ -21,6 +21,7 @@ import vikingBackground from '/images/Viking-stone-blood-drawing.jpg';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../components/ContactForm';
+import { ImageAutoSlider } from '../components/ui/image-auto-slider';
 
 // Service Icons Components
 const FineLineIcon = () => (
@@ -177,6 +178,9 @@ function Home() {
           </p>
         </div>
       </section>
+
+      {/* Image Auto-Slider Section */}
+      <ImageAutoSlider />
 
       {/* Testimonials (formerly Warriors' Tales) */}
       <section className="py-20 bg-black">
