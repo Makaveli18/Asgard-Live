@@ -86,8 +86,8 @@ const jsonLd = {
       "@type": "ImageObject",
       "name": fileName.replace(/-/g, " ").replace(/\.\w+$/, ""),
       "description": captions[fileName] || "",
-      "thumbnailUrl": `${process.env.NEXT_PUBLIC_BASE_URL || "https://asgard-tattoo.com"}${imgUrl}`,
-      "contentUrl": `${process.env.NEXT_PUBLIC_BASE_URL || "https://asgard-tattoo.com"}${imgUrl}`
+      "thumbnailUrl": `${import.meta.env.VITE_APP_BASE_URL || "https://asgard-tattoo.com"}${imgUrl}`,
+      "contentUrl": `${import.meta.env.VITE_APP_BASE_URL || "https://asgard-tattoo.com"}${imgUrl}`
     };
   })
 };
