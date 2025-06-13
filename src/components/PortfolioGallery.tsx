@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ImageViewer } from './ui/ImageViewer';
+import captions from '../data/portfolio-captions';
 
 interface PortfolioImage {
   src: string;
@@ -166,38 +167,49 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-            {section.images.map((image, imageIndex) => (
-              <motion.div
-                key={image.src}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: imageIndex * 0.05 }}
-                className="aspect-square overflow-hidden rounded-lg cursor-pointer relative group bg-viking-navy/20"
-                onClick={() => {
-                  setSelectedSection(sectionIndex);
-                  setSelectedImageIndex(getGlobalImageIndex(sectionIndex, imageIndex));
-                }}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                  loading="lazy"
-                  decoding="async"
-                />
-                
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <div className="w-full">
-                    <p className="text-white text-sm font-medium mb-1">{image.alt}</p>
-                    <p className="text-gray-300 text-xs">Click to view full size</p>
+            {section.images.map((image, imageIndex) => {
+              const fileName = image.filename;
+              const caption = captions[fileName] || "";
+              
+              return (
+                <motion.figure
+                  key={image.src}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: imageIndex * 0.05 }}
+                  className="portfolio-figure aspect-square overflow-hidden rounded-lg cursor-pointer relative group bg-viking-navy/20"
+                  onClick={() => {
+                    setSelectedSection(sectionIndex);
+                    setSelectedImageIndex(getGlobalImageIndex(sectionIndex, imageIndex));
+                  }}
+                >
+                  <img
+                    src={image.src}
+                    alt={`Norse tattoo of ${fileName.replace(/-/g, " ").replace(/\.\w+$/, "")}`}
+                    fetchpriority="high"
+                    loading="lazy"
+                    className="portfolio-image w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    decoding="async"
+                  />
+                  
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <div className="w-full">
+                      <p className="text-white text-sm font-medium mb-1">{image.alt}</p>
+                      {caption && (
+                        <figcaption className="text-gray-300 text-xs italic leading-relaxed">
+                          {caption}
+                        </figcaption>
+                      )}
+                      <p className="text-gray-400 text-xs mt-2">Click to view full size</p>
+                    </div>
                   </div>
-                </div>
 
-                {/* Loading placeholder */}
-                <div className="absolute inset-0 bg-viking-navy/40 animate-pulse opacity-0 group-hover:opacity-0" />
-              </motion.div>
-            ))}
+                  {/* Loading placeholder */}
+                  <div className="absolute inset-0 bg-viking-navy/40 animate-pulse opacity-0 group-hover:opacity-0" />
+                </motion.figure>
+              );
+            })}
           </div>
         </motion.section>
       ))}
