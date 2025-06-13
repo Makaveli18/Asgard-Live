@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import captions from '../../data/portfolio-captions';
 
 interface ImageViewerProps {
   images: string[];
@@ -29,6 +30,10 @@ export function ImageViewer({ images, currentIndex, onClose, onNavigate }: Image
     };
   }, [handleKeyDown]);
 
+  const currentImage = images[currentIndex];
+  const fileName = currentImage?.split('/').pop() || '';
+  const caption = captions[fileName] || '';
+
   return (
     <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
       <button
@@ -47,13 +52,21 @@ export function ImageViewer({ images, currentIndex, onClose, onNavigate }: Image
         <ChevronLeft className="w-12 h-12" />
       </button>
 
-      <div className="relative max-w-[90vw] max-h-[90vh]">
-        <img
-          src={images[currentIndex]}
-          alt={`Artwork ${currentIndex + 1}`}
-          className="max-w-full max-h-[90vh] object-contain"
-        />
-        <div className="absolute bottom-0 left-0 right-0 text-center text-white/70 bg-black/50 py-2">
+      <div className="relative max-w-[90vw] max-h-[90vh] flex flex-col items-center">
+        <figure className="lightbox-figure flex flex-col items-center">
+          <img
+            src={currentImage}
+            alt={fileName.replace(/-/g, ' ').replace(/\.\w+$/, '')}
+            className="lightbox-image max-w-full max-h-[75vh] object-contain"
+          />
+          {caption && (
+            <figcaption className="mt-4 text-center italic text-base text-gray-300 max-w-2xl px-4 leading-relaxed">
+              {caption}
+            </figcaption>
+          )}
+        </figure>
+        
+        <div className="mt-4 text-center text-white/70 bg-black/50 py-2 px-4 rounded">
           {currentIndex + 1} / {images.length}
         </div>
       </div>
