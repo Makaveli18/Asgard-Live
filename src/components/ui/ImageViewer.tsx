@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import captions from '../../data/portfolio-captions';
 
 interface ImageViewerProps {
@@ -57,13 +58,19 @@ export function ImageViewer({ images, currentIndex, onClose, onNavigate }: Image
           <img
             src={currentImage}
             alt={fileName.replace(/-/g, ' ').replace(/\.\w+$/, '')}
-            className="lightbox-image max-w-full max-h-[75vh] object-contain"
+            className="lightbox-image max-w-full max-h-[70vh] object-contain"
           />
           {caption && (
             <figcaption className="mt-4 text-center italic text-base text-gray-300 max-w-2xl px-4 leading-relaxed">
               {caption}
             </figcaption>
           )}
+          <Link 
+            to={`/booking?piece=${fileName.replace(/\.\w+$/, '')}`}
+            className="mt-4 inline-block bg-firebrick hover:bg-firebrick/90 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+          >
+            🖋️ Book a Consult on This Piece
+          </Link>
         </figure>
         
         <div className="mt-4 text-center text-white/70 bg-black/50 py-2 px-4 rounded">
