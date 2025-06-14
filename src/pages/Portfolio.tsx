@@ -290,7 +290,7 @@ function Portfolio() {
       <div className="min-h-screen bg-black text-gray-100">
         <Header />
         
-        {/* Hero Section - Optimized for All Devices */}
+        {/* Hero Section - FIXED Background Positioning */}
         <section className="relative w-full min-h-screen flex items-center overflow-hidden">
           {/* Header Space Buffer - Black extension to prevent background cutoff */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-black z-20"></div>
@@ -410,7 +410,7 @@ function Portfolio() {
         <Footer />
       </div>
       
-      {/* Custom styles for responsive background positioning */}
+      {/* AGGRESSIVE Background Positioning - Push Image WAY Down */}
       <style jsx>{`
         /* Mobile: Maximum zoom-out for full context */
         @media (max-width: 768px) {
@@ -424,18 +424,20 @@ function Portfolio() {
         /* Tablet: Balanced view */
         @media (min-width: 769px) and (max-width: 1024px) {
           .portfolio-hero-bg {
-            background-position: center 60% !important;
+            background-position: center 70% !important;
             background-size: cover !important;
             transform: scale(0.98) !important;
           }
         }
         
-        /* Desktop: Push "Asgard Tattoo" text WAY below header */
+        /* Desktop: AGGRESSIVELY push "Asgard Tattoo" text below header */
         @media (min-width: 1025px) {
           .portfolio-hero-bg {
-            background-position: center 80% !important;
+            background-position: center 95% !important;
             background-size: cover !important;
-            transform: scale(1.02) !important;
+            transform: scale(1.1) !important;
+            max-height: 95vh !important;
+            clip-path: inset(0 0 20px 0) !important;
           }
         }
       `}</style>
