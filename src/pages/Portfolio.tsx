@@ -293,7 +293,7 @@ function Portfolio() {
         {/* Hero Section - Optimized for All Devices */}
         <section className="relative w-full min-h-screen flex items-center overflow-hidden">
           {/* Header Space Buffer - Black extension to prevent background cutoff */}
-          <div className="absolute top-0 left-0 right-0 h-24 bg-black z-0"></div>
+          <div className="absolute top-0 left-0 right-0 h-32 bg-black z-20"></div>
           
           <div className="absolute inset-0 w-full h-full">
             <div
@@ -309,7 +309,7 @@ function Portfolio() {
             />
             
             {/* Enhanced gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/70" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-black/70" />
           </div>
           
           {!imageLoaded && (
@@ -415,7 +415,7 @@ function Portfolio() {
         /* Mobile: Maximum zoom-out for full context */
         @media (max-width: 768px) {
           .portfolio-hero-bg {
-            background-position: center 45% !important;
+            background-position: center 40% !important;
             background-size: cover !important;
             transform: scale(0.95) !important;
           }
@@ -424,16 +424,16 @@ function Portfolio() {
         /* Tablet: Balanced view */
         @media (min-width: 769px) and (max-width: 1024px) {
           .portfolio-hero-bg {
-            background-position: center 35% !important;
+            background-position: center 60% !important;
             background-size: cover !important;
             transform: scale(0.98) !important;
           }
         }
         
-        /* Desktop: Show "Asgard Tattoo" text properly below header */
+        /* Desktop: Push "Asgard Tattoo" text WAY below header */
         @media (min-width: 1025px) {
           .portfolio-hero-bg {
-            background-position: center 55% !important;
+            background-position: center 80% !important;
             background-size: cover !important;
             transform: scale(1.02) !important;
           }
