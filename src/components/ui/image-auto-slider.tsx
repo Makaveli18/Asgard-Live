@@ -154,6 +154,9 @@ export const ImageAutoSlider = () => {
                 const altText = imageId.replace(/-/g, " ");
                 const linkPath = generateImageLink(image);
                 
+                // Prioritize the first set of images for immediate loading
+                const isPriorityImage = index < images.length;
+                
                 return (
                   <Link
                     key={index}
@@ -173,7 +176,8 @@ export const ImageAutoSlider = () => {
                       src={image}
                       alt={`Norse tattoo of ${altText}`}
                       className="w-full h-full object-cover pointer-events-none"
-                      loading="lazy"
+                      loading={isPriorityImage ? "eager" : "lazy"}
+                      fetchPriority={isPriorityImage ? "high" : "auto"}
                       decoding="async"
                     />
                   </Link>
