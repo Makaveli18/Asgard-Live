@@ -37,23 +37,34 @@ export function ImageViewer({ images, currentIndex, onClose, onNavigate }: Image
 
   return (
     <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
+      {/* Close button - positioned outside image container */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
+        className="absolute top-4 right-4 z-60 text-white/70 hover:text-white transition-colors bg-black/60 rounded-full p-2 backdrop-blur-sm"
         aria-label="Close viewer"
       >
-        <X className="w-8 h-8" />
+        <X className="w-6 h-6 md:w-8 md:h-8" />
+      </button>
+
+      {/* Navigation buttons */}
+      <button
+        onClick={() => onNavigate(currentIndex > 0 ? currentIndex - 1 : images.length - 1)}
+        className="absolute left-4 z-60 text-white/70 hover:text-white transition-colors bg-black/60 rounded-full p-2 backdrop-blur-sm"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="w-8 h-8 md:w-12 md:h-12" />
       </button>
 
       <button
-        onClick={() => onNavigate(currentIndex > 0 ? currentIndex - 1 : images.length - 1)}
-        className="absolute left-4 text-white/70 hover:text-white transition-colors"
-        aria-label="Previous image"
+        onClick={() => onNavigate(currentIndex < images.length - 1 ? currentIndex + 1 : 0)}
+        className="absolute right-4 z-60 text-white/70 hover:text-white transition-colors bg-black/60 rounded-full p-2 backdrop-blur-sm"
+        aria-label="Next image"
       >
-        <ChevronLeft className="w-12 h-12" />
+        <ChevronRight className="w-8 h-8 md:w-12 md:h-12" />
       </button>
 
-      <div className="relative max-w-[90vw] max-h-[90vh] flex flex-col items-center">
+      {/* Image container */}
+      <div className="relative max-w-[90vw] max-h-[90vh] flex flex-col items-center px-4 md:px-8">
         <figure className="lightbox-figure flex flex-col items-center">
           <img
             src={currentImage}
@@ -73,18 +84,11 @@ export function ImageViewer({ images, currentIndex, onClose, onNavigate }: Image
           </Link>
         </figure>
         
-        <div className="mt-4 text-center text-white/70 bg-black/50 py-2 px-4 rounded">
+        {/* Image counter */}
+        <div className="mt-4 text-center text-white/70 bg-black/50 py-2 px-4 rounded backdrop-blur-sm">
           {currentIndex + 1} / {images.length}
         </div>
       </div>
-
-      <button
-        onClick={() => onNavigate(currentIndex < images.length - 1 ? currentIndex + 1 : 0)}
-        className="absolute right-4 text-white/70 hover:text-white transition-colors"
-        aria-label="Next image"
-      >
-        <ChevronRight className="w-12 h-12" />
-      </button>
     </div>
   );
 }

@@ -77,10 +77,11 @@ export const ImageAutoSlider = () => {
 
         .infinite-scroll {
           animation: scroll-right 25s linear infinite;
+          animation-play-state: running;
         }
 
-        .infinite-scroll:hover {
-          animation: scroll-right 28s linear infinite;
+        .scroll-container:hover .infinite-scroll {
+          animation-duration: 28s;
         }
 
         .scroll-container {
@@ -115,6 +116,11 @@ export const ImageAutoSlider = () => {
 
         .image-item:active {
           transform: scale(1.05);
+        }
+
+        /* Smooth animation duration transitions */
+        .infinite-scroll {
+          transition: animation-duration 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
       `}</style>
       
