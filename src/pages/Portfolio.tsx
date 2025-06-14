@@ -290,22 +290,27 @@ function Portfolio() {
       <div className="min-h-screen bg-black text-gray-100">
         <Header />
         
-        {/* Hero Section */}
-        <section className="relative w-full min-h-[70vh] flex items-center overflow-hidden">
+        {/* Hero Section - Enhanced for Desktop & Mobile */}
+        <section className="relative w-full min-h-screen flex items-center overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
             <div
-              className={`w-full h-full bg-cover bg-center transition-opacity duration-1000 ${
+              className={`w-full h-full bg-cover transition-opacity duration-1000 ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               style={{
                 backgroundImage: `url('/images/AsgardWall.jpg')`,
+                // Desktop: Scale and position to show below header
                 transform: 'scale(1.05)',
-                backgroundPosition: 'center calc(30% + 30px)',
+                backgroundPosition: 'center 20%',
+                // Mobile responsive: Show more of the image context
+                backgroundSize: 'cover',
               }}
               role="img"
               aria-label="Studio background"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
+            
+            {/* Enhanced gradient overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
           </div>
           
           {!imageLoaded && (
@@ -314,7 +319,8 @@ function Portfolio() {
             </div>
           )}
           
-          <div className="relative z-10 container mx-auto px-4 py-32 md:py-40 mt-24">
+          {/* Content Container - Full screen positioning */}
+          <div className="relative z-10 container mx-auto px-4 py-20 md:py-32 lg:py-40">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-cinzel text-metallic-gold leading-tight mb-6">
                 Portfolio
@@ -342,6 +348,31 @@ function Portfolio() {
             </div>
           </div>
         </section>
+
+        {/* Add custom styles for mobile background optimization */}
+        <style jsx>{`
+          @media (max-width: 768px) {
+            .relative .absolute div[style*="backgroundImage"] {
+              background-position: center 30% !important;
+              background-size: cover !important;
+              transform: scale(1.0) !important;
+            }
+          }
+          
+          @media (min-width: 769px) and (max-width: 1024px) {
+            .relative .absolute div[style*="backgroundImage"] {
+              background-position: center 25% !important;
+              transform: scale(1.03) !important;
+            }
+          }
+          
+          @media (min-width: 1025px) {
+            .relative .absolute div[style*="backgroundImage"] {
+              background-position: center 15% !important;
+              transform: scale(1.05) !important;
+            }
+          }
+        `}</style>
 
         {/* Categories Section */}
         <section id="categories" className="py-20 bg-black">
