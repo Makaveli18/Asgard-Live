@@ -33,6 +33,33 @@ export const ImageAutoSlider = () => {
     "/images/Portfolio/neo-traditional/mythic/neo-traditional-archangel-michael-arm-tattoo1.jpg.jpg"
   ];
 
+  // Mapping from folder names to category IDs (reverse of PortfolioGallery mapping)
+  const folderToCategoryMapping: Record<string, string> = {
+    'realism': 'realism',
+    'fine line': 'fine-line',
+    'norse': 'norse',
+    'blackwork': 'blackwork',
+    'neo-traditional': 'neo-traditional',
+    'ornamental': 'ornamental',
+    'custom fine art': 'custom-fine-art',
+    'abstract': 'abstract',
+    'studio-bts': 'studio'
+  };
+
+  // Function to extract category and generate correct link
+  const generateImageLink = (imagePath: string) => {
+    // Split path: /images/Portfolio/{category}/{subfolder}/{filename}
+    const pathParts = imagePath.split('/');
+    const folderName = pathParts[3]; // e.g., "realism", "fine line", "norse"
+    const fileName = pathParts[pathParts.length - 1]; // e.g., "realistic-lemmy-kilmister-portrait-arm-tattoo.jpg.jpg"
+    
+    // Get category ID and clean filename
+    const categoryId = folderToCategoryMapping[folderName] || folderName;
+    const imageId = fileName.replace(/\.\w+$/, ""); // Remove file extension
+    
+    return `/portfolio/${categoryId}#${imageId}`;
+  };
+
   // Duplicate images for seamless loop
   const duplicatedImages = [...images, ...images];
 
@@ -102,11 +129,12 @@ export const ImageAutoSlider = () => {
               {duplicatedImages.map((image, index) => {
                 const imageId = image.split("/").pop()?.replace(/\.\w+$/, "") || "";
                 const altText = imageId.replace(/-/g, " ");
+                const linkPath = generateImageLink(image);
                 
                 return (
                   <Link
                     key={index}
-                    to={`/portfolio#${imageId}`}
+                    to={linkPath}
                     className="image-item flex-shrink-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-xl overflow-hidden shadow-xl bg-black/20 block"
                     role="button"
                     tabIndex={0}
