@@ -170,10 +170,12 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
             {section.images.map((image, imageIndex) => {
               const fileName = image.filename;
               const caption = captions[fileName] || "";
+              const imageId = fileName.replace(/\.\w+$/, "");
               
               return (
                 <motion.figure
                   key={image.src}
+                  id={imageId}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: imageIndex * 0.05 }}

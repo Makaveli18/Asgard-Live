@@ -1,9 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const ImageAutoSlider = () => {
-  const navigate = useNavigate();
-
   // Real portfolio images from Asgard Tattoo
   const images = [
     "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg.jpg",
@@ -37,10 +35,6 @@ export const ImageAutoSlider = () => {
 
   // Duplicate images for seamless loop
   const duplicatedImages = [...images, ...images];
-
-  const handleImageClick = () => {
-    navigate('/portfolio');
-  };
 
   return (
     <>
@@ -105,29 +99,35 @@ export const ImageAutoSlider = () => {
         <div className="relative z-10 w-full flex items-center justify-center">
           <div className="scroll-container w-full">
             <div className="infinite-scroll flex gap-6 w-max">
-              {duplicatedImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="image-item flex-shrink-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-xl overflow-hidden shadow-xl bg-black/20"
-                  onClick={handleImageClick}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      handleImageClick();
-                    }
-                  }}
-                  aria-label={`View portfolio - Asgard Tattoo masterpiece ${(index % images.length) + 1}`}
-                >
-                  <img
-                    src={image}
-                    alt={`Asgard Tattoo masterpiece ${(index % images.length) + 1}`}
-                    className="w-full h-full object-cover pointer-events-none"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              ))}
+              {duplicatedImages.map((image, index) => {
+                const imageId = image.split("/").pop()?.replace(/\.\w+$/, "") || "";
+                const altText = imageId.replace(/-/g, " ");
+                
+                return (
+                  <Link
+                    key={index}
+                    to={`/portfolio#${imageId}`}
+                    className="image-item flex-shrink-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-xl overflow-hidden shadow-xl bg-black/20 block"
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        // Navigation handled by Link component
+                      }
+                    }}
+                    aria-label={`View portfolio - ${altText}`}
+                  >
+                    <img
+                      src={image}
+                      alt={`Norse tattoo of ${altText}`}
+                      className="w-full h-full object-cover pointer-events-none"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>

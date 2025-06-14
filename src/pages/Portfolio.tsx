@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { ArrowRight, ArrowLeft, ChevronDown } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -138,6 +138,24 @@ function CategoryGrid() {
 
 function CategoryDetail({ categoryId }: { categoryId: string }) {
   const category = categories.find(cat => cat.id === categoryId);
+  const location = useLocation();
+  
+  // Handle hash navigation for direct image linking
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.substring(1); // Remove the '#'
+      // Add a small delay to ensure the DOM is rendered
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center'
+          });
+        }
+      }, 500);
+    }
+  }, [location.hash]);
   
   if (!category) {
     return (
@@ -230,7 +248,25 @@ function CategoryDetail({ categoryId }: { categoryId: string }) {
 
 function Portfolio() {
   const { category } = useParams();
+  const location = useLocation();
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Handle hash navigation for main portfolio page
+  useEffect(() => {
+    if (location.hash && !category) {
+      const id = location.hash.substring(1); // Remove the '#'
+      // Add a small delay to ensure the DOM is rendered
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center'
+          });
+        }
+      }, 500);
+    }
+  }, [location.hash, category]);
 
   useEffect(() => {
     const img = new Image();
