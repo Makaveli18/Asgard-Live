@@ -75,13 +75,21 @@ export const ImageAutoSlider = () => {
           }
         }
 
-        .infinite-scroll {
-          animation: scroll-right 25s linear infinite;
-          animation-play-state: running;
+        @keyframes scroll-right-slow {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
 
-        .scroll-container:hover .infinite-scroll {
-          animation-duration: 28s;
+        .infinite-scroll {
+          animation: scroll-right 25s linear infinite;
+        }
+
+        .infinite-scroll.slow {
+          animation: scroll-right-slow 35s linear infinite;
         }
 
         .scroll-container {
@@ -117,11 +125,6 @@ export const ImageAutoSlider = () => {
         .image-item:active {
           transform: scale(1.05);
         }
-
-        /* Smooth animation duration transitions */
-        .infinite-scroll {
-          transition: animation-duration 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
       `}</style>
       
       <div className="w-full bg-viking-navy/10 relative overflow-hidden py-16">
@@ -130,7 +133,21 @@ export const ImageAutoSlider = () => {
         
         {/* Scrolling images container */}
         <div className="relative z-10 w-full flex items-center justify-center">
-          <div className="scroll-container w-full">
+          <div 
+            className="scroll-container w-full"
+            onMouseEnter={(e) => {
+              const scrollEl = e.currentTarget.querySelector('.infinite-scroll');
+              if (scrollEl) {
+                scrollEl.classList.add('slow');
+              }
+            }}
+            onMouseLeave={(e) => {
+              const scrollEl = e.currentTarget.querySelector('.infinite-scroll');
+              if (scrollEl) {
+                scrollEl.classList.remove('slow');
+              }
+            }}
+          >
             <div className="infinite-scroll flex gap-6 w-max">
               {duplicatedImages.map((image, index) => {
                 const imageId = image.split("/").pop()?.replace(/\.\w+$/, "") || "";
