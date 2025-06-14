@@ -31,8 +31,11 @@ function About() {
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
       
-      {/* Hero Section */}
+      {/* Hero Section - Enhanced for All Devices */}
       <section className="relative w-full min-h-screen overflow-hidden">
+        {/* Header Space Buffer */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-black z-0"></div>
+        
         <div 
           ref={heroRef}
           className={`
@@ -42,7 +45,7 @@ function About() {
           `}
         >
           <div
-            className="absolute inset-x-0 top-[4rem] md:top-[5rem] bottom-0 bg-center bg-no-repeat mx-auto max-w-[2000px]"
+            className="absolute inset-x-0 top-[4rem] md:top-[5rem] bottom-0 bg-center bg-no-repeat mx-auto max-w-[2000px] about-hero-bg"
             style={{
               backgroundImage: `url(${valknutBg})`,
               backgroundSize: 'contain',
@@ -121,6 +124,36 @@ function About() {
       </section>
 
       <Footer />
+      
+      {/* Custom styles for responsive background positioning */}
+      <style jsx>{`
+        /* Mobile: Maximum zoom-out for full context */
+        @media (max-width: 768px) {
+          .about-hero-bg {
+            background-position: center 55% !important;
+            background-size: contain !important;
+            transform: scale(0.85) !important;
+          }
+        }
+        
+        /* Tablet: Balanced view */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .about-hero-bg {
+            background-position: center 25% !important;
+            background-size: contain !important;
+            transform: scale(0.95) !important;
+          }
+        }
+        
+        /* Desktop: Proper positioning below header */
+        @media (min-width: 1025px) {
+          .about-hero-bg {
+            background-position: center 15% !important;
+            background-size: contain !important;
+            transform: scale(1.05) !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

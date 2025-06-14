@@ -107,8 +107,11 @@ function Home() {
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
       
-      {/* Hero Section */}
+      {/* Hero Section - Enhanced for All Devices */}
       <section className="relative w-full overflow-hidden flex items-center justify-center min-h-screen">
+        {/* Header Space Buffer */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-black z-0"></div>
+        
         {/* Background Image Container */}
         <div 
           className={`
@@ -119,20 +122,19 @@ function Home() {
         >
           {/* Background Image */}
           <div
-            className="absolute inset-0 bg-center bg-cover bg-no-repeat w-full h-full"
+            className="absolute inset-0 bg-center bg-cover bg-no-repeat w-full h-full home-hero-bg"
             style={{
               backgroundImage: `url(${vikingBackground})`,
-              transform: 'scale(1.05)',
-              willChange: 'transform',
+              backgroundSize: 'cover',
               filter: 'brightness(1.2)',
             }}
             role="img"
             aria-label="Viking background"
           />
           
-          {/* Enhanced Gradient Overlay - Adjusted for better visibility */}
+          {/* Enhanced Gradient Overlay */}
           <div 
-            className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"
+            className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60"
             style={{ mixBlendMode: 'multiply' }}
           />
         </div>
@@ -314,6 +316,36 @@ function Home() {
       </section>
 
       <Footer />
+
+      {/* Custom styles for responsive background positioning */}
+      <style jsx>{`
+        /* Mobile: Maximum zoom-out for full context */
+        @media (max-width: 768px) {
+          .home-hero-bg {
+            background-position: center 50% !important;
+            background-size: cover !important;
+            transform: scale(0.9) !important;
+          }
+        }
+        
+        /* Tablet: Balanced view */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .home-hero-bg {
+            background-position: center 40% !important;
+            background-size: cover !important;
+            transform: scale(0.95) !important;
+          }
+        }
+        
+        /* Desktop: Proper positioning below header */
+        @media (min-width: 1025px) {
+          .home-hero-bg {
+            background-position: center 30% !important;
+            background-size: cover !important;
+            transform: scale(1.05) !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

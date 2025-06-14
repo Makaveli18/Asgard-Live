@@ -60,9 +60,12 @@ function Blog() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(BlogSchema) }}
       />
 
-      {/* Hero Section */}
+      {/* Hero Section - Enhanced for All Devices */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-b from-viking-navy/90 to-black">
-        <div className="absolute inset-0 bg-[url('/images/Mountain3.jpg')] bg-cover bg-center opacity-10"></div>
+        {/* Header Space Buffer */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-black z-0"></div>
+        
+        <div className="absolute inset-0 blog-hero-bg bg-cover bg-center opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10 py-32 md:py-40 mt-24">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-cinzel text-metallic-gold mb-8 leading-tight">
@@ -146,6 +149,40 @@ function Blog() {
       </section>
 
       <Footer />
+      
+      {/* Custom styles for responsive background positioning */}
+      <style jsx>{`
+        .blog-hero-bg {
+          background-image: url('/images/Mountain3.jpg');
+        }
+        
+        /* Mobile: Maximum zoom-out for full context */
+        @media (max-width: 768px) {
+          .blog-hero-bg {
+            background-position: center 60% !important;
+            background-size: cover !important;
+            transform: scale(0.9) !important;
+          }
+        }
+        
+        /* Tablet: Balanced view */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .blog-hero-bg {
+            background-position: center 45% !important;
+            background-size: cover !important;
+            transform: scale(0.95) !important;
+          }
+        }
+        
+        /* Desktop: Proper positioning below header */
+        @media (min-width: 1025px) {
+          .blog-hero-bg {
+            background-position: center 30% !important;
+            background-size: cover !important;
+            transform: scale(1.0) !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

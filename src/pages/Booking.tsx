@@ -62,12 +62,15 @@ function Booking() {
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
 
-      {/* Hero Section with Spline Animation */}
+      {/* Hero Section with Spline Animation - Enhanced for All Devices */}
       <section className="relative min-h-screen overflow-hidden flex items-center">
-        <div className="absolute inset-0 w-full h-full">
+        {/* Header Space Buffer */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-black z-10"></div>
+        
+        <div className="absolute inset-0 w-full h-full booking-hero-container">
           <Spline 
             scene="https://prod.spline.design/PLSnC5c0sTCkqM7g/scene.splinecode"
-            className="w-full h-full"
+            className="w-full h-full booking-hero-spline"
           />
         </div>
         <div className="container mx-auto px-4 text-center relative z-10 py-32 md:py-40 mt-24">
@@ -121,6 +124,39 @@ function Booking() {
       </section>
 
       <Footer />
+      
+      {/* Custom styles for responsive Spline positioning */}
+      <style jsx>{`
+        /* Mobile: Optimized Spline positioning */
+        @media (max-width: 768px) {
+          .booking-hero-spline {
+            transform: scale(0.8) translateY(20px) !important;
+          }
+          .booking-hero-container {
+            background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+          }
+        }
+        
+        /* Tablet: Balanced Spline view */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .booking-hero-spline {
+            transform: scale(0.9) translateY(10px) !important;
+          }
+          .booking-hero-container {
+            background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+          }
+        }
+        
+        /* Desktop: Full Spline experience */
+        @media (min-width: 1025px) {
+          .booking-hero-spline {
+            transform: scale(1.0) !important;
+          }
+          .booking-hero-container {
+            background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+          }
+        }
+      `}</style>
     </div>
   );
 }
