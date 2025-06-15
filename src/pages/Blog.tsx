@@ -61,11 +61,13 @@ function Blog() {
       />
 
       {/* Hero Section - Enhanced for All Devices */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-b from-viking-navy/90 to-black">
-        {/* Header Space Buffer */}
-        <div className="absolute top-0 left-0 right-0 h-24 bg-black z-0"></div>
+      <section className="relative min-h-screen flex items-center bg-black overflow-hidden">
+        {/* Extended Header Buffer - Prevents background cutoff */}
+        <div className="absolute top-0 left-0 right-0 h-40 bg-black z-30 blog-header-buffer"></div>
         
-        <div className="absolute inset-0 blog-hero-bg bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 blog-hero-bg bg-cover bg-center opacity-15"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/80" />
+        
         <div className="container mx-auto px-4 relative z-10 py-32 md:py-40 mt-24">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-cinzel text-metallic-gold mb-8 leading-tight">
@@ -150,36 +152,52 @@ function Blog() {
 
       <Footer />
       
-      {/* Custom styles for responsive background positioning */}
+      {/* Enhanced responsive styles with better header clearance */}
       <style jsx>{`
+        .blog-header-buffer {
+          background: linear-gradient(to bottom, #000000 0%, #000000 70%, transparent 100%);
+        }
+        
         .blog-hero-bg {
           background-image: url('/images/Mountain3.jpg');
         }
         
-        /* Mobile: Maximum zoom-out for full context */
+        /* Mobile: Better clearance and positioning */
         @media (max-width: 768px) {
           .blog-hero-bg {
-            background-position: center 60% !important;
-            background-size: cover !important;
-            transform: scale(0.9) !important;
-          }
-        }
-        
-        /* Tablet: Balanced view */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .blog-hero-bg {
-            background-position: center 45% !important;
+            background-position: center 70% !important;
             background-size: cover !important;
             transform: scale(0.95) !important;
           }
+          
+          .blog-header-buffer {
+            height: 200px !important;
+          }
         }
         
-        /* Desktop: Proper positioning below header */
+        /* Tablet: Improved positioning */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .blog-hero-bg {
+            background-position: center 60% !important;
+            background-size: cover !important;
+            transform: scale(0.98) !important;
+          }
+          
+          .blog-header-buffer {
+            height: 180px !important;
+          }
+        }
+        
+        /* Desktop: Optimal positioning with proper clearance */
         @media (min-width: 1025px) {
           .blog-hero-bg {
-            background-position: center 30% !important;
+            background-position: center 50% !important;
             background-size: cover !important;
             transform: scale(1.0) !important;
+          }
+          
+          .blog-header-buffer {
+            height: 160px !important;
           }
         }
       `}</style>

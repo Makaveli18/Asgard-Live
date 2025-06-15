@@ -109,8 +109,8 @@ function Home() {
       
       {/* Hero Section - Enhanced for All Devices */}
       <section className="relative w-full overflow-hidden flex items-center justify-center min-h-screen">
-        {/* Header Space Buffer */}
-        <div className="absolute top-0 left-0 right-0 h-24 bg-black z-0"></div>
+        {/* Extended Header Buffer - Prevents background cutoff */}
+        <div className="absolute top-0 left-0 right-0 h-40 bg-black z-30 home-header-buffer"></div>
         
         {/* Background Image Container */}
         <div 
@@ -134,7 +134,7 @@ function Home() {
           
           {/* Enhanced Gradient Overlay */}
           <div 
-            className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60"
+            className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"
             style={{ mixBlendMode: 'multiply' }}
           />
         </div>
@@ -147,7 +147,7 @@ function Home() {
         )}
         
         {/* Content Container */}
-        <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24">
+        <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
           <div className="max-w-4xl w-full mx-auto text-center">
             <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black animate-fade-in text-metallic-gold leading-tight mb-6 hero-title">
               Unleash Your Inner Warrior – Your Next Battle Mark Awaits
@@ -317,32 +317,48 @@ function Home() {
 
       <Footer />
 
-      {/* Custom styles for responsive background positioning */}
+      {/* Enhanced responsive styles with better header clearance */}
       <style jsx>{`
-        /* Mobile: Maximum zoom-out for full context */
-        @media (max-width: 768px) {
-          .home-hero-bg {
-            background-position: center 50% !important;
-            background-size: cover !important;
-            transform: scale(0.9) !important;
-          }
+        .home-header-buffer {
+          background: linear-gradient(to bottom, #000000 0%, #000000 70%, transparent 100%);
         }
         
-        /* Tablet: Balanced view */
-        @media (min-width: 769px) and (max-width: 1024px) {
+        /* Mobile: Better clearance and positioning */
+        @media (max-width: 768px) {
           .home-hero-bg {
-            background-position: center 40% !important;
+            background-position: center 60% !important;
             background-size: cover !important;
             transform: scale(0.95) !important;
           }
+          
+          .home-header-buffer {
+            height: 200px !important;
+          }
         }
         
-        /* Desktop: Proper positioning below header */
+        /* Tablet: Improved positioning */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .home-hero-bg {
+            background-position: center 50% !important;
+            background-size: cover !important;
+            transform: scale(0.98) !important;
+          }
+          
+          .home-header-buffer {
+            height: 180px !important;
+          }
+        }
+        
+        /* Desktop: Optimal positioning with proper clearance */
         @media (min-width: 1025px) {
           .home-hero-bg {
-            background-position: center 30% !important;
+            background-position: center 40% !important;
             background-size: cover !important;
-            transform: scale(1.05) !important;
+            transform: scale(1.02) !important;
+          }
+          
+          .home-header-buffer {
+            height: 160px !important;
           }
         }
       `}</style>

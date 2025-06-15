@@ -33,8 +33,8 @@ function About() {
       
       {/* Hero Section - Enhanced for All Devices */}
       <section className="relative w-full min-h-screen overflow-hidden">
-        {/* Header Space Buffer */}
-        <div className="absolute top-0 left-0 right-0 h-24 bg-black z-0"></div>
+        {/* Extended Header Buffer - Prevents background cutoff */}
+        <div className="absolute top-0 left-0 right-0 h-40 bg-black z-30 about-header-buffer"></div>
         
         <div 
           ref={heroRef}
@@ -60,12 +60,12 @@ function About() {
           />
           
           <div 
-            className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black/80"
+            className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/70"
             style={{ mixBlendMode: 'multiply' }}
           />
         </div>
         
-        <div className="relative h-full flex items-center justify-center min-h-screen">
+        <div className="relative h-full flex items-center justify-center min-h-screen z-10">
           <div className="container mx-auto px-4 py-32 md:py-40 mt-24">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="
@@ -125,32 +125,48 @@ function About() {
 
       <Footer />
       
-      {/* Custom styles for responsive background positioning */}
+      {/* Enhanced responsive styles with better header clearance */}
       <style jsx>{`
-        /* Mobile: Maximum zoom-out for full context */
+        .about-header-buffer {
+          background: linear-gradient(to bottom, #000000 0%, #000000 70%, transparent 100%);
+        }
+        
+        /* Mobile: Maximum zoom-out for full context with better clearance */
         @media (max-width: 768px) {
           .about-hero-bg {
-            background-position: center 55% !important;
+            background-position: center 80% !important;
+            background-size: contain !important;
+            transform: scale(0.75) !important;
+          }
+          
+          .about-header-buffer {
+            height: 220px !important;
+          }
+        }
+        
+        /* Tablet: Balanced view with improved positioning */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .about-hero-bg {
+            background-position: center 70% !important;
             background-size: contain !important;
             transform: scale(0.85) !important;
           }
-        }
-        
-        /* Tablet: Balanced view */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .about-hero-bg {
-            background-position: center 25% !important;
-            background-size: contain !important;
-            transform: scale(0.95) !important;
+          
+          .about-header-buffer {
+            height: 200px !important;
           }
         }
         
-        /* Desktop: Proper positioning below header */
+        /* Desktop: Proper positioning below header with full clearance */
         @media (min-width: 1025px) {
           .about-hero-bg {
-            background-position: center 15% !important;
+            background-position: center 60% !important;
             background-size: contain !important;
-            transform: scale(1.05) !important;
+            transform: scale(0.95) !important;
+          }
+          
+          .about-header-buffer {
+            height: 180px !important;
           }
         }
       `}</style>

@@ -290,10 +290,10 @@ function Portfolio() {
       <div className="min-h-screen bg-black text-gray-100">
         <Header />
         
-        {/* Hero Section - Optimized for All Devices */}
+        {/* Hero Section - Fixed positioning issues */}
         <section className="relative w-full min-h-screen flex items-center overflow-hidden">
-          {/* Header Space Buffer - Black extension to prevent background cutoff */}
-          <div className="absolute top-0 left-0 right-0 h-32 bg-black z-20"></div>
+          {/* Extended Header Buffer - Prevents background cutoff */}
+          <div className="absolute top-0 left-0 right-0 h-40 bg-black z-30 portfolio-header-buffer"></div>
           
           <div className="absolute inset-0 w-full h-full">
             <div
@@ -309,7 +309,7 @@ function Portfolio() {
             />
             
             {/* Enhanced gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-black/70" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/60 to-black/80" />
           </div>
           
           {!imageLoaded && (
@@ -318,8 +318,8 @@ function Portfolio() {
             </div>
           )}
           
-          {/* Content Container */}
-          <div className="relative z-10 container mx-auto px-4 py-20 md:py-32 lg:py-40">
+          {/* Content Container - Adjusted positioning */}
+          <div className="relative z-10 container mx-auto px-4 py-24 md:py-32 lg:py-40 mt-16">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-cinzel text-metallic-gold leading-tight mb-6">
                 Portfolio
@@ -410,32 +410,48 @@ function Portfolio() {
         <Footer />
       </div>
       
-      {/* Custom styles for responsive background positioning */}
+      {/* Enhanced responsive styles with better header clearance */}
       <style jsx>{`
-        /* Mobile: Maximum zoom-out for full context */
+        .portfolio-header-buffer {
+          background: linear-gradient(to bottom, #000000 0%, #000000 70%, transparent 100%);
+        }
+        
+        /* Mobile: Better clearance and positioning */
         @media (max-width: 768px) {
           .portfolio-hero-bg {
-            background-position: center 40% !important;
+            background-position: center 85% !important;
             background-size: cover !important;
-            transform: scale(0.95) !important;
+            transform: scale(1.0) !important;
+          }
+          
+          .portfolio-header-buffer {
+            height: 200px !important;
           }
         }
         
-        /* Tablet: Balanced view */
+        /* Tablet: Improved positioning */
         @media (min-width: 769px) and (max-width: 1024px) {
           .portfolio-hero-bg {
-            background-position: center 60% !important;
+            background-position: center 90% !important;
             background-size: cover !important;
-            transform: scale(0.98) !important;
+            transform: scale(1.02) !important;
+          }
+          
+          .portfolio-header-buffer {
+            height: 180px !important;
           }
         }
         
-        /* Desktop: Push "Asgard Tattoo" text WAY below header */
+        /* Desktop: Optimal positioning with proper clearance */
         @media (min-width: 1025px) {
           .portfolio-hero-bg {
-            background-position: center 80% !important;
+            background-position: center 95% !important;
             background-size: cover !important;
-            transform: scale(1.02) !important;
+            transform: scale(1.05) !important;
+          }
+          
+          .portfolio-header-buffer {
+            height: 160px !important;
           }
         }
       `}</style>
