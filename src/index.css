@@ -1,3 +1,10 @@
+@import '@fontsource/uncial-antiqua';
+@import '@fontsource/cinzel';
+@import '@fontsource/oswald';
+@import '@fontsource/lora';
+@import '@fontsource/pirata-one';
+@import '@fontsource/playfair-display/700.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,13 +19,6 @@
 }
 
 /* Import fonts */
-@import '@fontsource/uncial-antiqua';
-@import '@fontsource/cinzel';
-@import '@fontsource/oswald';
-@import '@fontsource/lora';
-@import '@fontsource/pirata-one';
-@import '@fontsource/playfair-display/700.css';
-
 /* Add these styles to your existing CSS */
 @layer utilities {
   .scrollbar-thin {

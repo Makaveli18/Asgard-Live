@@ -17,7 +17,7 @@ export function ImageGallery({ category, title }: ImageGalleryProps) {
     // This is a simplified version for demonstration
     const loadImages = async () => {
       try {
-        const imageContext = import.meta.glob('/public/images/Portfolio/**/*.{jpg,png}', {
+        const imageContext = import.meta.glob('/images/Portfolio/**/*.{jpg,png}', {
           eager: true,
           import: 'default',
         });

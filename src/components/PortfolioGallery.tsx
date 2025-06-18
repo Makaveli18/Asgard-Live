@@ -61,7 +61,7 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
         const folderName = styleMapping[style] || style;
         
         // Use Vite's glob import to get all images
-        const imageModules = import.meta.glob('/public/images/Portfolio/**/*.{jpg,jpeg,png,webp}', {
+        const imageModules = import.meta.glob('/images/Portfolio/**/*.{jpg,jpeg,png,webp}', {
           eager: true,
           import: 'default'
         });
@@ -70,7 +70,7 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
         const sectionMap = new Map<string, PortfolioImage[]>();
 
         Object.keys(imageModules).forEach(path => {
-          // Extract the path structure: /public/images/Portfolio/{style}/{subfolder}/{filename}
+          // Extract the path structure: /images/Portfolio/{style}/{subfolder}/{filename}
           const pathParts = path.split('/');
           if (pathParts.length >= 6) {
             const styleFolder = pathParts[4]?.toLowerCase();
