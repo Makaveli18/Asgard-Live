@@ -51,7 +51,7 @@ export const ImageAutoSlider = () => {
     // Split path: /images/Portfolio/{category}/{subfolder}/{filename}
     const pathParts = imagePath.split('/');
     const folderName = pathParts[3]; // e.g., "realism", "fine line", "norse"
-    const fileName = pathParts[pathParts.length - 1]; // e.g., "realistic-lemmy-kilmister-portrait-arm-tattoo.jpg.jpg"
+    const fileName = pathParts[pathParts.length - 1]; // e.g., "realistic-lemmy-kilmister-portrait-arm-tattoo.jpg"
     
     // Get category ID and clean filename
     const categoryId = folderToCategoryMapping[folderName] || folderName;

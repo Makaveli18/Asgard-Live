@@ -12,63 +12,63 @@ const categories = [
     id: 'realism',
     title: 'Realism',
     description: 'Breathtaking photorealistic designs that capture every detail',
-    thumbnail: '/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png.jpg',
+    thumbnail: '/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png',
     alt: 'Realistic lion tattoo with honeycomb pattern'
   },
   {
     id: 'fine-line',
     title: 'Fine Line',
     description: 'Delicate artistry that speaks volumes with subtle power',
-    thumbnail: '/images/Portfolio/fine line/floral/lotus-flowers-leg-tattoo.jpg.jpg',
+    thumbnail: '/images/Portfolio/fine line/floral/lotus-flowers-leg-tattoo.jpg',
     alt: 'Fine line lotus flowers tattoo'
   },
   {
     id: 'norse',
     title: 'Norse & Viking',
     description: 'Ancient symbols and legends brought to life in ink',
-    thumbnail: '/images/Portfolio/norse/realistic-portraits/odin-viking-god-realism-sleeve-tattoo.jpg.jpg',
+    thumbnail: '/images/Portfolio/norse/realistic-portraits/odin-viking-god-realism-sleeve-tattoo.jpg',
     alt: 'Odin Viking god realistic sleeve tattoo'
   },
   {
     id: 'blackwork',
     title: 'Blackwork',
     description: 'Bold, striking designs in pure black ink mastery',
-    thumbnail: '/images/Portfolio/blackwork/nature-themed-bear-forest-mountain-leg-tattoo.jpg.jpg',
+    thumbnail: '/images/Portfolio/blackwork/nature-themed-bear-forest-mountain-leg-tattoo.jpg',
     alt: 'Nature themed bear forest mountain tattoo'
   },
   {
     id: 'neo-traditional',
     title: 'Neo-Traditional',
     description: 'Modern twist on classic tattoo artistry',
-    thumbnail: '/images/Portfolio/neo-traditional/mythic/neo-traditional-archangel-michael-arm-tattoo1.jpg.jpg',
+    thumbnail: '/images/Portfolio/neo-traditional/mythic/neo-traditional-archangel-michael-arm-tattoo1.jpg',
     alt: 'Neo-traditional archangel Michael arm tattoo'
   },
   {
     id: 'ornamental',
     title: 'Ornamental',
     description: 'Sacred geometry and intricate mandala designs',
-    thumbnail: '/images/Portfolio/ornamental/mandala/lotus-mandala-sacred-geometry-back-tattoo.jpg.jpg',
+    thumbnail: '/images/Portfolio/ornamental/mandala/lotus-mandala-sacred-geometry-back-tattoo.jpg',
     alt: 'Lotus mandala sacred geometry back tattoo'
   },
   {
     id: 'custom-fine-art',
     title: 'Custom Fine Art',
     description: 'Unique artistic visions transformed into wearable masterpieces',
-    thumbnail: '/images/Portfolio/custom fine art/arm-angel-dna-raven-geometric-fine-line-tattoo.jpg.jpg',
+    thumbnail: '/images/Portfolio/custom fine art/arm-angel-dna-raven-geometric-fine-line-tattoo.jpg',
     alt: 'Custom angel DNA raven geometric fine line tattoo'
   },
   {
     id: 'abstract',
     title: 'Abstract',
     description: 'Creative expressions beyond traditional boundaries',
-    thumbnail: '/images/Portfolio/abstract/geometric-abstract-bionic-spine-tech-tattoo-back.jpg.jpg',
+    thumbnail: '/images/Portfolio/abstract/geometric-abstract-bionic-spine-tech-tattoo-back.jpg',
     alt: 'Geometric abstract bionic spine tech tattoo'
   },
   {
     id: 'studio',
     title: 'Studio Life',
     description: 'Behind the scenes at Asgard Tattoo',
-    thumbnail: '/images/Portfolio/studio-bts/asgard-thor-loki-airbrush-wall.jpg.jpg',
+    thumbnail: '/images/Portfolio/studio-bts/asgard-thor-loki-airbrush-wall.jpg',
     alt: 'Asgard studio Thor Loki airbrush wall art'
   }
 ];
