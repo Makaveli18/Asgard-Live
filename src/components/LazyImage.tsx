@@ -21,7 +21,10 @@ export function LazyImage({ src, alt, className = '', onClick }: LazyImageProps)
       const img = new Image();
       img.src = src;
       img.onload = () => setLoaded(true);
-      img.onerror = () => setError(true);
+      img.onerror = () => {
+        console.error('Image failed to load:', src);
+        setError(true);
+      };
     }
   }, [inView, src, loaded, error]);
 
@@ -48,6 +51,10 @@ export function LazyImage({ src, alt, className = '', onClick }: LazyImageProps)
           } group-hover:scale-110 transition-transform duration-500`}
           loading="lazy"
           decoding="async"
+          onError={(e) => {
+            console.error('Image failed to load:', src);
+            setError(true);
+          }}
         />
       )}
 

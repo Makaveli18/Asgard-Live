@@ -48,7 +48,7 @@ const styleMapping: Record<string, string> = {
   'studio': 'studio-bts'
 };
 
-// Static image mappings to ensure proper loading - including both .jpg and .png files
+// Static image database - complete list with both .jpg and .png files
 const imageDatabase: Record<string, PortfolioImage[]> = {
   'realism': [
     // Animals
@@ -315,7 +315,7 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
             {section.images.map((image, imageIndex) => {
               const fileName = image.filename;
               const caption = captions[fileName] || "";
-              const imageId = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, ""); // Handle all image extensions
+              const imageId = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, ""); // Handle all image extensions including PNG
               
               return (
                 <motion.figure
@@ -339,7 +339,13 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
                     decoding="async"
                     onError={(e) => {
                       console.error('Image failed to load:', image.src);
-                      e.currentTarget.style.display = 'none';
+                      const target = e.currentTarget as HTMLImageElement;
+                      target.style.display = 'none';
+                      // Show placeholder or hide the entire figure
+                      const figure = target.closest('.portfolio-figure') as HTMLElement;
+                      if (figure) {
+                        figure.style.display = 'none';
+                      }
                     }}
                   />
                   

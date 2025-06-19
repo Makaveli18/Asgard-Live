@@ -68,8 +68,13 @@ export function ImageViewer({ images, currentIndex, onClose, onNavigate }: Image
         <figure className="lightbox-figure flex flex-col items-center">
           <img
             src={currentImage}
-            alt={fileName.replace(/-/g, ' ').replace(/\.\w+$/, '')}
+            alt={fileName.replace(/-/g, ' ').replace(/\.(jpg|jpeg|png|webp)$/i, '')}
             className="lightbox-image max-w-full max-h-[70vh] object-contain"
+            onError={(e) => {
+              console.error('Image failed to load in viewer:', currentImage);
+              const target = e.currentTarget as HTMLImageElement;
+              target.style.display = 'none';
+            }}
           />
           {caption && (
             <figcaption className="mt-4 text-center italic text-base text-gray-300 max-w-2xl px-4 leading-relaxed">
@@ -77,7 +82,7 @@ export function ImageViewer({ images, currentIndex, onClose, onNavigate }: Image
             </figcaption>
           )}
           <Link 
-            to={`/booking?piece=${fileName.replace(/\.\w+$/, '')}`}
+            to={`/booking?piece=${fileName.replace(/\.(jpg|jpeg|png|webp)$/i, '')}`}
             className="mt-4 inline-block bg-firebrick hover:bg-firebrick/90 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1"
           >
             🖋️ Book a Consult on This Piece

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ImageViewer } from './ImageViewer';
 
@@ -7,35 +7,33 @@ interface ImageGalleryProps {
   title: string;
 }
 
+// Static image database for ImageGallery - using string paths only
+const categoryImages: Record<string, string[]> = {
+  'realism': [
+    '/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png',
+    '/images/Portfolio/realism/animals/realism-owl-shoulder-animal-tattoo.jpg',
+    '/images/Portfolio/realism/animals/realistic-viper-snake-chest-tattoo.jpg',
+    '/images/Portfolio/realism/portraits/realistic-lemmy-kilmister-portrait-arm-tattoo.jpg',
+    '/images/Portfolio/realism/custom ink/dark-realism-reaper-cemetery-full-backpiece.jpg'
+  ],
+  'fine-line': [
+    '/images/Portfolio/fine line/floral/lotus-flowers-leg-tattoo.jpg',
+    '/images/Portfolio/fine line/floral/flowers-fineline-arm-tattoo.jpg',
+    '/images/Portfolio/fine line/symbolic - iconic/fineline-colibri-bird-forearm-tattoo.jpg'
+  ],
+  'norse': [
+    '/images/Portfolio/norse/realistic-portraits/odin-viking-god-realism-sleeve-tattoo.jpg',
+    '/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design1.png',
+    '/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design2.png',
+    '/images/Portfolio/norse/dark-mythic/odin-ravens-chest-tattoo-norse-blackwork-style.png'
+  ]
+};
+
 export function ImageGallery({ category, title }: ImageGalleryProps) {
-  const [images, setImages] = useState<string[]>([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // In a production environment, you'd want to use a proper asset loading system
-    // This is a simplified version for demonstration
-    const loadImages = async () => {
-      try {
-        const imageContext = import.meta.glob('/images/Portfolio/**/*.{jpg,png}', {
-          eager: true,
-          import: 'default',
-        });
-
-        const categoryImages = Object.entries(imageContext)
-          .filter(([path]) => path.toLowerCase().includes(category.toLowerCase()))
-          .map(([path]) => path.replace('/public', ''));
-
-        setImages(categoryImages);
-      } catch (error) {
-        console.error('Error loading images:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadImages();
-  }, [category]);
+  const images = categoryImages[category] || [];
 
   if (loading) {
     return (
@@ -71,6 +69,11 @@ export function ImageGallery({ category, title }: ImageGalleryProps) {
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
               decoding="async"
+              onError={(e) => {
+                console.error('Image failed to load:', image);
+                const target = e.currentTarget as HTMLImageElement;
+                target.style.display = 'none';
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
               <p className="text-white text-sm">Click to view full size</p>

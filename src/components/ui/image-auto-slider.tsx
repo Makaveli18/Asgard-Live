@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const ImageAutoSlider = () => {
-  // Updated images array with all string paths - no imports needed for public directory files
+  // Complete image list using string paths only - no imports needed
   const images = [
     "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg",
     "/images/Portfolio/norse/dark-mythic/vegvisir-nordic-rune-chest-symbol-tattoo.jpg",
@@ -187,8 +187,14 @@ export const ImageAutoSlider = () => {
                       decoding="async"
                       onError={(e) => {
                         console.error('Image failed to load in slider:', image);
-                        // Hide the broken image
-                        e.currentTarget.style.display = 'none';
+                        const target = e.currentTarget as HTMLImageElement;
+                        // Hide the broken image element
+                        target.style.display = 'none';
+                        // Hide the entire link container
+                        const linkContainer = target.closest('.image-item') as HTMLElement;
+                        if (linkContainer) {
+                          linkContainer.style.display = 'none';
+                        }
                       }}
                     />
                   </Link>
