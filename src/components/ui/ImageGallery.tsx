@@ -7,14 +7,15 @@ interface ImageGalleryProps {
   title: string;
 }
 
-// Static image database for ImageGallery - using string paths only
+// Static image database for ImageGallery - using correct single extensions only
 const categoryImages: Record<string, string[]> = {
   'realism': [
     '/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png',
     '/images/Portfolio/realism/animals/realism-owl-shoulder-animal-tattoo.jpg',
     '/images/Portfolio/realism/animals/realistic-viper-snake-chest-tattoo.jpg',
     '/images/Portfolio/realism/portraits/realistic-lemmy-kilmister-portrait-arm-tattoo.jpg',
-    '/images/Portfolio/realism/custom ink/dark-realism-reaper-cemetery-full-backpiece.jpg'
+    '/images/Portfolio/realism/custom ink/dark-realism-reaper-cemetery-full-backpiece.jpg',
+    '/images/Portfolio/realism/custom ink/custom-samurai-armor-tattoo-full-sleeve-female-warrior.png'
   ],
   'fine-line': [
     '/images/Portfolio/fine line/floral/lotus-flowers-leg-tattoo.jpg',
@@ -70,7 +71,7 @@ export function ImageGallery({ category, title }: ImageGalleryProps) {
               loading="lazy"
               decoding="async"
               onError={(e) => {
-                console.error('Image failed to load:', image);
+                console.error('ImageGallery image failed to load:', image);
                 const target = e.currentTarget as HTMLImageElement;
                 target.style.display = 'none';
               }}

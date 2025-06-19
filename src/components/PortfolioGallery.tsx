@@ -48,7 +48,7 @@ const styleMapping: Record<string, string> = {
   'studio': 'studio-bts'
 };
 
-// Static image database - complete list with both .jpg and .png files
+// Static image database with CORRECT file extensions (no double extensions)
 const imageDatabase: Record<string, PortfolioImage[]> = {
   'realism': [
     // Animals
@@ -156,7 +156,7 @@ const imageDatabase: Record<string, PortfolioImage[]> = {
     { src: '/images/Portfolio/neo-traditional/pop culture/blackwork-jason-voorhees-horror-sleeve-tattoo.jpg', alt: 'Blackwork jason voorhees horror sleeve tattoo', filename: 'blackwork-jason-voorhees-horror-sleeve-tattoo.jpg' },
     { src: '/images/Portfolio/neo-traditional/pop culture/punisher-inspired-custom-blackwork-arm-tattoo.jpg', alt: 'Punisher inspired custom blackwork arm tattoo', filename: 'punisher-inspired-custom-blackwork-arm-tattoo.jpg' },
     { src: '/images/Portfolio/neo-traditional/pop culture/custom-design-blackwork-ryuk-deathnote-arm-tattoo.jpg', alt: 'Custom design blackwork ryuk deathnote arm tattoo', filename: 'custom-design-blackwork-ryuk-deathnote-arm-tattoo.jpg' },
-    // Memento Mori
+    // Memento Mori - CORRECT extension without double extension
     { src: '/images/Portfolio/neo-traditional/memento-mori-tattoo-skull-inside-hourglass-forearm-realism.png', alt: 'Memento mori tattoo skull inside hourglass forearm realism', filename: 'memento-mori-tattoo-skull-inside-hourglass-forearm-realism.png' }
   ],
   'ornamental': [
@@ -315,7 +315,8 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
             {section.images.map((image, imageIndex) => {
               const fileName = image.filename;
               const caption = captions[fileName] || "";
-              const imageId = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, ""); // Handle all image extensions including PNG
+              // Enhanced regex to handle all image extensions properly including PNG
+              const imageId = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, "");
               
               return (
                 <motion.figure
@@ -338,10 +339,9 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
                     className="portfolio-image w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                     decoding="async"
                     onError={(e) => {
-                      console.error('Image failed to load:', image.src);
+                      console.error('Image failed to load in gallery:', image.src);
                       const target = e.currentTarget as HTMLImageElement;
-                      target.style.display = 'none';
-                      // Show placeholder or hide the entire figure
+                      // Hide the entire portfolio figure when image fails
                       const figure = target.closest('.portfolio-figure') as HTMLElement;
                       if (figure) {
                         figure.style.display = 'none';

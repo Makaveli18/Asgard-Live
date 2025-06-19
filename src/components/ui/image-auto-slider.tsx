@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const ImageAutoSlider = () => {
-  // Complete image list using string paths only - no imports needed
+  // Complete image list using correct single extensions only
   const images = [
     "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg",
     "/images/Portfolio/norse/dark-mythic/vegvisir-nordic-rune-chest-symbol-tattoo.jpg",
@@ -59,7 +59,7 @@ export const ImageAutoSlider = () => {
     const folderName = pathParts[3]; // e.g., "realism", "fine line", "norse"
     const fileName = pathParts[pathParts.length - 1]; // e.g., "realistic-lemmy-kilmister-portrait-arm-tattoo.jpg"
     
-    // Get category ID and clean filename
+    // Get category ID and clean filename - handle all image extensions properly
     const categoryId = folderToCategoryMapping[folderName] || folderName;
     const imageId = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, ""); // Remove file extension (handles all common image formats)
     
@@ -131,6 +131,10 @@ export const ImageAutoSlider = () => {
         .image-item:active {
           transform: scale(1.05);
         }
+
+        .image-item.hidden {
+          display: none !important;
+        }
       `}</style>
       
       <div className="w-full bg-viking-navy/10 relative overflow-hidden py-16">
@@ -188,12 +192,10 @@ export const ImageAutoSlider = () => {
                       onError={(e) => {
                         console.error('Image failed to load in slider:', image);
                         const target = e.currentTarget as HTMLImageElement;
-                        // Hide the broken image element
-                        target.style.display = 'none';
-                        // Hide the entire link container
+                        // Hide the entire link container when image fails
                         const linkContainer = target.closest('.image-item') as HTMLElement;
                         if (linkContainer) {
-                          linkContainer.style.display = 'none';
+                          linkContainer.classList.add('hidden');
                         }
                       }}
                     />

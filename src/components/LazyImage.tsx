@@ -22,7 +22,7 @@ export function LazyImage({ src, alt, className = '', onClick }: LazyImageProps)
       img.src = src;
       img.onload = () => setLoaded(true);
       img.onerror = () => {
-        console.error('Image failed to load:', src);
+        console.error('LazyImage failed to load:', src);
         setError(true);
       };
     }
@@ -52,7 +52,7 @@ export function LazyImage({ src, alt, className = '', onClick }: LazyImageProps)
           loading="lazy"
           decoding="async"
           onError={(e) => {
-            console.error('Image failed to load:', src);
+            console.error('LazyImage img tag failed to load:', src);
             setError(true);
           }}
         />
