@@ -2,44 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const ImageAutoSlider = () => {
-  // Complete image list using correct single extensions only
+  // Simplified image list with only confirmed working images
   const images = [
     "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg",
     "/images/Portfolio/norse/dark-mythic/vegvisir-nordic-rune-chest-symbol-tattoo.jpg",
     "/images/Portfolio/norse/realistic-portraits/ragnar-realism-viking-side-torso-finished.jpg",
-    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design1.png",
-    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design2.png",
     "/images/Portfolio/norse/realistic-portraits/odin-viking-god-realism-sleeve-tattoo.jpg",
-    "/images/Portfolio/norse/dark-mythic/odin-ravens-chest-tattoo-norse-blackwork-style.png",
-    "/images/Portfolio/abstract/black-ink-phoenix-tattoo-side-ribcage-paintbrush-style.png",
-    "/images/Portfolio/ornamental/realism-dotwork/feminine-mandala-portrait-tattoo-lotus-and-roses-forearm.png",
-    "/images/Portfolio/ornamental/realism-dotwork/lion-geometry-dotwork-arm-tattoo.jpg",
-    "/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png",
+    "/images/Portfolio/realism/animals/realism-cheetah-floral-splash-leg-tattoo.jpg",
     "/images/Portfolio/realism/custom ink/dark-realism-reaper-cemetery-full-backpiece.jpg",
     "/images/Portfolio/realism/custom ink/realism-jesus-christ-crucifixion-forearm-tattoo.jpg",
-    "/images/Portfolio/realism/custom ink/custom-samurai-armor-tattoo-full-sleeve-female-warrior.png",
-    "/images/Portfolio/realism/portraits/hyperrealistic-queen-of-earh-afro-sleeve-tattoo3.jpg",
     "/images/Portfolio/realism/portraits/realistic-lemmy-kilmister-portrait-arm-tattoo.jpg",
-    "/images/Portfolio/abstract/phoenix-minimal-abstract-watercolor-red-forearm.jpg",
     "/images/Portfolio/blackwork/expressionist-crow-duo-shoulderblade-tattoo.jpg",
     "/images/Portfolio/custom fine art/calf-cheetah-heart-tree-geometric-fine-line-tattoo.jpg",
-    "/images/Portfolio/custom fine art/greek-statue-dual-portrait-surreal-family-code-thigh-tattoo1.jpg",
     "/images/Portfolio/custom fine art/arm-angel-dna-raven-geometric-fine-line-tattoo.jpg",
     "/images/Portfolio/fine line/floral/lotus-flowers-leg-tattoo.jpg",
-    "/images/Portfolio/fine line/floral/snake-flowers-fineline-abdominal-side-tattoo.jpg",
     "/images/Portfolio/fine line/symbolic - iconic/fineline-colibri-bird-forearm-tattoo.jpg",
-    "/images/Portfolio/fine line/symbolic - iconic/deathly-hallows-custom-fineline-arm-tattoo2.jpg",
-    "/images/Portfolio/neo-traditional/neo-traditional-female-portrait-floral-sleeve-tattoo.jpg",
-    "/images/Portfolio/neo-traditional/pop culture/blackwork-jason-voorhees-horror-sleeve-tattoo.jpg",
-    "/images/Portfolio/neo-traditional/pop culture/las-vegas-themed-sleeve-tattoo-neon-retro-graffiti-style.png",
-    "/images/Portfolio/neo-traditional/pop culture/realistic-dobby-portrait-forearm-tattoo.jpg",
     "/images/Portfolio/neo-traditional/mythic/neo-traditional-archangel-michael-arm-tattoo1.jpg",
-    "/images/Portfolio/neo-traditional/mythic/crazy-medusa-tattoo-tongue-out-snakes-thigh-realism.png",
-    "/images/Portfolio/neo-traditional/mythic/medusa-snake-hair-tattoo-witchy-blackwork-thigh-design.png",
-    "/images/Portfolio/neo-traditional/memento-mori-tattoo-skull-inside-hourglass-forearm-realism.png"
+    "/images/Portfolio/neo-traditional/pop culture/realistic-dobby-portrait-forearm-tattoo.jpg"
   ];
 
-  // Mapping from folder names to category IDs (reverse of PortfolioGallery mapping)
+  // Mapping from folder names to category IDs
   const folderToCategoryMapping: Record<string, string> = {
     'realism': 'realism',
     'fine line': 'fine-line',
@@ -54,14 +36,12 @@ export const ImageAutoSlider = () => {
 
   // Function to extract category and generate correct link
   const generateImageLink = (imagePath: string) => {
-    // Split path: /images/Portfolio/{category}/{subfolder}/{filename}
     const pathParts = imagePath.split('/');
     const folderName = pathParts[3]; // e.g., "realism", "fine line", "norse"
-    const fileName = pathParts[pathParts.length - 1]; // e.g., "realistic-lemmy-kilmister-portrait-arm-tattoo.jpg"
+    const fileName = pathParts[pathParts.length - 1];
     
-    // Get category ID and clean filename - handle all image extensions properly
     const categoryId = folderToCategoryMapping[folderName] || folderName;
-    const imageId = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, ""); // Remove file extension (handles all common image formats)
+    const imageId = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, "");
     
     return `/portfolio/${categoryId}#${imageId}`;
   };
@@ -132,7 +112,7 @@ export const ImageAutoSlider = () => {
           transform: scale(1.05);
         }
 
-        .image-item.hidden {
+        .image-item.error {
           display: none !important;
         }
       `}</style>
@@ -164,7 +144,6 @@ export const ImageAutoSlider = () => {
                 const altText = imageId.replace(/-/g, " ");
                 const linkPath = generateImageLink(image);
                 
-                // Prioritize the first set of images for immediate loading
                 const isPriorityImage = index < images.length;
                 
                 return (
@@ -177,7 +156,6 @@ export const ImageAutoSlider = () => {
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        // Navigation handled by Link component
                       }
                     }}
                     aria-label={`View portfolio - ${altText}`}
@@ -192,10 +170,9 @@ export const ImageAutoSlider = () => {
                       onError={(e) => {
                         console.error('Image failed to load in slider:', image);
                         const target = e.currentTarget as HTMLImageElement;
-                        // Hide the entire link container when image fails
                         const linkContainer = target.closest('.image-item') as HTMLElement;
                         if (linkContainer) {
-                          linkContainer.classList.add('hidden');
+                          linkContainer.classList.add('error');
                         }
                       }}
                     />

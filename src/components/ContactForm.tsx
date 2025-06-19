@@ -25,11 +25,15 @@ export function ContactForm({ className }: ContactFormProps) {
     };
 
     try {
+      // Insert into contact_submissions table (user_id will be auto-generated)
       const { error } = await supabase
         .from('contact_submissions')
         .insert([data]);
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
 
       setSubmitStatus('success');
       logEvent('Contact', 'Form Submit', data.tattoo_type);
