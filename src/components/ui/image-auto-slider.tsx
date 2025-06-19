@@ -2,17 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const ImageAutoSlider = () => {
-  // Curated portfolio images with correct paths - only using files that actually exist
+  // Real portfolio images from Asgard Tattoo
   const images = [
     "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg",
     "/images/Portfolio/norse/dark-mythic/vegvisir-nordic-rune-chest-symbol-tattoo.jpg",
     "/images/Portfolio/norse/realistic-portraits/ragnar-realism-viking-side-torso-finished.jpg",
-    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design2.png",
+    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design2.png.jpg",
     "/images/Portfolio/norse/realistic-portraits/odin-viking-god-realism-sleeve-tattoo.jpg",
     "/images/Portfolio/abstract/black-ink-phoenix-tattoo-side-ribcage-paintbrush-style.png",
     "/images/Portfolio/ornamental/realism-dotwork/ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg",
     "/images/Portfolio/ornamental/realism-dotwork/lion-geometry-dotwork-arm-tattoo.jpg",
-    "/images/Portfolio/realism/animals/realism-cheetah-floral-splash-leg-tattoo.jpg",
+    "/images/Portfolio/realism/custom ink/realism-cheetah-floral-splash-leg-tattoo.jpg",
     "/images/Portfolio/realism/custom ink/dark-realism-reaper-cemetery-full-backpiece.jpg",
     "/images/Portfolio/realism/custom ink/realism-jesus-christ-crucifixion-forearm-tattoo.jpg",
     "/images/Portfolio/realism/portraits/hyperrealistic-queen-of-earh-afro-sleeve-tattoo3.jpg",
@@ -159,7 +159,7 @@ export const ImageAutoSlider = () => {
                 
                 return (
                   <Link
-                    key={`${image}-${index}`}
+                    key={index}
                     to={linkPath}
                     className="image-item flex-shrink-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-xl overflow-hidden shadow-xl bg-black/20 block"
                     role="button"
@@ -179,10 +179,6 @@ export const ImageAutoSlider = () => {
                       loading={isPriorityImage ? "eager" : "lazy"}
                       fetchPriority={isPriorityImage ? "high" : "auto"}
                       decoding="async"
-                      onError={(e) => {
-                        console.error('Image failed to load in slider:', image);
-                        e.currentTarget.style.opacity = '0.5';
-                      }}
                     />
                   </Link>
                 );
