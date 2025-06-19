@@ -1,23 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Import the problematic PNG images that are failing to load
+import flokiDesign2 from '/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design2.png';
+import odinRavensChest from '/images/Portfolio/norse/dark-mythic/odin-ravens-chest-tattoo-norse-blackwork-style.png';
+import feminineMandala from '/images/Portfolio/ornamental/realism-dotwork/feminine-mandala-portrait-tattoo-lotus-and-roses-forearm.png';
+import lionHoneycomb from '/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png';
+import samuraiWarrior from '/images/Portfolio/realism/custom ink/custom-samurai-armor-tattoo-full-sleeve-female-warrior.png';
+import lasVegasSleeve from '/images/Portfolio/neo-traditional/pop culture/las-vegas-themed-sleeve-tattoo-neon-retro-graffiti-style.png';
+import crazyMedusa from '/images/Portfolio/neo-traditional/mythic/crazy-medusa-tattoo-tongue-out-snakes-thigh-realism.png';
+import medusaSnakeHair from '/images/Portfolio/neo-traditional/mythic/medusa-snake-hair-tattoo-witchy-blackwork-thigh-design.png';
+import mementoMori from '/images/Portfolio/neo-traditional/memento-mori-tattoo-skull-inside-hourglass-forearm-realism.png';
+import flokiDesign1 from '/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design1.png';
+import blackInkPhoenix from '/images/Portfolio/abstract/black-ink-phoenix-tattoo-side-ribcage-paintbrush-style.png';
+
 export const ImageAutoSlider = () => {
-  // Real portfolio images from Asgard Tattoo - including both .jpg and .png files
+  // Updated images array with imported PNG files and existing JPG string paths
   const images = [
     "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg",
     "/images/Portfolio/norse/dark-mythic/vegvisir-nordic-rune-chest-symbol-tattoo.jpg",
     "/images/Portfolio/norse/realistic-portraits/ragnar-realism-viking-side-torso-finished.jpg",
-    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design1.png",
-    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design2.png",
+    flokiDesign1,
+    flokiDesign2,
     "/images/Portfolio/norse/realistic-portraits/odin-viking-god-realism-sleeve-tattoo.jpg",
-    "/images/Portfolio/norse/dark-mythic/odin-ravens-chest-tattoo-norse-blackwork-style.png",
-    "/images/Portfolio/abstract/black-ink-phoenix-tattoo-side-ribcage-paintbrush-style.png",
-    "/images/Portfolio/ornamental/realism-dotwork/feminine-mandala-portrait-tattoo-lotus-and-roses-forearm.png",
+    odinRavensChest,
+    blackInkPhoenix,
+    feminineMandala,
     "/images/Portfolio/ornamental/realism-dotwork/lion-geometry-dotwork-arm-tattoo.jpg",
-    "/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png",
+    lionHoneycomb,
     "/images/Portfolio/realism/custom ink/dark-realism-reaper-cemetery-full-backpiece.jpg",
     "/images/Portfolio/realism/custom ink/realism-jesus-christ-crucifixion-forearm-tattoo.jpg",
-    "/images/Portfolio/realism/custom ink/custom-samurai-armor-tattoo-full-sleeve-female-warrior.png",
+    samuraiWarrior,
     "/images/Portfolio/realism/portraits/hyperrealistic-queen-of-earh-afro-sleeve-tattoo3.jpg",
     "/images/Portfolio/realism/portraits/realistic-lemmy-kilmister-portrait-arm-tattoo.jpg",
     "/images/Portfolio/abstract/phoenix-minimal-abstract-watercolor-red-forearm.jpg",
@@ -31,12 +44,12 @@ export const ImageAutoSlider = () => {
     "/images/Portfolio/fine line/symbolic - iconic/deathly-hallows-custom-fineline-arm-tattoo2.jpg",
     "/images/Portfolio/neo-traditional/neo-traditional-female-portrait-floral-sleeve-tattoo.jpg",
     "/images/Portfolio/neo-traditional/pop culture/blackwork-jason-voorhees-horror-sleeve-tattoo.jpg",
-    "/images/Portfolio/neo-traditional/pop culture/las-vegas-themed-sleeve-tattoo-neon-retro-graffiti-style.png",
+    lasVegasSleeve,
     "/images/Portfolio/neo-traditional/pop culture/realistic-dobby-portrait-forearm-tattoo.jpg",
     "/images/Portfolio/neo-traditional/mythic/neo-traditional-archangel-michael-arm-tattoo1.jpg",
-    "/images/Portfolio/neo-traditional/mythic/crazy-medusa-tattoo-tongue-out-snakes-thigh-realism.png",
-    "/images/Portfolio/neo-traditional/mythic/medusa-snake-hair-tattoo-witchy-blackwork-thigh-design.png",
-    "/images/Portfolio/neo-traditional/memento-mori-tattoo-skull-inside-hourglass-forearm-realism.png"
+    crazyMedusa,
+    medusaSnakeHair,
+    mementoMori
   ];
 
   // Mapping from folder names to category IDs (reverse of PortfolioGallery mapping)
@@ -54,10 +67,22 @@ export const ImageAutoSlider = () => {
 
   // Function to extract category and generate correct link
   const generateImageLink = (imagePath: string) => {
-    // Split path: /images/Portfolio/{category}/{subfolder}/{filename}
-    const pathParts = imagePath.split('/');
-    const folderName = pathParts[3]; // e.g., "realism", "fine line", "norse"
-    const fileName = pathParts[pathParts.length - 1]; // e.g., "realistic-lemmy-kilmister-portrait-arm-tattoo.jpg"
+    let folderName: string;
+    let fileName: string;
+    
+    // Handle imported images (which are strings but represent URLs)
+    if (typeof imagePath === 'string' && imagePath.startsWith('/')) {
+      // Split path: /images/Portfolio/{category}/{subfolder}/{filename}
+      const pathParts = imagePath.split('/');
+      folderName = pathParts[3]; // e.g., "realism", "fine line", "norse"
+      fileName = pathParts[pathParts.length - 1]; // e.g., "realistic-lemmy-kilmister-portrait-arm-tattoo.jpg"
+    } else {
+      // For imported images, extract info from the URL
+      const url = new URL(imagePath, window.location.origin);
+      const pathParts = url.pathname.split('/');
+      folderName = pathParts[3]; // e.g., "realism", "fine line", "norse"
+      fileName = pathParts[pathParts.length - 1]; // e.g., "realistic-lemmy-kilmister-portrait-arm-tattoo.jpg"
+    }
     
     // Get category ID and clean filename
     const categoryId = folderToCategoryMapping[folderName] || folderName;
@@ -156,8 +181,19 @@ export const ImageAutoSlider = () => {
           >
             <div className="infinite-scroll flex gap-6 w-max">
               {duplicatedImages.map((image, index) => {
-                const imageId = image.split("/").pop()?.replace(/\.(jpg|jpeg|png|webp)$/i, "") || "";
-                const altText = imageId.replace(/-/g, " ");
+                let imageId: string;
+                let altText: string;
+                
+                // Handle both string paths and imported image URLs
+                if (typeof image === 'string' && image.startsWith('/')) {
+                  imageId = image.split("/").pop()?.replace(/\.(jpg|jpeg|png|webp)$/i, "") || "";
+                } else {
+                  // For imported images, extract filename from URL
+                  const url = new URL(image, window.location.origin);
+                  imageId = url.pathname.split("/").pop()?.replace(/\.(jpg|jpeg|png|webp)$/i, "") || "";
+                }
+                
+                altText = imageId.replace(/-/g, " ");
                 const linkPath = generateImageLink(image);
                 
                 // Prioritize the first set of images for immediate loading
