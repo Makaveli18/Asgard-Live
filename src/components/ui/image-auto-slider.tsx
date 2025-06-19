@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const ImageAutoSlider = () => {
-  // Real portfolio images from Asgard Tattoo
+  // Curated portfolio images with correct paths (no double extensions)
   const images = [
     "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg",
     "/images/Portfolio/norse/dark-mythic/vegvisir-nordic-rune-chest-symbol-tattoo.jpg",
@@ -159,7 +159,7 @@ export const ImageAutoSlider = () => {
                 
                 return (
                   <Link
-                    key={index}
+                    key={`${image}-${index}`}
                     to={linkPath}
                     className="image-item flex-shrink-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-xl overflow-hidden shadow-xl bg-black/20 block"
                     role="button"
@@ -179,6 +179,10 @@ export const ImageAutoSlider = () => {
                       loading={isPriorityImage ? "eager" : "lazy"}
                       fetchPriority={isPriorityImage ? "high" : "auto"}
                       decoding="async"
+                      onError={(e) => {
+                        console.error('Image failed to load in slider:', image);
+                        e.currentTarget.style.opacity = '0.5';
+                      }}
                     />
                   </Link>
                 );
