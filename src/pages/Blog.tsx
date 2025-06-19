@@ -23,7 +23,7 @@ const blogPosts = [
   {
     title: "The Meaning Behind Norse Symbols in Tattoos — And Why They Belong on Your Skin",
     preview: "Explore the ancient meanings of Norse symbols like Vegvisir, Helm of Awe, Valknut, and more. Find the one that speaks to your story — and wear it with pride.",
-    image: "/images/Portfolio/Norse/Vegvisir.png",
+    image: "/images/Blog/vegvisir.jpg",
     alt: "Norse Vegvisir symbol tattoo design",
     slug: "norse-symbols-tattoo-meanings"
   },

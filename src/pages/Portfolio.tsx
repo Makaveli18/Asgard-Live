@@ -12,8 +12,8 @@ const categories = [
     id: 'realism',
     title: 'Realism',
     description: 'Breathtaking photorealistic designs that capture every detail',
-    thumbnail: '/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png',
-    alt: 'Realistic lion tattoo with honeycomb pattern'
+    thumbnail: '/images/Portfolio/realism/animals/realism-cheetah-floral-splash-leg-tattoo.jpg',
+    alt: 'Realistic cheetah floral splash leg tattoo'
   },
   {
     id: 'fine-line',

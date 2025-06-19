@@ -48,11 +48,10 @@ const styleMapping: Record<string, string> = {
   'studio': 'studio-bts'
 };
 
-// Static image mappings to ensure proper loading
+// Static image mappings to ensure proper loading - only including files that actually exist
 const imageDatabase: Record<string, PortfolioImage[]> = {
   'realism': [
     // Animals
-    { src: '/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png', alt: 'Realistic lion tattoo with honeycomb pattern', filename: 'realism-lion-bicep-tattoo-with-honeycomb-pattern.png' },
     { src: '/images/Portfolio/realism/animals/realism-owl-shoulder-animal-tattoo.jpg', alt: 'Realistic owl shoulder animal tattoo', filename: 'realism-owl-shoulder-animal-tattoo.jpg' },
     { src: '/images/Portfolio/realism/animals/realistic-viper-snake-chest-tattoo.jpg', alt: 'Realistic viper snake chest tattoo', filename: 'realistic-viper-snake-chest-tattoo.jpg' },
     { src: '/images/Portfolio/realism/animals/realism-dog-portrait-forearm-tattoo.jpg', alt: 'Realistic dog portrait forearm tattoo', filename: 'realism-dog-portrait-forearm-tattoo.jpg' },
@@ -169,8 +168,7 @@ const imageDatabase: Record<string, PortfolioImage[]> = {
     { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-dotwork-flower-half-sleeve-tattoo.jpg', alt: 'Ornamental dotwork flower half sleeve tattoo', filename: 'ornamental-dotwork-flower-half-sleeve-tattoo.jpg' },
     { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-dotwork-roses-back-tattoo.jpg', alt: 'Ornamental dotwork roses back tattoo', filename: 'ornamental-dotwork-roses-back-tattoo.jpg' },
     { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-back-floral-mandala-dotwork-realism-tattoo.jpg', alt: 'Ornamental back floral mandala dotwork realism tattoo', filename: 'ornamental-back-floral-mandala-dotwork-realism-tattoo.jpg' },
-    { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg', alt: 'Ornamental female portrait mandala dotwork arm tattoo', filename: 'ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg' },
-    { src: '/images/Portfolio/ornamental/realism-dotwork/feminine-mandala-portrait-tattoo-lotus-and-roses-forearm.png', alt: 'Feminine mandala portrait tattoo lotus and roses forearm', filename: 'feminine-mandala-portrait-tattoo-lotus-and-roses-forearm.png' }
+    { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg', alt: 'Ornamental female portrait mandala dotwork arm tattoo', filename: 'ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg' }
   ],
   'custom fine art': [
     { src: '/images/Portfolio/custom fine art/arm-angel-dna-raven-geometric-fine-line-tattoo.jpg', alt: 'Arm angel dna raven geometric fine line tattoo', filename: 'arm-angel-dna-raven-geometric-fine-line-tattoo.jpg' },
