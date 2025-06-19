@@ -48,7 +48,7 @@ const styleMapping: Record<string, string> = {
   'studio': 'studio-bts'
 };
 
-// Static image mappings to ensure proper loading - only including files that actually exist
+// Static image mappings to ensure proper loading - including both .jpg and .png files
 const imageDatabase: Record<string, PortfolioImage[]> = {
   'realism': [
     // Animals
@@ -59,6 +59,7 @@ const imageDatabase: Record<string, PortfolioImage[]> = {
     { src: '/images/Portfolio/realism/animals/realism-cheetah-floral-splash-leg-tattoo.jpg', alt: 'Realistic cheetah floral splash leg tattoo', filename: 'realism-cheetah-floral-splash-leg-tattoo.jpg' },
     { src: '/images/Portfolio/realism/animals/realism-gorilla-sleeve-tattoo-with-geometry.jpg', alt: 'Realistic gorilla sleeve tattoo with geometry', filename: 'realism-gorilla-sleeve-tattoo-with-geometry.jpg' },
     { src: '/images/Portfolio/realism/animals/realistic-tiger-blackwork-cover-up-chest-tattoo.jpg', alt: 'Realistic tiger blackwork cover up chest tattoo', filename: 'realistic-tiger-blackwork-cover-up-chest-tattoo.jpg' },
+    { src: '/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png', alt: 'Realistic lion bicep tattoo with honeycomb pattern', filename: 'realism-lion-bicep-tattoo-with-honeycomb-pattern.png' },
     // Custom Ink
     { src: '/images/Portfolio/realism/custom ink/realistic-cheshire-cat-tattoo-thigh.jpg', alt: 'Realistic cheshire cat tattoo thigh', filename: 'realistic-cheshire-cat-tattoo-thigh.jpg' },
     { src: '/images/Portfolio/realism/custom ink/dark-realism-reaper-cemetery-full-backpiece.jpg', alt: 'Dark realism reaper cemetery full backpiece', filename: 'dark-realism-reaper-cemetery-full-backpiece.jpg' },
@@ -168,7 +169,8 @@ const imageDatabase: Record<string, PortfolioImage[]> = {
     { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-dotwork-flower-half-sleeve-tattoo.jpg', alt: 'Ornamental dotwork flower half sleeve tattoo', filename: 'ornamental-dotwork-flower-half-sleeve-tattoo.jpg' },
     { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-dotwork-roses-back-tattoo.jpg', alt: 'Ornamental dotwork roses back tattoo', filename: 'ornamental-dotwork-roses-back-tattoo.jpg' },
     { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-back-floral-mandala-dotwork-realism-tattoo.jpg', alt: 'Ornamental back floral mandala dotwork realism tattoo', filename: 'ornamental-back-floral-mandala-dotwork-realism-tattoo.jpg' },
-    { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg', alt: 'Ornamental female portrait mandala dotwork arm tattoo', filename: 'ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg' }
+    { src: '/images/Portfolio/ornamental/realism-dotwork/ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg', alt: 'Ornamental female portrait mandala dotwork arm tattoo', filename: 'ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg' },
+    { src: '/images/Portfolio/ornamental/realism-dotwork/feminine-mandala-portrait-tattoo-lotus-and-roses-forearm.png', alt: 'Feminine mandala portrait tattoo lotus and roses forearm', filename: 'feminine-mandala-portrait-tattoo-lotus-and-roses-forearm.png' }
   ],
   'custom fine art': [
     { src: '/images/Portfolio/custom fine art/arm-angel-dna-raven-geometric-fine-line-tattoo.jpg', alt: 'Arm angel dna raven geometric fine line tattoo', filename: 'arm-angel-dna-raven-geometric-fine-line-tattoo.jpg' },
@@ -313,7 +315,7 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
             {section.images.map((image, imageIndex) => {
               const fileName = image.filename;
               const caption = captions[fileName] || "";
-              const imageId = fileName.replace(/\.\w+$/, "");
+              const imageId = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, ""); // Handle all image extensions
               
               return (
                 <motion.figure
@@ -330,7 +332,7 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
                 >
                   <img
                     src={image.src}
-                    alt={`Norse tattoo of ${fileName.replace(/-/g, " ").replace(/\.\w+$/, "")}`}
+                    alt={`Norse tattoo of ${fileName.replace(/-/g, " ").replace(/\.(jpg|jpeg|png|webp)$/i, "")}`}
                     fetchPriority="high"
                     loading="lazy"
                     className="portfolio-image w-full h-full object-cover transition-all duration-500 group-hover:scale-110"

@@ -2,19 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const ImageAutoSlider = () => {
-  // Real portfolio images from Asgard Tattoo
+  // Real portfolio images from Asgard Tattoo - including both .jpg and .png files
   const images = [
     "/images/Portfolio/norse/dark-mythic/horror-full-back-demon-skull-tattoo.jpg",
     "/images/Portfolio/norse/dark-mythic/vegvisir-nordic-rune-chest-symbol-tattoo.jpg",
     "/images/Portfolio/norse/realistic-portraits/ragnar-realism-viking-side-torso-finished.jpg",
-    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design2.png.jpg",
+    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design1.png",
+    "/images/Portfolio/norse/realistic-portraits/realistic-vikings-portrait-tattoo-floki-arm-design2.png",
     "/images/Portfolio/norse/realistic-portraits/odin-viking-god-realism-sleeve-tattoo.jpg",
+    "/images/Portfolio/norse/dark-mythic/odin-ravens-chest-tattoo-norse-blackwork-style.png",
     "/images/Portfolio/abstract/black-ink-phoenix-tattoo-side-ribcage-paintbrush-style.png",
-    "/images/Portfolio/ornamental/realism-dotwork/ornamental-female-portrait-mandala-dotwork-arm-tattoo.jpg",
+    "/images/Portfolio/ornamental/realism-dotwork/feminine-mandala-portrait-tattoo-lotus-and-roses-forearm.png",
     "/images/Portfolio/ornamental/realism-dotwork/lion-geometry-dotwork-arm-tattoo.jpg",
-    "/images/Portfolio/realism/custom ink/realism-cheetah-floral-splash-leg-tattoo.jpg",
+    "/images/Portfolio/realism/animals/realism-lion-bicep-tattoo-with-honeycomb-pattern.png",
     "/images/Portfolio/realism/custom ink/dark-realism-reaper-cemetery-full-backpiece.jpg",
     "/images/Portfolio/realism/custom ink/realism-jesus-christ-crucifixion-forearm-tattoo.jpg",
+    "/images/Portfolio/realism/custom ink/custom-samurai-armor-tattoo-full-sleeve-female-warrior.png",
     "/images/Portfolio/realism/portraits/hyperrealistic-queen-of-earh-afro-sleeve-tattoo3.jpg",
     "/images/Portfolio/realism/portraits/realistic-lemmy-kilmister-portrait-arm-tattoo.jpg",
     "/images/Portfolio/abstract/phoenix-minimal-abstract-watercolor-red-forearm.jpg",
@@ -28,9 +31,12 @@ export const ImageAutoSlider = () => {
     "/images/Portfolio/fine line/symbolic - iconic/deathly-hallows-custom-fineline-arm-tattoo2.jpg",
     "/images/Portfolio/neo-traditional/neo-traditional-female-portrait-floral-sleeve-tattoo.jpg",
     "/images/Portfolio/neo-traditional/pop culture/blackwork-jason-voorhees-horror-sleeve-tattoo.jpg",
-    "/images/Portfolio/neo-traditional/pop culture/dobby-is-free-color-tattoo-harry-potter-fanart.jpg",
+    "/images/Portfolio/neo-traditional/pop culture/las-vegas-themed-sleeve-tattoo-neon-retro-graffiti-style.png",
     "/images/Portfolio/neo-traditional/pop culture/realistic-dobby-portrait-forearm-tattoo.jpg",
-    "/images/Portfolio/neo-traditional/mythic/neo-traditional-archangel-michael-arm-tattoo1.jpg"
+    "/images/Portfolio/neo-traditional/mythic/neo-traditional-archangel-michael-arm-tattoo1.jpg",
+    "/images/Portfolio/neo-traditional/mythic/crazy-medusa-tattoo-tongue-out-snakes-thigh-realism.png",
+    "/images/Portfolio/neo-traditional/mythic/medusa-snake-hair-tattoo-witchy-blackwork-thigh-design.png",
+    "/images/Portfolio/neo-traditional/memento-mori-tattoo-skull-inside-hourglass-forearm-realism.png"
   ];
 
   // Mapping from folder names to category IDs (reverse of PortfolioGallery mapping)
@@ -55,7 +61,7 @@ export const ImageAutoSlider = () => {
     
     // Get category ID and clean filename
     const categoryId = folderToCategoryMapping[folderName] || folderName;
-    const imageId = fileName.replace(/\.\w+$/, ""); // Remove file extension
+    const imageId = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, ""); // Remove file extension (handles all common image formats)
     
     return `/portfolio/${categoryId}#${imageId}`;
   };
@@ -150,7 +156,7 @@ export const ImageAutoSlider = () => {
           >
             <div className="infinite-scroll flex gap-6 w-max">
               {duplicatedImages.map((image, index) => {
-                const imageId = image.split("/").pop()?.replace(/\.\w+$/, "") || "";
+                const imageId = image.split("/").pop()?.replace(/\.(jpg|jpeg|png|webp)$/i, "") || "";
                 const altText = imageId.replace(/-/g, " ");
                 const linkPath = generateImageLink(image);
                 
@@ -179,6 +185,11 @@ export const ImageAutoSlider = () => {
                       loading={isPriorityImage ? "eager" : "lazy"}
                       fetchPriority={isPriorityImage ? "high" : "auto"}
                       decoding="async"
+                      onError={(e) => {
+                        console.error('Image failed to load in slider:', image);
+                        // Hide the broken image
+                        e.currentTarget.style.display = 'none';
+                      }}
                     />
                   </Link>
                 );
