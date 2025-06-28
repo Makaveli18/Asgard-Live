@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ImageViewer } from './ui/ImageViewer';
 import captions from '../data/portfolio-captions';
 
+
 interface PortfolioImage {
   src: string;
   alt: string;
@@ -15,7 +16,10 @@ interface PortfolioSection {
 }
 
 interface PortfolioGalleryProps {
-  style: string;
+  /** all of the images for this section of the portfolio */
+  images: PortfolioImage[]
+  /** optional style class for the wrapper */
+  style?: string
 }
 
 // Mapping for folder name to display name
@@ -32,7 +36,6 @@ const folderDisplayNames: Record<string, string> = {
   'realism-dotwork': 'Realism & Dotwork',
   'mythic': 'Mythic',
   'pop culture': 'Pop Culture',
-  'memento-mori': 'Memento Mori'
 };
 
 // Style mapping for URL to folder name
@@ -188,7 +191,7 @@ const imageDatabase: Record<string, PortfolioImage[]> = {
   ]
 };
 
-export function PortfolioGallery({ style }: PortfolioGalleryProps) {
+export function PortfolioGallery({ images, style }: PortfolioGalleryProps) {
   const [sections, setSections] = useState<PortfolioSection[]>([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
@@ -198,7 +201,9 @@ export function PortfolioGallery({ style }: PortfolioGalleryProps) {
     const loadPortfolioImages = async () => {
       try {
         // Map URL style to actual folder name
-        const folderName = styleMapping[style] || style;
+        const folderName = style
+  ? styleMapping[style] || style
+  : 'Default Folder';
         
         // Get images from our static database - only verified existing files
         const styleImages = imageDatabase[folderName] || [];

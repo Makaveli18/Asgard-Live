@@ -1,4 +1,4 @@
-const portfolioCaptions = {
+const portfolioCaptions: Record<string, string> = {
   // Realism - Animals
   "realism-lion-bicep-tattoo-with-honeycomb-pattern.png": "The lion's mane flows like golden wheat as honeycomb patterns weave ancient geometric secrets.",
   "realism-owl-shoulder-animal-tattoo.jpg": "Wise eyes pierce through shadow realms where Odin's ravens whisper forgotten battlefield tales.",
@@ -44,7 +44,6 @@ const portfolioCaptions = {
   "symbolic-mother-child-sketch-arm-tattoo.jpg": "Eternal bond sketched in flowing lines where love transcends mortal flesh forever.",
   "deathly-hallows-custom-fineline-arm-tattoo1.jpg": "Three sacred symbols unite as death's mastery whispers through magical geometric power.",
   "deathly-hallows-custom-fineline-arm-tattoo2.jpg": "Mystic triangle holds ancient secrets where magic and mortality dance their final waltz.",
-  "phoenix-minimal-abstract-watercolor-red-forearm.jpg": "Crimson flames birth new life as mythical bird rises from ash-scattered battlefields.",
   "forearm-butterfly-fragment-abstract-fine-line-tattoo.jpg": "Transformation captured mid-flight as delicate wings embrace change with ethereal grace.",
 
   // Norse/Viking
@@ -89,8 +88,6 @@ const portfolioCaptions = {
   "blackwork-jason-voorhees-horror-sleeve-tattoo.jpg": "Friday's terror stalks through flesh where slasher legends carve their immortal dark legacy.",
   "punisher-inspired-custom-blackwork-arm-tattoo.jpg": "Justice burns cold as vigilante symbol marks flesh with righteous vengeance's sacred oath.",
   "custom-design-blackwork-ryuk-deathnote-arm-tattoo.jpg": "Death god grins as mortal names fill pages where power corrupts innocent souls.",
-
-  // Neo-Traditional - Memento Mori
   "memento-mori-tattoo-skull-inside-hourglass-forearm-realism.png": "Time flows like sand as mortality whispers reminders of life's precious fleeting moments.",
 
   // Neo-Traditional - Mythic
