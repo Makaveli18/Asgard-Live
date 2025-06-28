@@ -6,6 +6,7 @@ export interface ImageRecord {
   file_name:   string
   url:         string
   description: string | null
+  category:    string | null
   metadata:    { category?: string }
 }
 
