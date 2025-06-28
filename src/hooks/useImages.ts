@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase }       from '../lib/supabaseClient'
+
 export interface ImageRecord {
   id:          string
   file_name:   string
@@ -14,10 +15,13 @@ export function useImages() {
 
   useEffect(() => {
     async function load() {
+      console.log('⏳ about to fetch images from Supabase…')
       const { data, error } = await supabase
         .from<'images', ImageRecord>('images')
         .select('*')
         .order('created_at', { ascending: false });
+
+      console.log('✅ supabase returned', { data, error })
 
       if (error)   console.error('Error loading images:', error.message)
       else if (data) setImages(data)
