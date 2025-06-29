@@ -22,12 +22,25 @@ const categories = [
 
 type CategoryId = typeof categories[number]['id']
 
+// Mapping for URL category names to folder names (handles spaces and hyphens)
+const categoryToFolderMapping: Record<string, string> = {
+  'realism': 'realism',
+  'fine-line': 'fine line',
+  'norse': 'norse',
+  'blackwork': 'blackwork',
+  'neo-traditional': 'neo-traditional',
+  'custom-fine-art': 'custom fine art',
+  'abstract': 'abstract',
+  'ornamental': 'ornamental',
+  'studio-bts': 'studio-bts',
+}
+
 export default function Portfolio() {
   // 1️⃣ fetch all images from Supabase
   const { images, loading } = useImages()
 
-  // 2️⃣ grab the ":category" and ":subcategory" params (if any)
-  const { category, subcategory } = useParams<{ category?: CategoryId; subcategory?: string }>()
+  // 2️⃣ grab the ":category" param
+  const { category } = useParams<{ category?: CategoryId }>()
 
   if (loading) {
     return (
@@ -49,18 +62,27 @@ export default function Portfolio() {
   const portfolioImages = images
     .filter(img => img.url.includes('/Portfolio/'))
     .map(img => {
-      // Extract main category from URL: /Portfolio/{main-category}/{sub-category}/
+      // Extract main category from URL: /images/Portfolio/{main-category}/...
       const portfolioPath = img.url.split('/Portfolio/')[1]
-      const mainCategory = portfolioPath?.split('/')[0]?.replace(' ', '-')
+      const folderName = portfolioPath?.split('/')[0] // This is the actual folder name with spaces
+      
+      // Find matching category ID by comparing folder names
+      const categoryId = Object.entries(categoryToFolderMapping).find(
+        ([key, folderPattern]) => folderName === folderPattern
+      )?.[0]
       
       return {
         ...img,
-        derivedMainCategory: mainCategory
+        derivedMainCategory: categoryId
       }
     })
-    .filter(img => allIds.includes(img.derivedMainCategory as CategoryId))
+    .filter(img => img.derivedMainCategory && allIds.includes(img.derivedMainCategory as CategoryId))
 
-  console.log('Portfolio images with derived categories:', portfolioImages.length, portfolioImages.slice(0, 3))
+  console.log('Portfolio images with derived categories:', portfolioImages.length)
+  console.log('Sample images:', portfolioImages.slice(0, 3).map(img => ({ 
+    url: img.url, 
+    derivedMainCategory: img.derivedMainCategory 
+  })))
 
   // 4️⃣ Apply main category filtering if specified
   let filtered: typeof portfolioImages
@@ -82,27 +104,7 @@ export default function Portfolio() {
     console.log('No category filter, showing all:', filtered.length)
   }
 
-  // 5️⃣ Extract sub-categories for the current main category (for navigation)
-  const subCategories = category ? (() => {
-    const categoryImages = portfolioImages.filter(img => img.derivedMainCategory === category)
-    const subCatMap = new Map<string, number>()
-    
-    categoryImages.forEach(img => {
-      const pathParts = img.url.split('/')
-      const subCat = pathParts[4] // sub-category is at index 4
-      if (subCat) {
-        subCatMap.set(subCat, (subCatMap.get(subCat) || 0) + 1)
-      }
-    })
-    
-    return Array.from(subCatMap.entries()).map(([id, count]) => ({
-      id,
-      title: id.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-      count
-    })).sort((a, b) => a.title.localeCompare(b.title))
-  })() : []
-
-  // 6️⃣ map to gallery format - PortfolioGallery will handle sub-categorization
+  // 5️⃣ map to gallery format
   const galleryImages = filtered.map((r) => ({
     src: r.url,
     alt: r.description ?? `Tattoo artwork: ${r.file_name.replace(/-/g, " ").replace(/\.(jpg|jpeg|png|webp)$/i, "")}`,
@@ -110,27 +112,18 @@ export default function Portfolio() {
   }))
 
   console.log('Final gallery images:', galleryImages.length)
-  console.log('Sub-categories for current category:', subCategories)
 
   // Find the current category title for breadcrumbs
   const currentCategory = categories.find(cat => cat.id === category)
   const pageTitle = currentCategory ? currentCategory.title : 'Portfolio'
 
   // Build breadcrumb items
-  const breadcrumbItems = []
-  if (category) {
-    breadcrumbItems.push({ label: 'Portfolio', href: '/portfolio' })
-    breadcrumbItems.push({ 
-      label: currentCategory?.title || category,
-      href: subcategory ? `/portfolio/${category}` : undefined
-    })
-    if (subcategory) {
-      const subCat = subCategories.find(s => s.id === subcategory)
-      breadcrumbItems.push({ label: subCat?.title || subcategory })
-    }
-  } else {
-    breadcrumbItems.push({ label: 'Portfolio' })
-  }
+  const breadcrumbItems = category ? [
+    { label: 'Portfolio', href: '/portfolio' },
+    { label: currentCategory?.title || category }
+  ] : [
+    { label: 'Portfolio' }
+  ]
 
   return (
     <div className="min-h-screen bg-black text-gray-100">
@@ -138,25 +131,12 @@ export default function Portfolio() {
       
       <Breadcrumb items={breadcrumbItems} />
 
-      {/* Sticky Navigation */}
-      <PortfolioNavigation
-        categories={categories}
-        subCategories={subCategories}
-        currentCategory={category}
-        currentSubCategory={subcategory}
-      />
-
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-4">
             {pageTitle}
-            {subcategory && (
-              <span className="block text-2xl md:text-3xl text-gray-300 mt-2">
-                {subCategories.find(s => s.id === subcategory)?.title || subcategory}
-              </span>
-            )}
           </h1>
-          {category && !subcategory && (
+          {category && (
             <p className="text-gray-300 text-lg">
               Explore our {currentCategory?.title.toLowerCase()} tattoo artwork
             </p>
@@ -168,29 +148,36 @@ export default function Portfolio() {
           )}
         </div>
 
-        {galleryImages.length > 0 ? (
-          <PortfolioGallery 
-            images={galleryImages} 
-            style={category} 
-            subCategory={subcategory}
-          />
-        ) : (
-          <div className="text-center py-20">
-            <h2 className="text-2xl font-bold text-metallic-gold mb-4">No Artwork Found</h2>
-            <p className="text-gray-300 mb-8">
-              {category 
-                ? `We're currently updating our ${currentCategory?.title.toLowerCase()} gallery with fresh artwork.`
-                : "We're currently updating our portfolio with fresh artwork."
-              }
-            </p>
-            <a 
-              href="/booking" 
-              className="inline-block bg-firebrick text-white font-bold py-3 px-6 rounded-md hover:bg-firebrick/90 transition-colors"
-            >
-              Book Your Session
-            </a>
-          </div>
-        )}
+        {/* Sticky Navigation - positioned after hero content */}
+        <PortfolioNavigation
+          categories={categories}
+          currentCategory={category}
+        />
+
+        <div className="mt-12">
+          {galleryImages.length > 0 ? (
+            <PortfolioGallery 
+              images={galleryImages} 
+              style={category}
+            />
+          ) : (
+            <div className="text-center py-20">
+              <h2 className="text-2xl font-bold text-metallic-gold mb-4">No Artwork Found</h2>
+              <p className="text-gray-300 mb-8">
+                {category 
+                  ? `We're currently updating our ${currentCategory?.title.toLowerCase()} gallery with fresh artwork.`
+                  : "We're currently updating our portfolio with fresh artwork."
+                }
+              </p>
+              <a 
+                href="/booking" 
+                className="inline-block bg-firebrick text-white font-bold py-3 px-6 rounded-md hover:bg-firebrick/90 transition-colors"
+              >
+                Book Your Session
+              </a>
+            </div>
+          )}
+        </div>
       </main>
 
       <Footer />

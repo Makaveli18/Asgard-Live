@@ -19,8 +19,6 @@ interface PortfolioGalleryProps {
   images: PortfolioImage[]
   /** optional style class for the wrapper */
   style?: string
-  /** optional subcategory filter */
-  subCategory?: string
 }
 
 // Mapping for folder name to display name
@@ -40,7 +38,7 @@ const folderDisplayNames: Record<string, string> = {
   'studio-bts': 'Studio BTS',
 };
 
-export function PortfolioGallery({ images, style, subCategory }: PortfolioGalleryProps) {
+export function PortfolioGallery({ images, style }: PortfolioGalleryProps) {
   const [sections, setSections] = useState<PortfolioSection[]>([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
@@ -67,14 +65,9 @@ export function PortfolioGallery({ images, style, subCategory }: PortfolioGaller
           const pathParts = image.src.split('/');
           let subfolder = 'Main Gallery';
           
-          // For images in subfolders, get the sub-category (index 4)
+          // For images in subfolders, get the sub-category (index 4 in the URL path)
           if (pathParts.length >= 6 && pathParts[4]) {
             subfolder = pathParts[4]; // This is the sub-category folder
-          }
-
-          // If we're filtering by subcategory, only include matching images
-          if (subCategory && subfolder !== subCategory) {
-            return;
           }
 
           if (!sectionMap.has(subfolder)) {
@@ -104,7 +97,7 @@ export function PortfolioGallery({ images, style, subCategory }: PortfolioGaller
     };
 
     loadPortfolioImages();
-  }, [images, subCategory]); // Add subCategory to dependencies
+  }, [images]); // Depend on images prop
 
   const getAllImages = () => {
     return sections.flatMap(section => section.images);
