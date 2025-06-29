@@ -41,41 +41,54 @@ export default function Portfolio() {
     )
   }
 
-  // 3️⃣ Filter images to only Portfolio-related ones with valid categories
+  // 3️⃣ Filter to only Portfolio images and derive main categories
   const allIds = categories.map((c) => c.id)
   
-  // First, filter to only Portfolio images and derive categories from URLs
+  // First, filter to only Portfolio images
   const portfolioImages = images
     .filter(img => img.url.includes('/Portfolio/'))
-    .map(img => ({
-      ...img,
-      derivedCategory: img.category || img.url.split('/Portfolio/')[1]?.split('/')[0]?.replace(' ', '-')
-    }))
-    .filter(img => allIds.includes(img.derivedCategory as CategoryId))
+    .map(img => {
+      // Extract main category from URL: /Portfolio/{main-category}/{sub-category}/
+      const portfolioPath = img.url.split('/Portfolio/')[1]
+      const mainCategory = portfolioPath?.split('/')[0]?.replace(' ', '-')
+      
+      return {
+        ...img,
+        derivedMainCategory: mainCategory
+      }
+    })
+    .filter(img => allIds.includes(img.derivedMainCategory as CategoryId))
 
-  // 4️⃣ Apply category filtering if specified
+  console.log('Portfolio images with derived categories:', portfolioImages.length, portfolioImages.slice(0, 3))
+
+  // 4️⃣ Apply main category filtering if specified
   let filtered: typeof portfolioImages
 
   if (category) {
     // Validate that the category exists in our allowed categories
     if (allIds.includes(category as CategoryId)) {
-      // Filter by derived category
-      filtered = portfolioImages.filter((img) => img.derivedCategory === category)
+      // Filter by main category
+      filtered = portfolioImages.filter((img) => img.derivedMainCategory === category)
+      console.log(`Filtered to category "${category}":`, filtered.length)
     } else {
       // Invalid category, show all portfolio images
       filtered = portfolioImages
+      console.log('Invalid category, showing all:', filtered.length)
     }
   } else {
     // No category specified, show all portfolio images
     filtered = portfolioImages
+    console.log('No category filter, showing all:', filtered.length)
   }
 
-  // 5️⃣ map to gallery format
+  // 5️⃣ map to gallery format - PortfolioGallery will handle sub-categorization
   const galleryImages = filtered.map((r) => ({
     src: r.url,
     alt: r.description ?? `Tattoo artwork: ${r.file_name.replace(/-/g, " ").replace(/\.(jpg|jpeg|png|webp)$/i, "")}`,
     filename: r.file_name,
   }))
+
+  console.log('Final gallery images:', galleryImages.length)
 
   // Find the current category title for breadcrumbs
   const currentCategory = categories.find(cat => cat.id === category)
