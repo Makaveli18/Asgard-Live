@@ -41,26 +41,37 @@ export default function Portfolio() {
     )
   }
 
-  // 3️⃣ Filter images by category if specified, otherwise show all
-  let filtered: ImageRecord[]
+  // 3️⃣ Filter images to only Portfolio-related ones with valid categories
+  const allIds = categories.map((c) => c.id)
   
+  // First, filter to only Portfolio images and derive categories from URLs
+  const portfolioImages = images
+    .filter(img => img.url.includes('/Portfolio/'))
+    .map(img => ({
+      ...img,
+      derivedCategory: img.category || img.url.split('/Portfolio/')[1]?.split('/')[0]?.replace(' ', '-')
+    }))
+    .filter(img => allIds.includes(img.derivedCategory as CategoryId))
+
+  // 4️⃣ Apply category filtering if specified
+  let filtered: typeof portfolioImages
+
   if (category) {
     // Validate that the category exists in our allowed categories
-    const allIds = categories.map((c) => c.id)
     if (allIds.includes(category as CategoryId)) {
-      // Filter by the real category column
-      filtered = images.filter((img) => img.category === category)
+      // Filter by derived category
+      filtered = portfolioImages.filter((img) => img.derivedCategory === category)
     } else {
-      // Invalid category, show all images
-      filtered = images
+      // Invalid category, show all portfolio images
+      filtered = portfolioImages
     }
   } else {
-    // No category specified, show all images
-    filtered = images
+    // No category specified, show all portfolio images
+    filtered = portfolioImages
   }
 
-  // 4️⃣ map ImageRecord → { src, alt, filename }
-  const galleryImages = filtered.map((r: ImageRecord) => ({
+  // 5️⃣ map to gallery format
+  const galleryImages = filtered.map((r) => ({
     src: r.url,
     alt: r.description ?? `Tattoo artwork: ${r.file_name.replace(/-/g, " ").replace(/\.(jpg|jpeg|png|webp)$/i, "")}`,
     filename: r.file_name,
