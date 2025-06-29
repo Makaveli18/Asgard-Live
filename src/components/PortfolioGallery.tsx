@@ -19,6 +19,8 @@ interface PortfolioGalleryProps {
   images: PortfolioImage[]
   /** optional style class for the wrapper */
   style?: string
+  /** optional subcategory filter */
+  subCategory?: string
 }
 
 // Mapping for folder name to display name
@@ -35,9 +37,10 @@ const folderDisplayNames: Record<string, string> = {
   'realism-dotwork': 'Realism & Dotwork',
   'mythic': 'Mythic',
   'pop culture': 'Pop Culture',
+  'studio-bts': 'Studio BTS',
 };
 
-export function PortfolioGallery({ images, style }: PortfolioGalleryProps) {
+export function PortfolioGallery({ images, style, subCategory }: PortfolioGalleryProps) {
   const [sections, setSections] = useState<PortfolioSection[]>([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
@@ -60,12 +63,18 @@ export function PortfolioGallery({ images, style }: PortfolioGalleryProps) {
 
         images.forEach(image => {
           // Extract subfolder from the path
+          // Path structure: /images/Portfolio/{main-category}/{sub-category}/{filename}
           const pathParts = image.src.split('/');
           let subfolder = 'Main Gallery';
           
-          // For images in subfolders, use the subfolder name
-          if (pathParts.length >= 6) {
-            subfolder = pathParts[5];
+          // For images in subfolders, get the sub-category (index 4)
+          if (pathParts.length >= 6 && pathParts[4]) {
+            subfolder = pathParts[4]; // This is the sub-category folder
+          }
+
+          // If we're filtering by subcategory, only include matching images
+          if (subCategory && subfolder !== subCategory) {
+            return;
           }
 
           if (!sectionMap.has(subfolder)) {
@@ -95,7 +104,7 @@ export function PortfolioGallery({ images, style }: PortfolioGalleryProps) {
     };
 
     loadPortfolioImages();
-  }, [images]); // Depend on images prop
+  }, [images, subCategory]); // Add subCategory to dependencies
 
   const getAllImages = () => {
     return sections.flatMap(section => section.images);

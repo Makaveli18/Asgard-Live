@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useImages, ImageRecord } from '../hooks/useImages'
 import { PortfolioGallery } from '../components/PortfolioGallery'
+import { PortfolioNavigation } from '../components/PortfolioNavigation'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Breadcrumb } from '../components/Breadcrumb'
@@ -25,8 +26,8 @@ export default function Portfolio() {
   // 1️⃣ fetch all images from Supabase
   const { images, loading } = useImages()
 
-  // 2️⃣ grab the ":category" param (if any)
-  const { category } = useParams<{ category?: CategoryId }>()
+  // 2️⃣ grab the ":category" and ":subcategory" params (if any)
+  const { category, subcategory } = useParams<{ category?: CategoryId; subcategory?: string }>()
 
   if (loading) {
     return (
@@ -81,7 +82,27 @@ export default function Portfolio() {
     console.log('No category filter, showing all:', filtered.length)
   }
 
-  // 5️⃣ map to gallery format - PortfolioGallery will handle sub-categorization
+  // 5️⃣ Extract sub-categories for the current main category (for navigation)
+  const subCategories = category ? (() => {
+    const categoryImages = portfolioImages.filter(img => img.derivedMainCategory === category)
+    const subCatMap = new Map<string, number>()
+    
+    categoryImages.forEach(img => {
+      const pathParts = img.url.split('/')
+      const subCat = pathParts[4] // sub-category is at index 4
+      if (subCat) {
+        subCatMap.set(subCat, (subCatMap.get(subCat) || 0) + 1)
+      }
+    })
+    
+    return Array.from(subCatMap.entries()).map(([id, count]) => ({
+      id,
+      title: id.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      count
+    })).sort((a, b) => a.title.localeCompare(b.title))
+  })() : []
+
+  // 6️⃣ map to gallery format - PortfolioGallery will handle sub-categorization
   const galleryImages = filtered.map((r) => ({
     src: r.url,
     alt: r.description ?? `Tattoo artwork: ${r.file_name.replace(/-/g, " ").replace(/\.(jpg|jpeg|png|webp)$/i, "")}`,
@@ -89,30 +110,53 @@ export default function Portfolio() {
   }))
 
   console.log('Final gallery images:', galleryImages.length)
+  console.log('Sub-categories for current category:', subCategories)
 
   // Find the current category title for breadcrumbs
   const currentCategory = categories.find(cat => cat.id === category)
   const pageTitle = currentCategory ? currentCategory.title : 'Portfolio'
 
+  // Build breadcrumb items
+  const breadcrumbItems = []
+  if (category) {
+    breadcrumbItems.push({ label: 'Portfolio', href: '/portfolio' })
+    breadcrumbItems.push({ 
+      label: currentCategory?.title || category,
+      href: subcategory ? `/portfolio/${category}` : undefined
+    })
+    if (subcategory) {
+      const subCat = subCategories.find(s => s.id === subcategory)
+      breadcrumbItems.push({ label: subCat?.title || subcategory })
+    }
+  } else {
+    breadcrumbItems.push({ label: 'Portfolio' })
+  }
+
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
       
-      <Breadcrumb 
-        items={category ? [
-          { label: 'Portfolio', href: '/portfolio' }, 
-          { label: currentCategory?.title || category }
-        ] : [
-          { label: 'Portfolio' }
-        ]} 
+      <Breadcrumb items={breadcrumbItems} />
+
+      {/* Sticky Navigation */}
+      <PortfolioNavigation
+        categories={categories}
+        subCategories={subCategories}
+        currentCategory={category}
+        currentSubCategory={subcategory}
       />
 
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-4">
             {pageTitle}
+            {subcategory && (
+              <span className="block text-2xl md:text-3xl text-gray-300 mt-2">
+                {subCategories.find(s => s.id === subcategory)?.title || subcategory}
+              </span>
+            )}
           </h1>
-          {category && (
+          {category && !subcategory && (
             <p className="text-gray-300 text-lg">
               Explore our {currentCategory?.title.toLowerCase()} tattoo artwork
             </p>
@@ -125,7 +169,11 @@ export default function Portfolio() {
         </div>
 
         {galleryImages.length > 0 ? (
-          <PortfolioGallery images={galleryImages} style={category} />
+          <PortfolioGallery 
+            images={galleryImages} 
+            style={category} 
+            subCategory={subcategory}
+          />
         ) : (
           <div className="text-center py-20">
             <h2 className="text-2xl font-bold text-metallic-gold mb-4">No Artwork Found</h2>
