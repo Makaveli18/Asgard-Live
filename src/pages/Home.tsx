@@ -22,6 +22,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../components/ContactForm';
 import { ImageAutoSlider } from '../components/ui/image-auto-slider';
+import { VideoBackground } from '../components/VideoBackground';
+import { extractYouTubeId } from '../utils/videoHelpers';
 
 // Service Icons Components
 const FineLineIcon = () => (
@@ -77,99 +79,50 @@ function TestimonialCard({ text, author, rating, reviewUrl }) {
 
 function Home() {
   const [selectedService, setSelectedService] = useState(null);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
-  useEffect(() => {
-    const img = new window.Image();
-    img.src = vikingBackground;
-    
-    const handleLoad = () => {
-      console.log("Background image loaded successfully");
-      setImageLoaded(true);
-    };
-
-    const handleError = (e) => {
-      console.error("Error loading background image:", e);
-      console.log("Image path:", vikingBackground);
-      setImageLoaded(true); // Show content even if image fails
-    };
-
-    img.onload = handleLoad;
-    img.onerror = handleError;
-
-    return () => {
-      img.onload = null;
-      img.onerror = null;
-    };
-  }, []);
+  // YouTube video configuration
+  const heroVideoUrl = "https://youtu.be/-OJpeMwcj1w"; // Your video
+  const heroVideoId = extractYouTubeId(heroVideoUrl);
 
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
       
-      {/* Hero Section - Enhanced for All Devices */}
+      {/* Hero Section with Video Background */}
       <section className="relative w-full overflow-hidden flex items-center justify-center min-h-screen">
-        {/* Extended Header Buffer - Prevents background cutoff */}
-        <div className="absolute top-0 left-0 right-0 h-40 bg-black z-30 home-header-buffer"></div>
-        
-        {/* Background Image Container */}
-        <div 
-          className={`
-            absolute inset-0 w-full h-full
-            transition-opacity duration-700
-            ${imageLoaded ? 'opacity-100' : 'opacity-0'}
-          `}
+        {/* Video Background */}
+        <VideoBackground
+          youtubeId={heroVideoId}
+          fallbackImage={vikingBackground}
+          autoplay={true}
+          showControls={false}
+          className="absolute inset-0"
         >
-          {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-center bg-cover bg-no-repeat w-full h-full home-hero-bg"
-            style={{
-              backgroundImage: `url(${vikingBackground})`,
-              backgroundSize: 'cover',
-              filter: 'brightness(1.2)',
-            }}
-            role="img"
-            aria-label="Viking background"
-          />
-          
-          {/* Enhanced Gradient Overlay */}
-          <div 
-            className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"
-            style={{ mixBlendMode: 'multiply' }}
-          />
-        </div>
-        
-        {/* Loading State */}
-        {!imageLoaded && (
-          <div className="absolute inset-0 bg-viking-navy/90 flex items-center justify-center">
-            <div className="animate-pulse text-metallic-gold">Loading...</div>
-          </div>
-        )}
-        
-        {/* Content Container */}
-        <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
-          <div className="max-w-4xl w-full mx-auto text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black animate-fade-in text-metallic-gold leading-tight mb-6 hero-title">
-              Unleash Your Inner Warrior – Your Next Battle Mark Awaits
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl subtitle text-gray-100 mb-12 mx-auto max-w-3xl">
-              The Best Tattoo Studio in Landshut, Trusted by Thousands of Warriors To Tell Their Tales Through Our Sacred Arts
-            </p>
-            <div className="flex flex-col items-center space-y-8">
-              <Link 
-                to="/booking" 
-                className="cta-button bg-firebrick text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-md transition-all duration-300 text-lg uppercase tracking-wider w-full max-w-lg mx-auto"
-              >
-                DM us NOW to Secure Your Spot
-              </Link>
-              <div className="disclaimer-box bg-black/60 backdrop-blur-sm border border-metallic-gold/30 text-white py-4 px-6 rounded-lg w-full max-w-xl mx-auto">
-                <p className="text-sm font-semibold">
-                  🔥 Only 3 Spots Left This Month! Don't let someone else get the tattoo you've been dreaming of. Skip the regret of saying "I should have booked" 🔥
-                </p>
+          {/* Content Container */}
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
+            <div className="max-w-4xl w-full mx-auto text-center">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black animate-fade-in text-metallic-gold leading-tight mb-6 hero-title">
+                Unleash Your Inner Warrior – Your Next Battle Mark Awaits
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl subtitle text-gray-100 mb-12 mx-auto max-w-3xl">
+                The Best Tattoo Studio in Landshut, Trusted by Thousands of Warriors To Tell Their Tales Through Our Sacred Arts
+              </p>
+              <div className="flex flex-col items-center space-y-8">
+                <Link 
+                  to="/booking" 
+                  className="cta-button bg-firebrick text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-md transition-all duration-300 text-lg uppercase tracking-wider w-full max-w-lg mx-auto"
+                >
+                  DM us NOW to Secure Your Spot
+                </Link>
+                <div className="disclaimer-box bg-black/60 backdrop-blur-sm border border-metallic-gold/30 text-white py-4 px-6 rounded-lg w-full max-w-xl mx-auto">
+                  <p className="text-sm font-semibold">
+                    🔥 Only 3 Spots Left This Month! Don't let someone else get the tattoo you've been dreaming of. Skip the regret of saying "I should have booked" 🔥
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </VideoBackground>
       </section>
 
       {/* Introduction */}
@@ -316,52 +269,6 @@ function Home() {
       </section>
 
       <Footer />
-
-      {/* Enhanced responsive styles with better header clearance */}
-      <style jsx>{`
-        .home-header-buffer {
-          background: linear-gradient(to bottom, #000000 0%, #000000 70%, transparent 100%);
-        }
-        
-        /* Mobile: Better clearance and positioning */
-        @media (max-width: 768px) {
-          .home-hero-bg {
-            background-position: center 60% !important;
-            background-size: cover !important;
-            transform: scale(0.95) !important;
-          }
-          
-          .home-header-buffer {
-            height: 200px !important;
-          }
-        }
-        
-        /* Tablet: Improved positioning */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .home-hero-bg {
-            background-position: center 50% !important;
-            background-size: cover !important;
-            transform: scale(0.98) !important;
-          }
-          
-          .home-header-buffer {
-            height: 180px !important;
-          }
-        }
-        
-        /* Desktop: Optimal positioning with proper clearance */
-        @media (min-width: 1025px) {
-          .home-hero-bg {
-            background-position: center 40% !important;
-            background-size: cover !important;
-            transform: scale(1.02) !important;
-          }
-          
-          .home-header-buffer {
-            height: 160px !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }
