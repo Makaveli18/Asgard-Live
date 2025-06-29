@@ -15,7 +15,8 @@ import {
   Sword,
   Pen,
   Image as ImageIcon,
-  Palette
+  Palette,
+  Brush
 } from 'lucide-react';
 import vikingBackground from '/images/Viking-stone-blood-drawing.jpg';
 import Header from '../components/Header';
@@ -38,6 +39,10 @@ const CustomDesignIcon = () => (
   <Palette className="w-8 h-8 text-firebrick" />
 );
 
+const AirbrushIcon = () => (
+  <Brush className="w-8 h-8 text-firebrick" />
+);
+
 function ServiceCard({ icon, title, price, description, onClick }) {
   return (
     <div 
@@ -48,7 +53,7 @@ function ServiceCard({ icon, title, price, description, onClick }) {
       <h3 className="text-xl font-bold mb-2 text-metallic-gold service-underline">{title}</h3>
       <p className="text-firebrick font-semibold mb-2">{price}</p>
       <p className="text-gray-300 mb-4 flex-grow">{description}</p>
-      <Link to="/booking" className="text-sm text-metallic-gold hover:text-firebrick transition-colors mt-auto">
+      <Link to="/portfolio" className="text-sm text-metallic-gold hover:text-firebrick transition-colors mt-auto">
         Learn More →
       </Link>
     </div>
@@ -192,7 +197,7 @@ function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-metallic-gold">Our Sacred Arts</h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 justify-items-center mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 justify-items-center mx-auto max-w-7xl">
             <ServiceCard 
               icon={<Sword className="w-8 h-8 text-firebrick" />}
               title="Norse & Viking Style"
@@ -220,6 +225,13 @@ function Home() {
               price="From 130€"
               description="Your vision, our expertise. Together we'll create a unique piece that tells your story."
               onClick={() => setSelectedService('custom')}
+            />
+            <ServiceCard 
+              icon={<AirbrushIcon />}
+              title="Airbrush Painting"
+              price="Price on Request"
+              description="Epic large-scale murals and custom artwork that transforms walls into legendary battlefields of artistic expression."
+              onClick={() => setSelectedService('airbrush')}
             />
           </div>
 
