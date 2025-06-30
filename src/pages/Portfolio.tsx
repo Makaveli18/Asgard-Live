@@ -138,7 +138,7 @@ export default function Portfolio() {
           <div
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url(/images/asgard-thor-loki-airbrush-wall.jpg.jpg)`,
+              backgroundImage: `url(/images/asgard-thor-loki-airbrush-wall.jpg)`,
               backgroundAttachment: 'fixed',
             }}
           />
