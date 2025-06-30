@@ -174,7 +174,7 @@ export default function Portfolio() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20" />
       </section>
 
-      {/* Sticky Navigation */}
+      {/* Static Navigation - Now Below Hero */}
       <PortfolioNavigation
         categories={categories}
         currentCategory={category}

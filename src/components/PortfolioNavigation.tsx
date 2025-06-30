@@ -17,7 +17,7 @@ export function PortfolioNavigation({
   currentCategory
 }: PortfolioNavigationProps) {
   return (
-    <div className="sticky top-20 z-40 bg-black/95 backdrop-blur-sm border-b border-metallic-gold/30 py-6">
+    <div className="bg-viking-navy/30 border-y border-metallic-gold/30 py-8">
       <div className="container mx-auto px-4">
         {/* Main Categories Only */}
         <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6">
