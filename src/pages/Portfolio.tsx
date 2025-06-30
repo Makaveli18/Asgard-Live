@@ -131,30 +131,58 @@ export default function Portfolio() {
       
       <Breadcrumb items={breadcrumbItems} />
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-4">
-            {pageTitle}
-          </h1>
-          {category && (
-            <p className="text-gray-300 text-lg">
-              Explore our {currentCategory?.title.toLowerCase()} tattoo artwork
-            </p>
-          )}
-          {!category && (
-            <p className="text-gray-300 text-lg">
-              Discover our complete collection of tattoo artwork across all styles
-            </p>
-          )}
+      {/* Hero Section with Thor/Loki Background */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full">
+          <div
+            className="w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(/images/asgard-thor-loki-airbrush-wall.jpg)`,
+              backgroundAttachment: 'fixed',
+            }}
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
         </div>
 
-        {/* Sticky Navigation - positioned after hero content */}
-        <PortfolioNavigation
-          categories={categories}
-          currentCategory={category}
-        />
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 relative z-10 text-center py-20">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-cinzel text-metallic-gold mb-6 leading-tight drop-shadow-2xl">
+              {pageTitle}
+            </h1>
+            {category && (
+              <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg">
+                Witness the power of {currentCategory?.title.toLowerCase()} tattoo artistry
+              </p>
+            )}
+            {!category && (
+              <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg">
+                Where ancient Norse legends meet modern tattoo mastery
+              </p>
+            )}
+            <div className="text-lg text-gray-300 max-w-2xl mx-auto">
+              <p className="drop-shadow-lg">
+                Every piece tells a story. Every line carries meaning. Welcome to the halls where warriors get marked for eternity.
+              </p>
+            </div>
+          </div>
+        </div>
 
-        <div className="mt-12">
+        {/* Bottom fade to black */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20" />
+      </section>
+
+      {/* Sticky Navigation */}
+      <PortfolioNavigation
+        categories={categories}
+        currentCategory={category}
+      />
+
+      {/* Gallery Section */}
+      <section className="bg-black relative z-10 py-12">
+        <div className="container mx-auto px-4">
           {galleryImages.length > 0 ? (
             <PortfolioGallery 
               images={galleryImages} 
@@ -178,9 +206,44 @@ export default function Portfolio() {
             </div>
           )}
         </div>
-      </main>
+      </section>
 
       <Footer />
+
+      {/* Custom styles for responsive background */}
+      <style jsx>{`
+        /* Ensure proper background sizing across all devices */
+        @media (max-width: 768px) {
+          .bg-cover {
+            background-size: cover !important;
+            background-position: center 30% !important;
+            background-attachment: scroll !important;
+          }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .bg-cover {
+            background-size: cover !important;
+            background-position: center 40% !important;
+          }
+        }
+        
+        @media (min-width: 1025px) {
+          .bg-cover {
+            background-size: cover !important;
+            background-position: center 50% !important;
+          }
+        }
+
+        /* Optimize text shadows for better readability */
+        .drop-shadow-2xl {
+          filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+        }
+        
+        .drop-shadow-lg {
+          filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.6));
+        }
+      `}</style>
     </div>
   )
 }
