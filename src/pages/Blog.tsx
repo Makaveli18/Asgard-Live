@@ -76,15 +76,15 @@ function Blog() {
         
         <div className="container mx-auto px-4 relative z-10 py-32 md:py-40 mt-24">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-cinzel text-metallic-gold mb-8 leading-tight drop-shadow-2xl">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-cinzel text-metallic-gold mb-8 leading-tight blog-hero-title">
               Tattoo Stories, Viking Symbols & Ink Wisdom From the Best Tattoo Studio in Landshut
             </h1>
-            <p className="text-lg md:text-xl text-white mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
+            <p className="text-lg md:text-xl text-white mb-12 font-light leading-relaxed max-w-3xl mx-auto blog-hero-text">
               From aftercare secrets to Norse meanings and custom ink inspiration — this is where warriors learn before they burn. Every blog post is handcrafted by the artists at Asgard Tattoo to guide your journey, one drop of ink at a time.
             </p>
             <Link
               to="/booking#form"
-              className="inline-block cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg"
+              className="inline-block cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg blog-hero-button"
             >
               Book Your Free Design Consult NOW
             </Link>
@@ -158,14 +158,63 @@ function Blog() {
 
       <Footer />
       
-      {/* Responsive Background Optimization */}
+      {/* Enhanced Text Shadow Styles for Maximum Readability */}
       <style jsx>{`
-        /* Ensure proper background sizing and positioning across all devices */
+        /* 100% Black Text Shadows with Full Opacity for Enhanced Readability */
+        .blog-hero-title {
+          text-shadow: 
+            3px 3px 0px #000000,
+            -3px -3px 0px #000000,
+            3px -3px 0px #000000,
+            -3px 3px 0px #000000,
+            0px 3px 0px #000000,
+            3px 0px 0px #000000,
+            0px -3px 0px #000000,
+            -3px 0px 0px #000000,
+            6px 6px 10px #000000,
+            0 0 20px #000000;
+        }
+        
+        .blog-hero-text {
+          text-shadow: 
+            2px 2px 0px #000000,
+            -2px -2px 0px #000000,
+            2px -2px 0px #000000,
+            -2px 2px 0px #000000,
+            0px 2px 0px #000000,
+            2px 0px 0px #000000,
+            0px -2px 0px #000000,
+            -2px 0px 0px #000000,
+            4px 4px 8px #000000,
+            0 0 15px #000000;
+        }
+        
+        .blog-hero-button {
+          text-shadow: 
+            2px 2px 0px #000000,
+            -2px -2px 0px #000000,
+            2px -2px 0px #000000,
+            -2px 2px 0px #000000,
+            4px 4px 8px #000000,
+            0 0 12px #000000;
+        }
+
+        /* Responsive Background Optimization */
         @media (max-width: 768px) {
           [style*="background-image"] {
             background-size: cover !important;
             background-position: center 60% !important;
             background-attachment: scroll !important;
+          }
+          
+          .blog-hero-title {
+            text-shadow: 
+              2px 2px 0px #000000,
+              -2px -2px 0px #000000,
+              2px -2px 0px #000000,
+              -2px 2px 0px #000000,
+              4px 4px 8px #000000,
+              0 0 15px #000000;
           }
         }
         
@@ -181,15 +230,6 @@ function Blog() {
             background-size: cover !important;
             background-position: center 40% !important;
           }
-        }
-
-        /* Enhanced text shadows for better readability */
-        .drop-shadow-2xl {
-          filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
-        }
-        
-        .drop-shadow-lg {
-          filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.6));
         }
       `}</style>
     </div>
