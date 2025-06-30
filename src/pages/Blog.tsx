@@ -60,20 +60,26 @@ function Blog() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(BlogSchema) }}
       />
 
-      {/* Hero Section - Enhanced for All Devices */}
-      <section className="relative min-h-screen flex items-center bg-black overflow-hidden">
-        {/* Extended Header Buffer - Prevents background cutoff */}
-        <div className="absolute top-0 left-0 right-0 h-40 bg-black z-30 blog-header-buffer"></div>
+      {/* Hero Section with Mountain Background */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Mountain Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/images/Mountain3.jpg')`,
+            backgroundAttachment: 'fixed',
+          }}
+        />
         
-        <div className="absolute inset-0 blog-hero-bg bg-cover bg-center opacity-15"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/80" />
+        {/* Light overlay - max 30% as requested */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/15 to-black/30" />
         
         <div className="container mx-auto px-4 relative z-10 py-32 md:py-40 mt-24">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-cinzel text-metallic-gold mb-8 leading-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-cinzel text-metallic-gold mb-8 leading-tight drop-shadow-2xl">
               Tattoo Stories, Viking Symbols & Ink Wisdom From the Best Tattoo Studio in Landshut
             </h1>
-            <p className="text-lg md:text-xl text-[#F5F5F5] mb-12 font-light leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
               From aftercare secrets to Norse meanings and custom ink inspiration — this is where warriors learn before they burn. Every blog post is handcrafted by the artists at Asgard Tattoo to guide your journey, one drop of ink at a time.
             </p>
             <Link
@@ -152,53 +158,38 @@ function Blog() {
 
       <Footer />
       
-      {/* Enhanced responsive styles with better header clearance */}
+      {/* Responsive Background Optimization */}
       <style jsx>{`
-        .blog-header-buffer {
-          background: linear-gradient(to bottom, #000000 0%, #000000 70%, transparent 100%);
-        }
-        
-        .blog-hero-bg {
-          background-image: url('/images/Mountain3.jpg');
-        }
-        
-        /* Mobile: Better clearance and positioning */
+        /* Ensure proper background sizing and positioning across all devices */
         @media (max-width: 768px) {
-          .blog-hero-bg {
-            background-position: center 70% !important;
+          [style*="background-image"] {
             background-size: cover !important;
-            transform: scale(0.95) !important;
-          }
-          
-          .blog-header-buffer {
-            height: 200px !important;
-          }
-        }
-        
-        /* Tablet: Improved positioning */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .blog-hero-bg {
             background-position: center 60% !important;
-            background-size: cover !important;
-            transform: scale(0.98) !important;
-          }
-          
-          .blog-header-buffer {
-            height: 180px !important;
+            background-attachment: scroll !important;
           }
         }
         
-        /* Desktop: Optimal positioning with proper clearance */
-        @media (min-width: 1025px) {
-          .blog-hero-bg {
-            background-position: center 50% !important;
+        @media (min-width: 769px) and (max-width: 1024px) {
+          [style*="background-image"] {
             background-size: cover !important;
-            transform: scale(1.0) !important;
+            background-position: center 50% !important;
           }
-          
-          .blog-header-buffer {
-            height: 160px !important;
+        }
+        
+        @media (min-width: 1025px) {
+          [style*="background-image"] {
+            background-size: cover !important;
+            background-position: center 40% !important;
           }
+        }
+
+        /* Enhanced text shadows for better readability */
+        .drop-shadow-2xl {
+          filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+        }
+        
+        .drop-shadow-lg {
+          filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.6));
         }
       `}</style>
     </div>
