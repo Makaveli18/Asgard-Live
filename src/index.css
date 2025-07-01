@@ -308,12 +308,12 @@
   box-shadow: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  text-shadow: 20px 20px 0px rgba(0, 0, 0, 0.3);
+  text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
   background-color: #8B0000;
   border-color: #D4AF37;
 }
@@ -374,14 +374,14 @@ h1.hero-title {
   font-family: 'Uncial Antiqua', cursive;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  text-shadow: 20px 20px 0px rgba(0, 0, 0, 0.3);
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
   margin-bottom: 2.5rem;
   line-height: 1.3;
 }
 
 .subtitle {
   font-family: 'Cinzel', serif;
-  text-shadow: 20px 20px 0px rgba(0, 0, 0, 0.3);
+  text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
   letter-spacing: 0.03em;
   margin-bottom: 3rem;
 }
@@ -435,11 +435,11 @@ h1.hero-title {
   h1.hero-title {
     font-size: 2rem;
     margin-bottom: 2rem;
-    text-shadow: 15px 15px 0px rgba(0, 0, 0, 0.3);
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
   }
 
   .subtitle {
-    text-shadow: 15px 15px 0px rgba(0, 0, 0, 0.3);
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
   }
 
   .nav-link {
@@ -450,7 +450,7 @@ h1.hero-title {
     width: 100%;
     max-width: 100%;
     padding: 16px;
-    text-shadow: 15px 15px 0px rgba(0, 0, 0, 0.3);
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
   }
 
   h1:not(.hero-title) {
@@ -477,7 +477,7 @@ h1.hero-title {
   }
 
   h1.hero-title {
-    text-shadow: 18px 18px 0px rgba(0, 0, 0, 0.3);
+    text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
   }
 }
 
