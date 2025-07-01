@@ -143,10 +143,6 @@ export function PortfolioGallery({ images, style }: PortfolioGalleryProps) {
           transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}
           className="space-y-8"
         >
-          <h2 className="text-3xl md:text-4xl font-cinzel text-metallic-gold text-center">
-            {section.title}
-          </h2>
-          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
             {section.images.map((image, imageIndex) => {
               const fileName = image.filename;
