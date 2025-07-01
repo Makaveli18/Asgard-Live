@@ -29,17 +29,31 @@ export const Component: React.FC<LightningProps> = ({
     }
 
     const resizeCanvas = () => {
-      if (canvas.parentElement && canvas.parentElement.clientWidth > 0 && canvas.parentElement.clientHeight > 0) {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
-      } else {
-        canvas.width = canvas.clientWidth || 300;
-        canvas.height = canvas.clientHeight || 150;
-      }
+      // Get the actual viewport dimensions
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      
+      // Set canvas size to match its display size
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      
+      // Scale the canvas back down using CSS
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      
       gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     };
     
+    // Initial resize
+    resizeCanvas();
+    
+    // Add resize listener
     window.addEventListener("resize", resizeCanvas);
+    
+    // Also listen for orientation changes on mobile
+    window.addEventListener("orientationchange", () => {
+      setTimeout(resizeCanvas, 100);
+    });
 
     const vertexShaderSource = `
       attribute vec2 aPosition;
@@ -196,11 +210,17 @@ export const Component: React.FC<LightningProps> = ({
 
     const startTime = performance.now();
     
+    let isRunning = true;
+    
     const renderLoop = () => {
-      if (!canvasRef.current || !gl || gl.isContextLost()) {
+      if (!isRunning || !canvasRef.current || !gl || gl.isContextLost()) {
         cancelAnimationFrame(animationFrameId);
         return;
       }
+      
+      // Clear the canvas
+      gl.clearColor(0.0, 0.0, 0.0, 1.0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
       
       gl.uniform2f(iResolutionLocation, gl.canvas.width, gl.canvas.height);
       const currentTime = performance.now();
@@ -215,11 +235,13 @@ export const Component: React.FC<LightningProps> = ({
       animationFrameId = requestAnimationFrame(renderLoop);
     };
     
-    resizeCanvas(); 
+    // Start the animation loop
     animationFrameId = requestAnimationFrame(renderLoop);
 
     return () => {
+      isRunning = false;
       window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("orientationchange", resizeCanvas);
       cancelAnimationFrame(animationFrameId);
       
       if (gl && !gl.isContextLost()) {
@@ -231,5 +253,18 @@ export const Component: React.FC<LightningProps> = ({
     };
   }, [hue, xOffset, speed, intensity, size]);
 
-  return <canvas ref={canvasRef} className="w-full h-full" />;
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className="w-full h-full block"
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 0
+      }}
+    />
+  );
 };

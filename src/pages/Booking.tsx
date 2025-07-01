@@ -63,22 +63,22 @@ function Booking() {
       <Header />
 
       {/* Hero Section with Lightning Background */}
-      <section className="relative min-h-screen overflow-hidden flex items-center">
+      <section className="relative min-h-screen overflow-hidden flex items-center bg-black">
         {/* Lightning Background */}
-        <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full z-0">
           <Lightning
             hue={45}
             xOffset={0.0}
-            speed={0.5}
-            intensity={0.8}
-            size={2.0}
+            speed={0.3}
+            intensity={1.2}
+            size={1.8}
           />
         </div>
         
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"></div>
         
-        <div className="container mx-auto px-4 text-center relative z-10 py-32 md:py-40 mt-24">
+        <div className="container mx-auto px-4 text-center relative z-20 py-32 md:py-40 mt-24">
           <h1 className="font-['Pirata_One'] text-4xl md:text-6xl lg:text-7xl text-metallic-gold mb-6 leading-tight">
             Lock In Your Next Masterpiece
           </h1>
@@ -89,7 +89,7 @@ function Booking() {
       </section>
 
       {/* Booking Form Section */}
-      <section ref={formRef} className="py-20 bg-black relative" id="booking">
+      <section ref={formRef} className="py-20 bg-black relative z-30" id="booking">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto bg-viking-navy p-8 rounded-lg shadow-[0_0_20px_rgba(30,58,95,0.5)]">
             <h2 className="text-3xl font-bold text-center mb-8 text-metallic-gold">Book Your Session</h2>
@@ -99,7 +99,7 @@ function Booking() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-viking-navy/20 relative">
+      <section className="py-16 bg-viking-navy/20 relative z-30">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-metallic-gold">
             Pre-Booking FAQ
@@ -113,7 +113,7 @@ function Booking() {
       </section>
 
       {/* Pre-footer Section */}
-      <section className="py-12 bg-viking-navy relative">
+      <section className="py-12 bg-viking-navy relative z-30">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <button 
