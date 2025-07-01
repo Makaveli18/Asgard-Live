@@ -69,7 +69,7 @@ function Booking() {
           <Lightning
             hue={45}
             xOffset={0.0}
-            speed={0.3}
+            speed={0.1}
             intensity={1.2}
             size={1.8}
           />
