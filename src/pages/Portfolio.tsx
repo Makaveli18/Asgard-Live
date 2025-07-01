@@ -156,21 +156,6 @@ export default function Portfolio() {
   // Build breadcrumb items - simplified for static hero
   const breadcrumbItems = [{ label: 'Portfolio' }]
 
-  // Dynamic gallery header content
-  const getGalleryTitle = () => {
-    if (category && currentCategory) {
-      return currentCategory.title
-    }
-    return 'Portfolio'
-  }
-
-  const getGalleryDescription = () => {
-    if (category && currentCategory) {
-      return currentCategory.description
-    }
-    return 'Behold the complete arsenal of Asgard\'s legendary artistry—every style, every technique, every story waiting to be carved into your skin.'
-  }
-
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
@@ -233,22 +218,8 @@ export default function Portfolio() {
         currentCategory={category}
       />
 
-      {/* Dynamic Gallery Header Section */}
-      <section className="bg-black relative z-10 py-12">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-6 gallery-section-title">
-              {getGalleryTitle()}
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed gallery-section-description">
-              {getGalleryDescription()}
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Gallery Section */}
-      <section className="bg-black relative z-10 pb-12">
+      <section className="bg-black relative z-10 py-12">
         <div className="container mx-auto px-4">
           {galleryImages.length > 0 ? (
             <PortfolioGallery 
@@ -288,14 +259,6 @@ export default function Portfolio() {
           text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
         }
 
-        .gallery-section-title {
-          text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
-        }
-        
-        .gallery-section-description {
-          text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
-        }
-
         /* Responsive Background Optimization to Show Full Image */
         @media (max-width: 768px) {
           [style*="background-image"] {
@@ -310,28 +273,12 @@ export default function Portfolio() {
           .portfolio-hero-text {
             text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
           }
-
-          .gallery-section-title {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
-          }
-          
-          .gallery-section-description {
-            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
-          }
         }
         
         @media (min-width: 769px) and (max-width: 1024px) {
           [style*="background-image"] {
             background-size: contain !important;
             background-position: center 80% !important;
-          }
-
-          .gallery-section-title {
-            text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
-          }
-          
-          .gallery-section-description {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
           }
         }
         
