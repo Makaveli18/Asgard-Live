@@ -130,7 +130,7 @@ function About() {
       <style jsx>{`
         /* Elegant Text Shadows with -45 Direction, 5-6px Offset, No Blur, 50% Opacity */
         .about-hero-title {
-          text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
+          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
         }
         
         .about-header-buffer {
@@ -150,7 +150,7 @@ function About() {
           }
           
           .about-hero-title {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3);
           }
         }
         
@@ -167,7 +167,7 @@ function About() {
           }
           
           .about-hero-title {
-            text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
           }
         }
         

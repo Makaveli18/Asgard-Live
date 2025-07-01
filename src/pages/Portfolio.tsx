@@ -286,25 +286,24 @@ export default function Portfolio() {
 
       {/* Custom styles for responsive background and elegant text shadows */}
       <style jsx>{`
-        /* Elegant Text Shadows with -45 Direction, 5-6px Offset, No Blur, 50% Opacity */
         .portfolio-hero-title {
-          text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
+          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
         }
         
         .portfolio-hero-text {
-          text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+          text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
         }
 
         .gallery-section-title {
-          text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
+          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
         }
         
         .gallery-section-description {
-          text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+          text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
         }
 
         .battle-tested-subtitle {
-          text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+          text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
           letter-spacing: 0.15em;
         }
 
@@ -316,23 +315,23 @@ export default function Portfolio() {
           }
           
           .portfolio-hero-title {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3);
           }
           
           .portfolio-hero-text {
-            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
           }
 
           .gallery-section-title {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3);
           }
           
           .gallery-section-description {
-            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
           }
 
           .battle-tested-subtitle {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3);
           }
         }
         
@@ -343,15 +342,15 @@ export default function Portfolio() {
           }
 
           .gallery-section-title {
-            text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
           }
           
           .gallery-section-description {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
           }
 
           .battle-tested-subtitle {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
           }
         }
         

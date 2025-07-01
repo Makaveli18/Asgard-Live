@@ -160,17 +160,16 @@ function Blog() {
       
       {/* Enhanced Text Shadow Styles for Elegant Readability */}
       <style jsx>{`
-        /* Elegant Text Shadows with -45 Direction, 5-6px Offset, No Blur, 50% Opacity */
         .blog-hero-title {
-          text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
+          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
         }
         
         .blog-hero-text {
-          text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+          text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
         }
         
         .blog-hero-button {
-          text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+          text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
         }
 
         /* Responsive Background Optimization */
@@ -182,15 +181,15 @@ function Blog() {
           }
           
           .blog-hero-title {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3);
           }
           
           .blog-hero-text {
-            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
           }
           
           .blog-hero-button {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
           }
         }
         
