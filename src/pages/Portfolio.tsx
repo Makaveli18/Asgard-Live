@@ -8,17 +8,53 @@ import Footer from '../components/Footer'
 import { Breadcrumb } from '../components/Breadcrumb'
 import { Link } from 'react-router-dom'
 
-// your static category metadata
+// your static category metadata with Asgard-themed descriptions
 const categories = [
-  { id: 'realism', title: 'Realism' },
-  { id: 'fine-line', title: 'Fine Line' },
-  { id: 'norse', title: 'Norse & Viking' },
-  { id: 'blackwork', title: 'Blackwork' },
-  { id: 'neo-traditional', title: 'Neo-Traditional' },
-  { id: 'custom-fine-art', title: 'Custom Fine Art' },
-  { id: 'abstract', title: 'Abstract' },
-  { id: 'ornamental', title: 'Ornamental' },
-  { id: 'studio-bts', title: 'Studio' },
+  { 
+    id: 'realism', 
+    title: 'Realism',
+    description: 'Where flesh becomes canvas for photographic perfection—every shadow, every detail captured with the precision of Odin\'s all-seeing eye.'
+  },
+  { 
+    id: 'fine-line', 
+    title: 'Fine Line',
+    description: 'Delicate as runes carved by the finest craftsmen, these ethereal marks whisper stories with the subtlety of morning mist over Valhalla.'
+  },
+  { 
+    id: 'norse', 
+    title: 'Norse & Viking',
+    description: 'Ancient symbols of power and protection, forged in the fires of legend—where mythology meets flesh and warriors claim their birthright.'
+  },
+  { 
+    id: 'blackwork', 
+    title: 'Blackwork',
+    description: 'Bold as the ravens of Huginn and Muninn, these striking designs command respect with the raw power of pure obsidian ink.'
+  },
+  { 
+    id: 'neo-traditional', 
+    title: 'Neo-Traditional',
+    description: 'Classic artistry reborn with modern fire—where timeless techniques meet contemporary vision in a blaze of color and innovation.'
+  },
+  { 
+    id: 'custom-fine-art', 
+    title: 'Custom Fine Art',
+    description: 'Masterpieces born from collaboration between artist and warrior—unique visions brought to life through sacred artistic alchemy.'
+  },
+  { 
+    id: 'abstract', 
+    title: 'Abstract',
+    description: 'Where reality bends to artistic will—fluid forms and cosmic energies dance across skin like the northern lights across Midgard\'s sky.'
+  },
+  { 
+    id: 'ornamental', 
+    title: 'Ornamental',
+    description: 'Sacred geometry and divine patterns that honor the mathematical perfection hidden within nature\'s most beautiful designs.'
+  },
+  { 
+    id: 'studio-bts', 
+    title: 'Studio',
+    description: 'Asgard Family Behind The Scenes'
+  },
 ] as const
 
 type CategoryId = typeof categories[number]['id']
@@ -114,11 +150,26 @@ export default function Portfolio() {
 
   console.log('Final gallery images:', galleryImages.length)
 
-  // Find the current category title for breadcrumbs
+  // Find the current category for dynamic content
   const currentCategory = categories.find(cat => cat.id === category)
 
   // Build breadcrumb items - simplified for static hero
   const breadcrumbItems = [{ label: 'Portfolio' }]
+
+  // Dynamic gallery header content
+  const getGalleryTitle = () => {
+    if (category && currentCategory) {
+      return currentCategory.title
+    }
+    return 'Portfolio'
+  }
+
+  const getGalleryDescription = () => {
+    if (category && currentCategory) {
+      return currentCategory.description
+    }
+    return 'Behold the complete arsenal of Asgard\'s legendary artistry—every style, every technique, every story waiting to be carved into your skin.'
+  }
 
   return (
     <div className="min-h-screen bg-black text-gray-100">
@@ -182,8 +233,22 @@ export default function Portfolio() {
         currentCategory={category}
       />
 
-      {/* Gallery Section */}
+      {/* Dynamic Gallery Header Section */}
       <section className="bg-black relative z-10 py-12">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-6 gallery-section-title">
+              {getGalleryTitle()}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed gallery-section-description">
+              {getGalleryDescription()}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="bg-black relative z-10 pb-12">
         <div className="container mx-auto px-4">
           {galleryImages.length > 0 ? (
             <PortfolioGallery 
@@ -223,6 +288,14 @@ export default function Portfolio() {
           text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
         }
 
+        .gallery-section-title {
+          text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gallery-section-description {
+          text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+        }
+
         /* Responsive Background Optimization to Show Full Image */
         @media (max-width: 768px) {
           [style*="background-image"] {
@@ -237,12 +310,28 @@ export default function Portfolio() {
           .portfolio-hero-text {
             text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
           }
+
+          .gallery-section-title {
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+          }
+          
+          .gallery-section-description {
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+          }
         }
         
         @media (min-width: 769px) and (max-width: 1024px) {
           [style*="background-image"] {
             background-size: contain !important;
             background-position: center 80% !important;
+          }
+
+          .gallery-section-title {
+            text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+          }
+          
+          .gallery-section-description {
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
           }
         }
         
