@@ -240,9 +240,16 @@ export default function Portfolio() {
             <h2 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-6 gallery-section-title">
               {getGalleryTitle()}
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed gallery-section-description">
+            <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 gallery-section-description">
               {getGalleryDescription()}
             </p>
+            
+            {/* Battle-Tested Ink Subtitle */}
+            <div className="border-t border-b border-metallic-gold/30 py-6 max-w-2xl mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-firebrick uppercase tracking-wider battle-tested-subtitle">
+                Battle-Tested Ink
+              </h3>
+            </div>
           </div>
         </div>
       </section>
@@ -296,6 +303,11 @@ export default function Portfolio() {
           text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
         }
 
+        .battle-tested-subtitle {
+          text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+          letter-spacing: 0.15em;
+        }
+
         /* Responsive Background Optimization to Show Full Image */
         @media (max-width: 768px) {
           [style*="background-image"] {
@@ -318,6 +330,10 @@ export default function Portfolio() {
           .gallery-section-description {
             text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
           }
+
+          .battle-tested-subtitle {
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+          }
         }
         
         @media (min-width: 769px) and (max-width: 1024px) {
@@ -331,6 +347,10 @@ export default function Portfolio() {
           }
           
           .gallery-section-description {
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+          }
+
+          .battle-tested-subtitle {
             text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
           }
         }
