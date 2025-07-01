@@ -6,6 +6,7 @@ import { PortfolioNavigation } from '../components/PortfolioNavigation'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Breadcrumb } from '../components/Breadcrumb'
+import { Link } from 'react-router-dom'
 
 // your static category metadata
 const categories = [
@@ -115,15 +116,9 @@ export default function Portfolio() {
 
   // Find the current category title for breadcrumbs
   const currentCategory = categories.find(cat => cat.id === category)
-  const pageTitle = currentCategory ? currentCategory.title : 'Portfolio'
 
-  // Build breadcrumb items
-  const breadcrumbItems = category ? [
-    { label: 'Portfolio', href: '/portfolio' },
-    { label: currentCategory?.title || category }
-  ] : [
-    { label: 'Portfolio' }
-  ]
+  // Build breadcrumb items - simplified for static hero
+  const breadcrumbItems = [{ label: 'Portfolio' }]
 
   return (
     <div className="min-h-screen bg-black text-gray-100">
@@ -150,23 +145,11 @@ export default function Portfolio() {
         <div className="container mx-auto px-4 relative z-10 text-center py-20">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-cinzel text-metallic-gold mb-6 leading-tight drop-shadow-2xl">
-              {pageTitle}
+              Your Story Deserves A Masterpiece. Let's Ink It Today!
             </h1>
-            {category && (
-              <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg">
-                Witness the power of {currentCategory?.title.toLowerCase()} tattoo artistry
-              </p>
-            )}
-            {!category && (
-              <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg">
-                Where ancient Norse legends meet modern tattoo mastery
-              </p>
-            )}
-            <div className="text-lg text-gray-300 max-w-2xl mx-auto">
-              <p className="drop-shadow-lg">
-                Every piece tells a story. Every line carries meaning. Welcome to the halls where warriors get marked for eternity.
-              </p>
-            </div>
+            <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg max-w-3xl mx-auto">
+              Behold the legendary tattoos forged in the fires of Asgard. Each piece tells a tale of Norse mythology, Viking valor, and ancient runes that echo through the halls of eternity.
+            </p>
           </div>
         </div>
 
@@ -174,7 +157,24 @@ export default function Portfolio() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20" />
       </section>
 
-      {/* Static Navigation - Now Below Hero */}
+      {/* CTA Section - Above Navigation */}
+      <section className="py-12 bg-viking-navy relative z-10">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <Link
+              to="/booking"
+              className="inline-block cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg uppercase tracking-wider"
+            >
+              Book Your FREE Design Consult NOW
+            </Link>
+            <p className="text-metallic-gold font-semibold text-lg mt-4 animate-pulse">
+              💥 Limited Spots Available - Secure Yours Today!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Static Navigation - Now Below CTA */}
       <PortfolioNavigation
         categories={categories}
         currentCategory={category}
