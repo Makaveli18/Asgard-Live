@@ -75,6 +75,7 @@ function About() {
                 animate-fade-in
                 drop-shadow-gold
                 mb-6
+                about-hero-title
               ">
                 Your Tattoo Artist Matters
                 <span className="block mt-6 text-firebrick">Get Inked by the Best</span>
@@ -125,8 +126,13 @@ function About() {
 
       <Footer />
       
-      {/* Enhanced responsive styles with better header clearance */}
+      {/* Enhanced responsive styles with elegant text shadows */}
       <style jsx>{`
+        /* Elegant Text Shadows with -45 Direction, 5-6px Offset, No Blur, 50% Opacity */
+        .about-hero-title {
+          text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
+        }
+        
         .about-header-buffer {
           background: linear-gradient(to bottom, #000000 0%, #000000 70%, transparent 100%);
         }
@@ -142,6 +148,10 @@ function About() {
           .about-header-buffer {
             height: 220px !important;
           }
+          
+          .about-hero-title {
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+          }
         }
         
         /* Tablet: Balanced view with improved positioning */
@@ -154,6 +164,10 @@ function About() {
           
           .about-header-buffer {
             height: 200px !important;
+          }
+          
+          .about-hero-title {
+            text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
           }
         }
         
