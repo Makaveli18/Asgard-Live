@@ -156,20 +156,16 @@ export default function Portfolio() {
   // Build breadcrumb items - simplified for static hero
   const breadcrumbItems = [{ label: 'Portfolio' }]
 
-  // Dynamic gallery header content
-  const getGalleryTitle = () => {
-    if (category && currentCategory) {
-      return currentCategory.title
-    }
-    return 'Portfolio'
-  }
-
+  // Dynamic gallery description only (no title)
   const getGalleryDescription = () => {
     if (category && currentCategory) {
       return currentCategory.description
     }
-    return 'Behold the complete arsenal of Asgard\'s legendary artistry—every style, every technique, every story waiting to be carved into your skin.'
+    // Return null for "All" view - no description needed
+    return null
   }
+
+  const galleryDescription = getGalleryDescription()
 
   return (
     <div className="min-h-screen bg-black text-gray-100">
@@ -227,25 +223,24 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Static Navigation - Now Below CTA */}
+      {/* Static Navigation */}
       <PortfolioNavigation
         categories={categories}
         currentCategory={category}
       />
 
-      {/* Dynamic Gallery Header Section */}
-      <section className="bg-black relative z-10 py-12">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-6 gallery-section-title">
-              {getGalleryTitle()}
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed gallery-section-description">
-              {getGalleryDescription()}
-            </p>
+      {/* Optional Category Description Section - Only shows when a specific category is selected */}
+      {galleryDescription && (
+        <section className="bg-black relative z-10 py-8">
+          <div className="container mx-auto px-4">
+            <div className="text-center">
+              <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed gallery-section-description">
+                {galleryDescription}
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Gallery Section */}
       <section className="bg-black relative z-10 pb-12">
@@ -287,10 +282,6 @@ export default function Portfolio() {
         .portfolio-hero-text {
           text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
         }
-
-        .gallery-section-title {
-          text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
-        }
         
         .gallery-section-description {
           text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
@@ -310,10 +301,6 @@ export default function Portfolio() {
           .portfolio-hero-text {
             text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
           }
-
-          .gallery-section-title {
-            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
-          }
           
           .gallery-section-description {
             text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
@@ -324,10 +311,6 @@ export default function Portfolio() {
           [style*="background-image"] {
             background-size: contain !important;
             background-position: center 80% !important;
-          }
-
-          .gallery-section-title {
-            text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
           }
           
           .gallery-section-description {
