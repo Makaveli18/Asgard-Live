@@ -186,7 +186,7 @@ function Blog() {
         }
         
         .blog-hero-text {
-          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
+          text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6), 1px 1px 5px rgba(0, 0, 0, 0.9);
         }
         
         .blog-hero-button {
@@ -200,7 +200,7 @@ function Blog() {
           }
           
           .blog-hero-text {
-            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6);
+            text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 0, 0, 0.65), 1px 1px 6px rgba(0, 0, 0, 0.95);
           }
           
           .blog-hero-button {
@@ -214,7 +214,7 @@ function Blog() {
           }
           
           .blog-hero-text {
-            text-shadow: 2px 2px 14px rgba(0, 0, 0, 0.75), 0 0 22px rgba(0, 0, 0, 0.55);
+            text-shadow: 3px 3px 16px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 0, 0, 0.6), 1px 1px 5px rgba(0, 0, 0, 0.9);
           }
 
           .blog-hero-button {
