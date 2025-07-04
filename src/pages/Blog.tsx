@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { VideoBackground } from '../components/VideoBackground';
-import { extractYouTubeId } from '../utils/videoHelpers';
 
 const BlogSchema = {
   "@context": "https://schema.org",
@@ -53,11 +51,6 @@ const blogPosts = [
 ];
 
 function Blog() {
-  // YouTube video configuration
-  const heroVideoUrl = "https://youtu.be/aySoSye9Lx8";
-  const heroVideoId = extractYouTubeId(heroVideoUrl);
-  const fallbackImage = '/images/Mountain3.jpg';
-
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
@@ -68,18 +61,39 @@ function Blog() {
       />
 
       {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Video Background */}
-        <VideoBackground
-          youtubeId={heroVideoId}
-          fallbackImage={fallbackImage}
-          autoplay={true}
-          showControls={false}
-          className="absolute inset-0"
-        >
-          {/* 20% Overlay */}
-          <div className="absolute inset-0 bg-black/20" />
-        </VideoBackground>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* YouTube Video Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <iframe
+            src="https://www.youtube.com/embed/aySoSye9Lx8?autoplay=1&mute=1&loop=1&playlist=aySoSye9Lx8&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              width: '100vw',
+              height: '56.25vw', // 16:9 aspect ratio
+              minHeight: '100vh',
+              minWidth: '177.77vh', // 16:9 aspect ratio
+              transform: 'translate(-50%, -50%)',
+              top: '50%',
+              left: '50%'
+            }}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Blog Hero Video Background"
+          />
+        </div>
+
+        {/* Fallback Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/images/Mountain3.jpg')`,
+            zIndex: -1
+          }}
+        />
+        
+        {/* 20% Overlay */}
+        <div className="absolute inset-0 bg-black/20 z-10" />
         
         <div className="container mx-auto px-4 relative z-20 py-32 md:py-40 mt-24">
           <div className="max-w-4xl mx-auto text-center">
@@ -165,46 +179,46 @@ function Blog() {
 
       <Footer />
       
-      {/* Enhanced Text Shadow Styles for Elegant Readability */}
+      {/* Enhanced Text Shadow Styles for Video Background Readability */}
       <style jsx>{`
         .blog-hero-title {
-          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
+          text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6);
         }
         
         .blog-hero-text {
-          text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
+          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
         }
         
         .blog-hero-button {
-          text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+          text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
         }
 
-        /* Enhanced Text Shadows for Video Background */
+        /* Mobile optimizations */
         @media (max-width: 768px) {          
           .blog-hero-title {
-            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+            text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.7);
           }
           
           .blog-hero-text {
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 0, 0, 0.4);
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6);
           }
           
           .blog-hero-button {
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
           }
         }
         
         @media (min-width: 769px) and (max-width: 1024px) {
           .blog-hero-title {
-            text-shadow: 2px 2px 14px rgba(0, 0, 0, 0.7), 0 0 22px rgba(0, 0, 0, 0.4);
+            text-shadow: 3px 3px 16px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 0, 0, 0.65);
           }
           
           .blog-hero-text {
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 14px rgba(0, 0, 0, 0.75), 0 0 22px rgba(0, 0, 0, 0.55);
           }
 
           .blog-hero-button {
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 11px rgba(0, 0, 0, 0.65);
           }
         }
       `}</style>
