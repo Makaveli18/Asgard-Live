@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ChevronDown, Clock, Shield, AlertCircle } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../components/ContactForm';
@@ -52,36 +51,39 @@ const AccordionItem = ({ question, answer }) => {
 function Booking() {
   const formRef = useRef(null);
   const isInView = useInView(formRef, { once: true });
-  const location = useLocation();
 
   useEffect(() => {
-    // Handle hash navigation on initial load and hash changes
-    const handleHashNavigation = () => {
-      if (location.hash === '#form' && formRef.current) {
-        // Small delay to ensure the page has rendered
+    // Handle hash navigation with proper timing
+    const scrollToForm = () => {
+      if (formRef.current) {
+        formRef.current.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    };
+
+    // Check for hash on mount
+    if (window.location.hash === '#form') {
+      setTimeout(() => {
+        scrollToForm();
+      }, 500); // Longer delay to ensure everything is rendered
+    }
+
+    // Listen for hash changes
+    const handleHashChange = () => {
+      if (window.location.hash === '#form') {
         setTimeout(() => {
-          formRef.current?.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
+          scrollToForm();
         }, 100);
       }
     };
 
-    // Handle on mount and when hash changes
-    handleHashNavigation();
-  }, [location.hash]);
-
-  // Also handle direct hash navigation from other pages
-  useEffect(() => {
-    if (window.location.hash === '#form' && formRef.current) {
-      setTimeout(() => {
-        formRef.current?.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 300); // Longer delay for cross-page navigation
-    }
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   return (

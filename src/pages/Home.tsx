@@ -271,7 +271,7 @@ function Home() {
       </section>
 
       {/* Booking Form Section */}
-      <section className="py-20 bg-black" id="booking">
+      <section className="py-20 bg-black" id="form">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto bg-viking-navy p-8 rounded-lg shadow-[0_0_20px_rgba(30,58,95,0.5)]">
             <h2 className="text-3xl font-bold text-center mb-8 text-metallic-gold">Book Your Session</h2>

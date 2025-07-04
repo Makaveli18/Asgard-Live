@@ -23,20 +23,23 @@ function App() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     logPageView(location.pathname);
-    
-    // Handle hash navigation after route change
+  }, [location.pathname]);
+
+  // Separate effect for hash navigation
+  useEffect(() => {
     if (location.hash) {
-      setTimeout(() => {
-        const element = document.querySelector(location.hash);
-        if (element) {
+      // Don't scroll to top if we have a hash
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
           element.scrollIntoView({ 
             behavior: 'smooth',
             block: 'start'
           });
-        }
-      }, 100);
+        }, 300); // Delay to ensure page is rendered
+      }
     }
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   return (
     <>
