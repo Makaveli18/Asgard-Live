@@ -53,9 +53,15 @@ function ServiceCard({ icon, title, price, description, onClick }) {
       <h3 className="text-xl font-bold mb-2 text-metallic-gold service-underline">{title}</h3>
       <p className="text-firebrick font-semibold mb-2">{price}</p>
       <p className="text-gray-300 mb-4 flex-grow">{description}</p>
-      <Link to="/portfolio" className="text-sm text-metallic-gold hover:text-firebrick transition-colors mt-auto">
-        Learn More →
-      </Link>
+      {title === "Airbrush Painting" ? (
+        <Link to="/booking#form" className="text-sm text-metallic-gold hover:text-firebrick transition-colors mt-auto">
+          Learn More →
+        </Link>
+      ) : (
+        <Link to="/portfolio" className="text-sm text-metallic-gold hover:text-firebrick transition-colors mt-auto">
+          Learn More →
+        </Link>
+      )}
     </div>
   );
 }
