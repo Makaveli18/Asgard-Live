@@ -218,10 +218,10 @@ export default function Portfolio() {
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-10 text-center py-20">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-cinzel text-metallic-gold mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-['Uncial_Antiqua'] text-metallic-gold mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
               Your Story Deserves A Masterpiece. Let's Ink It Today!
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg max-w-3xl mx-auto portfolio-hero-text">
+            <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg max-w-3xl mx-auto font-cinzel portfolio-hero-text">
               Behold the legendary tattoos forged in the fires of Asgard. Each piece tells a tale of Norse mythology, Viking valor, and ancient runes that echo through the halls of eternity.
             </p>
           </div>

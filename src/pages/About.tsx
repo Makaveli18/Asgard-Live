@@ -70,7 +70,7 @@ function About() {
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="
                 text-4xl sm:text-5xl md:text-6xl lg:text-7xl
-                font-medieval text-metallic-gold
+                font-['Uncial_Antiqua'] text-metallic-gold
                 leading-tight
                 animate-fade-in
                 drop-shadow-gold
@@ -78,7 +78,7 @@ function About() {
                 about-hero-title
               ">
                 Your Tattoo Artist Matters
-                <span className="block mt-6 text-firebrick">Get Inked by the Best</span>
+                <span className="block mt-6 text-firebrick font-cinzel">Get Inked by the Best</span>
               </h1>
             </div>
           </div>

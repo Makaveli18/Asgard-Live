@@ -97,10 +97,10 @@ function Blog() {
         
         <div className="container mx-auto px-4 relative z-20 py-32 md:py-40 mt-24">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-cinzel text-metallic-gold mb-8 leading-tight blog-hero-title">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-['Uncial_Antiqua'] text-metallic-gold mb-8 leading-tight blog-hero-title">
               Tattoo Stories, Viking Symbols & Ink Wisdom From the Best Tattoo Studio in Landshut
             </h1>
-            <p className="text-lg md:text-xl text-white mb-12 font-light leading-relaxed max-w-3xl mx-auto blog-hero-text">
+            <p className="text-lg md:text-xl text-white mb-12 font-cinzel leading-relaxed max-w-3xl mx-auto blog-hero-text">
               From aftercare secrets to Norse meanings and custom ink inspiration — this is where warriors learn before they burn. Every blog post is handcrafted by the artists at Asgard Tattoo to guide your journey, one drop of ink at a time.
             </p>
             <Link

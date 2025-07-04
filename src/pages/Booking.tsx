@@ -107,10 +107,10 @@ function Booking() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"></div>
         
         <div className="container mx-auto px-4 text-center relative z-20 py-32 md:py-40 mt-24">
-          <h1 className="font-['Pirata_One'] text-4xl md:text-6xl lg:text-7xl text-metallic-gold mb-6 leading-tight">
+          <h1 className="font-['Uncial_Antiqua'] text-4xl md:text-6xl lg:text-7xl text-metallic-gold mb-6 leading-tight">
             Lock In Your Next Masterpiece
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-cinzel">
             Join the ranks of warriors who've trusted us with their stories. Your legend awaits.
           </p>
         </div>
