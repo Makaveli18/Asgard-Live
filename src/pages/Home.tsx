@@ -257,7 +257,7 @@ function Home() {
             <div className="space-y-4">
               <Link 
                 to="/booking#form"
-                className="inline-block bg-firebrick text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-md transition-all duration-300 text-lg uppercase tracking-wider w-full max-w-lg mx-auto hover:bg-firebrick/90 hover:transform hover:-translate-y-1 hover:shadow-lg"
+                className="cta-button bg-firebrick text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-md transition-all duration-300 text-lg uppercase tracking-wider inline-block w-full max-w-2xl mx-auto text-center"
               >
                 Secure Your Spot NOW Before It's Gone!
               </Link>
