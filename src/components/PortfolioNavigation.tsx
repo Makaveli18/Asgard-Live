@@ -23,14 +23,6 @@ export function PortfolioNavigation({
         <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6">
           <Link
             to="/portfolio"
-            onClick={() => {
-              setTimeout(() => {
-                document.getElementById('gallery-content')?.scrollIntoView({ 
-                  behavior: 'smooth',
-                  block: 'start'
-                });
-              }, 100);
-            }}
             className={cn(
               "px-4 md:px-6 py-3 rounded-md text-sm md:text-base font-medium transition-all duration-300",
               !currentCategory
@@ -44,14 +36,6 @@ export function PortfolioNavigation({
             <Link
               key={cat.id}
               to={`/portfolio/${cat.id}`}
-              onClick={() => {
-                setTimeout(() => {
-                  document.getElementById('gallery-content')?.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                  });
-                }, 100);
-              }}
               className={cn(
                 "px-4 md:px-6 py-3 rounded-md text-sm md:text-base font-medium transition-all duration-300",
                 currentCategory === cat.id
