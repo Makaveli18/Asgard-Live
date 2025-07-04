@@ -83,7 +83,7 @@ function Blog() {
               From aftercare secrets to Norse meanings and custom ink inspiration — this is where warriors learn before they burn. Every blog post is handcrafted by the artists at Asgard Tattoo to guide your journey, one drop of ink at a time.
             </p>
             <Link
-              to="/booking#form"
+              to="/booking#booking"
               className="inline-block cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg blog-hero-button"
             >
               Book Your Free Design Consult NOW
@@ -147,7 +147,7 @@ function Blog() {
               Book Your Session Today. Only 3 Spots Left This Month!
             </p>
             <Link
-              to="/booking"
+              to="/booking#booking"
               className="cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md transition-all duration-300 inline-flex items-center justify-center space-x-2"
             >
               Book Your Session Now

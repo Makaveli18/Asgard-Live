@@ -256,8 +256,9 @@ function Home() {
             </p>
             <div className="space-y-4">
               <Link 
-                to="/booking" 
-                className="inline-block w-full sm:w-auto cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg"
+                to="/booking#booking" 
+                to="/booking#booking" 
+                className="cta-button bg-firebrick text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-md transition-all duration-300 text-lg uppercase tracking-wider w-full max-w-lg mx-auto"
               >
                 Secure Your Spot NOW Before It's Gone!
               </Link>

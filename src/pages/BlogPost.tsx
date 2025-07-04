@@ -721,7 +721,7 @@ function BlogPost() {
                   Book your consultation today and let's create something legendary together.
                 </p>
                 <Link
-                  to="/booking"
+                  to="/booking#booking"
                   className="cta-button bg-firebrick text-white font-bold py-3 px-6 rounded-md transition-all duration-300 inline-flex items-center justify-center w-full"
                 >
                   <span>Book Your Session</span>
@@ -735,7 +735,7 @@ function BlogPost() {
 
       <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm p-4 border-t border-metallic-gold/30 transform transition-transform duration-300 lg:hidden">
         <Link
-          to="/booking"
+          to="/booking#booking"
           className="cta-button bg-firebrick text-white font-bold py-3 px-6 rounded-md transition-all duration-300 inline-flex items-center justify-center w-full"
         >
           <span>Book Your Session Now</span>

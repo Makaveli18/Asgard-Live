@@ -215,7 +215,7 @@ export default function Portfolio() {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <Link
-              to="/booking"
+              to="/booking#booking"
               className="inline-block cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg uppercase tracking-wider"
             >
               Book Your FREE Design Consult NOW

@@ -82,7 +82,7 @@ export function ImageViewer({ images, currentIndex, onClose, onNavigate }: Image
             </figcaption>
           )}
           <Link 
-            to={`/booking?piece=${fileName.replace(/\.(jpg|jpeg|png|webp)$/i, '')}`}
+            to={`/booking#booking?piece=${fileName.replace(/\.(jpg|jpeg|png|webp)$/i, '')}`}
             className="mt-4 inline-block bg-firebrick hover:bg-firebrick/90 text-white font-semibold py-3 px-4 md:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base"
           >
             🖋️ Book A FREE Consult On This Piece
