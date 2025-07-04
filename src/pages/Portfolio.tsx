@@ -79,6 +79,22 @@ export default function Portfolio() {
   // 2️⃣ grab the ":category" param
   const { category } = useParams<{ category?: CategoryId }>()
 
+  // 3️⃣ Handle category changes - scroll to gallery content
+  useEffect(() => {
+    if (category) {
+      // Small delay to ensure the page has rendered with new content
+      setTimeout(() => {
+        const galleryContent = document.getElementById('gallery-content');
+        if (galleryContent) {
+          galleryContent.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 300);
+    }
+  }, [category]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-black text-gray-100">
@@ -92,7 +108,7 @@ export default function Portfolio() {
     )
   }
 
-  // 3️⃣ Filter to only Portfolio images and derive main categories
+  // 4️⃣ Filter to only Portfolio images and derive main categories
   const allIds = categories.map((c) => c.id)
   
   // First, filter to only Portfolio images
@@ -121,7 +137,7 @@ export default function Portfolio() {
     derivedMainCategory: img.derivedMainCategory 
   })))
 
-  // 4️⃣ Apply main category filtering if specified
+  // 5️⃣ Apply main category filtering if specified
   let filtered: typeof portfolioImages
 
   if (category) {
@@ -141,7 +157,7 @@ export default function Portfolio() {
     console.log('No category filter, showing all:', filtered.length)
   }
 
-  // 5️⃣ map to gallery format
+  // 6️⃣ map to gallery format
   const galleryImages = filtered.map((r) => ({
     src: r.url,
     alt: r.description ?? `Tattoo artwork: ${r.file_name.replace(/-/g, " ").replace(/\.(jpg|jpeg|png|webp)$/i, "")}`,
@@ -234,7 +250,7 @@ export default function Portfolio() {
       />
 
       {/* Dynamic Gallery Header Section */}
-      <section className="bg-black relative z-10 py-12">
+      <section className="bg-black relative z-10 py-12" id="gallery-content">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-6 gallery-section-title">
