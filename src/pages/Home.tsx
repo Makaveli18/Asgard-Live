@@ -114,7 +114,7 @@ function Home() {
               </p>
               <div className="flex flex-col items-center space-y-8">
                 <Link 
-                  to="/booking" 
+                  to="/booking#form" 
                   className="cta-button bg-firebrick text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-md transition-all duration-300 text-lg uppercase tracking-wider w-full max-w-lg mx-auto"
                 >
                   DM us NOW to Secure Your Spot
@@ -256,7 +256,7 @@ function Home() {
             </p>
             <div className="space-y-4">
               <Link 
-                to="/booking#form" 
+                to="/booking#form"
                 className="cta-button bg-firebrick text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-md transition-all duration-300 text-lg uppercase tracking-wider w-full max-w-lg mx-auto"
               >
                 Secure Your Spot NOW Before It's Gone!
