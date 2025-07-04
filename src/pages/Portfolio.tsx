@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import { useImages, ImageRecord } from '../hooks/useImages'
 import { PortfolioGallery } from '../components/PortfolioGallery'
 import { PortfolioNavigation } from '../components/PortfolioNavigation'
@@ -75,9 +75,30 @@ const categoryToFolderMapping: Record<string, string> = {
 export default function Portfolio() {
   // 1️⃣ fetch all images from Supabase
   const { images, loading } = useImages()
+  const location = useLocation()
 
   // 2️⃣ grab the ":category" param
   const { category } = useParams<{ category?: CategoryId }>()
+
+  // Prevent scroll jump when switching categories
+  React.useEffect(() => {
+    // Only scroll to top if coming from a non-portfolio page
+    const referrer = document.referrer;
+    const isFromPortfolio = referrer.includes('/portfolio');
+    
+    if (!isFromPortfolio && !sessionStorage.getItem('portfolioNavigation')) {
+      // First time visiting portfolio, allow normal scroll behavior
+      return;
+    }
+    
+    // Mark that we're navigating within portfolio
+    sessionStorage.setItem('portfolioNavigation', 'true');
+    
+    // Clear the flag after a short delay
+    setTimeout(() => {
+      sessionStorage.removeItem('portfolioNavigation');
+    }, 1000);
+  }, [category]);
 
   if (loading) {
     return (

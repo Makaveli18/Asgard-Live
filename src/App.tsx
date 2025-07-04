@@ -21,7 +21,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Only scroll to top for non-portfolio category changes
+    const isPortfolioCategory = location.pathname.startsWith('/portfolio/');
+    const wasPortfolioCategory = sessionStorage.getItem('lastPath')?.startsWith('/portfolio/');
+    
+    if (!isPortfolioCategory || !wasPortfolioCategory) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Store current path for next navigation
+    sessionStorage.setItem('lastPath', location.pathname);
+    
     logPageView(location.pathname);
   }, [location.pathname]);
 
