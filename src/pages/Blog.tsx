@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { VideoBackground } from '../components/VideoBackground';
+import { extractYouTubeId } from '../utils/videoHelpers';
 
 const BlogSchema = {
   "@context": "https://schema.org",
@@ -51,6 +53,11 @@ const blogPosts = [
 ];
 
 function Blog() {
+  // YouTube video configuration
+  const heroVideoUrl = "https://youtu.be/aySoSye9Lx8";
+  const heroVideoId = extractYouTubeId(heroVideoUrl);
+  const fallbackImage = '/images/Mountain3.jpg';
+
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
@@ -60,21 +67,21 @@ function Blog() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(BlogSchema) }}
       />
 
-      {/* Hero Section with Mountain Background */}
+      {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Mountain Background Image */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/images/Mountain3.jpg')`,
-            backgroundAttachment: 'fixed',
-          }}
-        />
+        {/* Video Background */}
+        <VideoBackground
+          youtubeId={heroVideoId}
+          fallbackImage={fallbackImage}
+          autoplay={true}
+          showControls={false}
+          className="absolute inset-0"
+        >
+          {/* 20% Overlay */}
+          <div className="absolute inset-0 bg-black/20" />
+        </VideoBackground>
         
-        {/* Light overlay - max 30% as requested */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/15 to-black/30" />
-        
-        <div className="container mx-auto px-4 relative z-10 py-32 md:py-40 mt-24">
+        <div className="container mx-auto px-4 relative z-20 py-32 md:py-40 mt-24">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-cinzel text-metallic-gold mb-8 leading-tight blog-hero-title">
               Tattoo Stories, Viking Symbols & Ink Wisdom From the Best Tattoo Studio in Landshut
@@ -172,38 +179,32 @@ function Blog() {
           text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
         }
 
-        /* Responsive Background Optimization */
-        @media (max-width: 768px) {
-          [style*="background-image"] {
-            background-size: cover !important;
-            background-position: center 60% !important;
-            background-attachment: scroll !important;
-          }
-          
+        /* Enhanced Text Shadows for Video Background */
+        @media (max-width: 768px) {          
           .blog-hero-title {
-            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
           }
           
           .blog-hero-text {
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 0, 0, 0.4);
           }
           
           .blog-hero-button {
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
           }
         }
         
         @media (min-width: 769px) and (max-width: 1024px) {
-          [style*="background-image"] {
-            background-size: cover !important;
-            background-position: center 50% !important;
+          .blog-hero-title {
+            text-shadow: 2px 2px 14px rgba(0, 0, 0, 0.7), 0 0 22px rgba(0, 0, 0, 0.4);
           }
-        }
-        
-        @media (min-width: 1025px) {
-          [style*="background-image"] {
-            background-size: cover !important;
-            background-position: center 40% !important;
+          
+          .blog-hero-text {
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
+          }
+
+          .blog-hero-button {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
           }
         }
       `}</style>
