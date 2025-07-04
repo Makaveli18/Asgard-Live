@@ -23,6 +23,19 @@ function App() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     logPageView(location.pathname);
+    
+    // Handle hash navigation after route change
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+    }
   }, [location.pathname]);
 
   return (

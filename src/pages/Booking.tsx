@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ChevronDown, Clock, Shield, AlertCircle } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../components/ContactForm';
@@ -51,10 +52,35 @@ const AccordionItem = ({ question, answer }) => {
 function Booking() {
   const formRef = useRef(null);
   const isInView = useInView(formRef, { once: true });
+  const location = useLocation();
 
   useEffect(() => {
-    if (window.location.hash === '#form') {
-      formRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Handle hash navigation on initial load and hash changes
+    const handleHashNavigation = () => {
+      if (location.hash === '#form' && formRef.current) {
+        // Small delay to ensure the page has rendered
+        setTimeout(() => {
+          formRef.current?.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 100);
+      }
+    };
+
+    // Handle on mount and when hash changes
+    handleHashNavigation();
+  }, [location.hash]);
+
+  // Also handle direct hash navigation from other pages
+  useEffect(() => {
+    if (window.location.hash === '#form' && formRef.current) {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 300); // Longer delay for cross-page navigation
     }
   }, []);
 
