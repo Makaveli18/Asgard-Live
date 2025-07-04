@@ -256,8 +256,7 @@ function Home() {
             </p>
             <div className="space-y-4">
               <Link 
-                to="/booking#booking" 
-                to="/booking#booking" 
+                to="/booking#form" 
                 className="cta-button bg-firebrick text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-md transition-all duration-300 text-lg uppercase tracking-wider w-full max-w-lg mx-auto"
               >
                 Secure Your Spot NOW Before It's Gone!
