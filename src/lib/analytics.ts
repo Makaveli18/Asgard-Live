@@ -18,7 +18,7 @@ export const initGA = () => {
     }
   }
 
-  ReactGA.initialize('G-XXXXXXXXXX', {
+  ReactGA.initialize('G-YJXWLB162H', {
     gaOptions: {
       storage: analyticsEnabled ? 'granted' : 'denied'
     }
