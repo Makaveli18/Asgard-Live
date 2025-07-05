@@ -304,7 +304,7 @@ function About() {
                 "Imre didn't just give me a tattoo—he gave me a piece of art that tells my story. 
                 The attention to detail and the way he listened to my vision was incredible."
               </p>
-              <p className="text-metallic-gold font-semibold">— Marcus K.</p>
+              <p className="text-metallic-gold font-semibold">— Alex</p>
             </div>
             
             <div className="bg-viking-navy/30 p-6 rounded-lg border border-metallic-gold/30">
@@ -314,10 +314,9 @@ function About() {
                 ))}
               </div>
               <p className="text-gray-300 mb-4 italic">
-                "I was nervous about my first tattoo, but the team at Asgard made me feel like family. 
-                The result exceeded every expectation I had."
+                "I spent months looking for the right artist, afraid of making a bad decision. The moment I walked into Asgard, I knew I was in the right place. My tattoo isn't just ink - it's a legendary story I carry for life."
               </p>
-              <p className="text-metallic-gold font-semibold">— Sarah L.</p>
+              <p className="text-metallic-gold font-semibold">— Lara</p>
             </div>
             
             <div className="bg-viking-navy/30 p-6 rounded-lg border border-metallic-gold/30">
@@ -330,7 +329,7 @@ function About() {
                 "The Norse sleeve Imre created for me is a masterpiece. People stop me on the street 
                 to ask about it. This is art that will last a lifetime."
               </p>
-              <p className="text-metallic-gold font-semibold">— Erik V.</p>
+              <p className="text-metallic-gold font-semibold">— David</p>
             </div>
           </div>
         </div>
