@@ -13,7 +13,7 @@ const categories = [
   { 
     id: 'realism', 
     title: 'Realism',
-    description: 'Where flesh becomes canvas for photographic perfection—every shadow, every detail captured with the precision of Odin\'s all-seeing eye.'
+    description: 'Where flesh becomes canvas for photographic perfection - every shadow, every detail captured with the precision of Odin\'s all-seeing eye.'
   },
   { 
     id: 'fine-line', 
@@ -23,7 +23,7 @@ const categories = [
   { 
     id: 'norse', 
     title: 'Norse & Viking',
-    description: 'Ancient symbols of power and protection, forged in the fires of legend—where mythology meets flesh and warriors claim their birthright.'
+    description: 'Ancient symbols of power and protection, forged in the fires of legend - where mythology meets flesh and warriors claim their birthright.'
   },
   { 
     id: 'blackwork', 
@@ -33,17 +33,17 @@ const categories = [
   { 
     id: 'neo-traditional', 
     title: 'Neo-Traditional',
-    description: 'Classic artistry reborn with modern fire—where timeless techniques meet contemporary vision in a blaze of color and innovation.'
+    description: 'Classic artistry reborn with modern fire - where timeless techniques meet contemporary vision in a blaze of color and innovation.'
   },
   { 
     id: 'custom-fine-art', 
     title: 'Custom Fine Art',
-    description: 'Masterpieces born from collaboration between artist and warrior—unique visions brought to life through sacred artistic alchemy.'
+    description: 'Masterpieces born from collaboration between artist and warrior - unique visions brought to life through sacred artistic alchemy.'
   },
   { 
     id: 'abstract', 
     title: 'Abstract',
-    description: 'Where reality bends to artistic will—fluid forms and cosmic energies dance across skin like the northern lights across Midgard\'s sky.'
+    description: 'Where reality bends to artistic will - fluid forms and cosmic energies dance across skin like the northern lights across Midgard\'s sky.'
   },
   { 
     id: 'ornamental', 
@@ -189,7 +189,7 @@ export default function Portfolio() {
     if (category && currentCategory) {
       return currentCategory.description
     }
-    return 'Behold the complete arsenal of Asgard\'s legendary artistry—every style, every technique, every story waiting to be carved into your skin.'
+    return 'Behold the complete arsenal of Asgard\'s legendary artistry - every style, every technique, every story waiting to be carved into your skin.'
   }
 
   return (

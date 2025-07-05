@@ -101,7 +101,7 @@ function Blog() {
               Tattoo Stories, Viking Symbols & Ink Wisdom From the Best Tattoo Studio in Landshut
             </h1>
             <p className="text-lg md:text-xl text-white mb-12 font-cinzel leading-relaxed max-w-3xl mx-auto blog-hero-text">
-              From aftercare secrets to Norse meanings and custom ink inspiration — this is where warriors learn before they burn. Every blog post is handcrafted by the artists at Asgard Tattoo to guide your journey, one drop of ink at a time.
+              From aftercare secrets to Norse meanings and custom ink inspiration - this is where warriors learn before they burn. Every blog post is handcrafted by the artists at Asgard Tattoo to guide your journey, one drop of ink at a time.
             </p>
             <Link
               to="/booking#form"
@@ -162,7 +162,7 @@ function Blog() {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-metallic-gold mb-6">
-              💥 Want a Viking-Inspired Masterpiece?
+             💥 Want a Viking-Inspired Masterpiece?
             </h2>
             <p className="text-xl text-gray-300 mb-8">
               Book Your Session Today. Only 3 Spots Left This Month!

@@ -197,7 +197,7 @@ function About() {
                     With over 5 years of mastering the sacred arts of tattooing, Imre has transformed 
                     thousands of blank canvases into living masterpieces. His specialty? 
                     <span className="text-metallic-gold font-semibold"> Norse mythology, Viking symbolism, and custom realism</span> 
-                    that doesn't just look incredible—it tells your story.
+                    that doesn't just look incredible - it tells your story.
                   </p>
                   
                   <p>
@@ -231,9 +231,9 @@ function About() {
                 <blockquote className="border-l-4 border-metallic-gold pl-6 py-4 bg-viking-navy/30 rounded-r-lg mt-8">
                   <p className="text-lg italic text-gray-300 mb-2">
                     "Every tattoo is a conversation between the client's soul and my needle. 
-                    My job isn't just to create art—it's to help you discover the warrior within."
+                    My job isn't just to create art - it's to help you discover the warrior within."
                   </p>
-                  <cite className="text-metallic-gold font-semibold">— Imre, Master Artist</cite>
+                  <cite className="text-metallic-gold font-semibold">- Imre, Master Artist</cite>
                 </blockquote>
               </div>
             </div>
@@ -262,7 +262,7 @@ function About() {
                 <h3 className="text-xl font-bold text-metallic-gold mb-4">🛡️ Family, Not Just Clients</h3>
                 <p className="text-gray-300">
                   From your first consultation to your final touch-up, you're part of the Asgard family. 
-                  We're here for life—your tattoo journey doesn't end when you leave our chair.
+                  We're here for life - your tattoo journey doesn't end when you leave our chair.
                 </p>
               </div>
               
@@ -270,7 +270,7 @@ function About() {
                 <h3 className="text-xl font-bold text-metallic-gold mb-4">⚔️ Legendary Craftsmanship</h3>
                 <p className="text-gray-300">
                   Every line, every shade, every detail is executed with the precision of a master craftsman. 
-                  We don't just create tattoos—we forge legends.
+                  We don't just create tattoos - we forge legends.
                 </p>
               </div>
               
@@ -301,10 +301,10 @@ function About() {
                 ))}
               </div>
               <p className="text-gray-300 mb-4 italic">
-                "Imre didn't just give me a tattoo—he gave me a piece of art that tells my story. 
+                "Imre didn't just give me a tattoo - he gave me a piece of art that tells my story. 
                 The attention to detail and the way he listened to my vision was incredible."
               </p>
-              <p className="text-metallic-gold font-semibold">— Alex</p>
+              <p className="text-metallic-gold font-semibold">- Alex</p>
             </div>
             
             <div className="bg-viking-navy/30 p-6 rounded-lg border border-metallic-gold/30">
@@ -316,7 +316,7 @@ function About() {
               <p className="text-gray-300 mb-4 italic">
                 "I spent months looking for the right artist, afraid of making a bad decision. The moment I walked into Asgard, I knew I was in the right place. My tattoo isn't just ink - it's a legendary story I carry for life."
               </p>
-              <p className="text-metallic-gold font-semibold">— Lara</p>
+              <p className="text-metallic-gold font-semibold">- Lara</p>
             </div>
             
             <div className="bg-viking-navy/30 p-6 rounded-lg border border-metallic-gold/30">
@@ -329,7 +329,7 @@ function About() {
                 "The Norse sleeve Imre created for me is a masterpiece. People stop me on the street 
                 to ask about it. This is art that will last a lifetime."
               </p>
-              <p className="text-metallic-gold font-semibold">— David</p>
+              <p className="text-metallic-gold font-semibold">- David</p>
             </div>
           </div>
         </div>
@@ -363,7 +363,7 @@ function About() {
                 </div>
                 <h3 className="text-xl font-bold text-metallic-gold mb-2">Design</h3>
                 <p className="text-gray-300">
-                  Custom artwork created specifically for you—no templates, no shortcuts, just pure artistry.
+                  Custom artwork created specifically for you - no templates, no shortcuts, just pure artistry.
                 </p>
               </div>
               
@@ -383,7 +383,7 @@ function About() {
                 </div>
                 <h3 className="text-xl font-bold text-metallic-gold mb-2">Legacy</h3>
                 <p className="text-gray-300">
-                  You leave with more than ink—you carry a piece of art that tells your story forever.
+                  You leave with more than ink - you carry a piece of art that tells your story forever.
                 </p>
               </div>
             </div>
@@ -418,7 +418,7 @@ function About() {
               <div className="bg-viking-navy/30 border border-metallic-gold/30 rounded-lg p-6 max-w-2xl mx-auto">
                 <p className="text-white text-lg">
                   <strong className="text-metallic-gold">🛡️ The Asgard Promise:</strong> 
-                  Every consultation is completely FREE. No pressure, no obligation—just pure creative collaboration 
+                  Every consultation is completely FREE. No pressure, no obligation - just pure creative collaboration 
                   to bring your vision to life.
                 </p>
               </div>

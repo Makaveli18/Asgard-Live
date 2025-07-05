@@ -113,7 +113,7 @@ function Home() {
           <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black animate-fade-in text-metallic-gold leading-tight mb-6 hero-title">
-                Unleash Your Inner Warrior – Your Next Battle Mark Awaits
+                Unleash Your Inner Warrior - Your Next Battle Mark Awaits
               </h1>
               <p className="text-base sm:text-lg md:text-xl subtitle text-gray-100 mb-12 mx-auto max-w-3xl">
                 The Best Tattoo Studio in Landshut, Trusted by Thousands of Warriors To Tell Their Tales Through Our Sacred Arts
@@ -258,7 +258,7 @@ function Home() {
           </h2>
           <div className="max-w-4xl mx-auto">
             <p className="text-xl mb-8 text-gray-300 leading-relaxed">
-              Every studio can slap a name on a sign, but Asgard is different. Our work speaks for itself. Over 500 warriors have entrusted us with their skin. From legendary full sleeves to sacred symbols, Asgard tattoos aren't just ink—they're battle marks for life.
+              Every studio can slap a name on a sign, but Asgard is different. Our work speaks for itself. Over 500 warriors have entrusted us with their skin. From legendary full sleeves to sacred symbols, Asgard tattoos aren't just ink - they're battle marks for life.
             </p>
             <div className="space-y-4">
               <Link 

@@ -15,7 +15,7 @@ export const blogPosts = {
       <div className="prose prose-invert prose-lg max-w-none text-[#F5F5F5] prose-headings:text-[#D4AF37]">
         <p className="text-xl mb-6">
           Some people get tattoos.<br />
-          Others? They get marked.
+         Others? They get marked.
         </p>
 
         <p className="mb-8">
@@ -23,7 +23,7 @@ export const blogPosts = {
         </p>
 
         <p className="mb-8">
-          Because Norse symbols aren't just decorations — they're ancient signals.<br />
+          Because Norse symbols aren't just decorations - they're ancient signals.<br />
           Messages to the gods. Weapons of the spirit. Warnings to the weak.
         </p>
 
@@ -34,7 +34,7 @@ export const blogPosts = {
 
         <p className="mb-8">
           At Asgard Tattoo, we've seen these symbols change people.<br />
-          Not just how they look — but how they walk.<br />
+          Not just how they look - but how they walk.<br />
           How they stand.<br />
           How they carry themselves after choosing to wear meaning on their skin.
         </p>
@@ -51,7 +51,7 @@ export const blogPosts = {
               className="w-full max-w-2xl mx-auto rounded-lg mb-8"
             />
             <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
-              🧭 Vegvisir — The Norse Compass
+              🧭 Vegvisir - The Norse Compass
             </h2>
             <p className="italic text-xl mb-4">"That which shows the way."</p>
             <p className="mb-4">
@@ -73,15 +73,15 @@ export const blogPosts = {
               className="w-full max-w-2xl mx-auto rounded-lg mb-8"
             />
             <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
-              ⚔️ Helm of Awe (Ægishjálmr) — The Fearbreaker
+              ⚔️ Helm of Awe (Ægishjálmr) - The Fearbreaker
             </h2>
             <p className="mb-4">This is armor in ink.</p>
             <p className="mb-4">
               The Helm of Awe was carved into helmets, shields, and skin by warriors about to face death.<br />
-              Not to bring them peace — but to strike fear into their enemies.
+              Not to bring them peace - but to strike fear into their enemies.
             </p>
             <p className="text-xl font-semibold text-[#D4AF37]">
-              You wear this when you've faced fear… and made fear back down.
+              You wear this when you've faced fear... and made fear back down.
             </p>
           </div>
 
@@ -92,14 +92,14 @@ export const blogPosts = {
               className="w-full max-w-2xl mx-auto rounded-lg mb-8"
             />
             <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
-              🌳 Yggdrasil — The Tree of Life
+              🌳 Yggdrasil - The Tree of Life
             </h2>
             <p className="mb-4">
               This is the backbone of Norse mythology.<br />
               It connects all worlds. Life. Death. The divine.
             </p>
             <p className="mb-4">
-              If your story has roots — family, struggle, rebirth — Yggdrasil isn't just a symbol. It's your lineage.
+              If your story has roots - family, struggle, rebirth - Yggdrasil isn't just a symbol. It's your lineage.
             </p>
             <p className="text-xl font-semibold text-[#D4AF37]">
               Ink it when you want to show:<br />
@@ -114,7 +114,7 @@ export const blogPosts = {
               className="w-full max-w-2xl mx-auto rounded-lg mb-8"
             />
             <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
-              🐺 Fenrir — The Wolf Who Broke His Chains
+              🐺 Fenrir - The Wolf Who Broke His Chains
             </h2>
             <p className="mb-4">
               Bound by gods. Feared by all.<br />
@@ -124,7 +124,7 @@ export const blogPosts = {
               Fenrir didn't play by their rules. He tore the sky open when they pushed too far.
             </p>
             <p className="mb-4">
-              If you've ever been silenced, underestimated, restrained — and fought your way out?
+              If you've ever been silenced, underestimated, restrained - and fought your way out?
             </p>
             <p className="text-xl font-semibold text-[#D4AF37]">
               You are Fenrir. And this is your rebellion.
@@ -138,11 +138,11 @@ export const blogPosts = {
               className="w-full max-w-2xl mx-auto rounded-lg mb-8"
             />
             <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
-              🧠 Valknut — The Knot of the Slain
+              🧠 Valknut - The Knot of the Slain
             </h2>
             <p className="mb-4">
               Three interlocking triangles. Sacred geometry for warriors who live by a code.<br />
-              The Valknut is tied to Odin's chosen — those who die with honor, in battle, in life, in principle.
+              The Valknut is tied to Odin's chosen - those who die with honor, in battle, in life, in principle.
             </p>
             <p className="mb-4">
               It's not just about dying well.<br />
@@ -161,15 +161,15 @@ export const blogPosts = {
               className="w-full max-w-2xl mx-auto rounded-lg mb-8"
             />
             <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
-              🍻 Skaldenmet — The Mead of Poets & Visionaries
+              🍻 Skaldenmet - The Mead of Poets & Visionaries
             </h2>
             <p className="mb-4">Not all warriors carry blades. Some carry truth.</p>
             <p className="mb-4">
-              Skaldenmet is the divine mead stolen by Odin and given to those worthy of inspiration — the poets, the bards, the rebels with vision.
+              Skaldenmet is the divine mead stolen by Odin and given to those worthy of inspiration - the poets, the bards, the rebels with vision.
             </p>
             <p className="mb-8">
-              If you see the world differently…<br />
-              If you speak what others stay quiet about…<br />
+              If you see the world differently...<br />
+              If you speak what others stay quiet about...<br />
               If your soul burns with creativity or chaos?
             </p>
             <p className="text-xl font-semibold text-[#D4AF37]">This ink is for you.</p>
@@ -184,7 +184,7 @@ export const blogPosts = {
           We honor them.
         </p>
         <p className="mb-8">
-          Each piece is custom-built from your story — not Pinterest.<br />
+          Each piece is custom-built from your story - not Pinterest.<br />
           Each design is crafted through conversation, consultation, and intention.
         </p>
         <p className="mb-12">
@@ -214,7 +214,7 @@ export const blogPosts = {
 
         <div className="bg-viking-navy/20 p-8 rounded-lg border border-metallic-gold/30 my-12">
           <p className="text-2xl font-bold text-[#D4AF37] mb-4">
-            🛡️ Asgard Tattoo – Where Warriors, Creators, and Legends Get Marked.
+            🛡️ Asgard Tattoo - Where Warriors, Creators, and Legends Get Marked.
           </p>
           <p className="text-xl text-[#D4AF37]">
             🔥 Only 3 Booking Slots Left This Month. Claim Your Spot Among the Chosen.
@@ -232,7 +232,7 @@ export const blogPosts = {
     content: () => (
       <div className="prose prose-invert prose-lg max-w-none text-[#F5F5F5] prose-headings:text-[#D4AF37]">
         <p className="text-xl mb-6">
-          You don't just wake up and decide to let someone etch your skin for life without doing your homework — or at least, you shouldn't.
+          You don't just wake up and decide to let someone etch your skin for life without doing your homework - or at least, you shouldn't.
         </p>
 
         <p className="mb-8">
@@ -240,7 +240,7 @@ export const blogPosts = {
         </p>
 
         <p className="mb-8">
-          So here's the real talk — how do you actually choose the right tattoo artist?
+          So here's the real talk - how do you actually choose the right tattoo artist?
         </p>
 
         <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
@@ -248,7 +248,7 @@ export const blogPosts = {
         </h2>
         <p className="mb-8">
           Scroll. Zoom. Zoom again.<br />
-          Don't just look at the fresh ink — you want to see healed tattoos. Any artist can make something look dope for 24 hours. But will it still hold its lines, contrast, and color three months from now?<br /><br />
+          Don't just look at the fresh ink - you want to see healed tattoos. Any artist can make something look dope for 24 hours. But will it still hold its lines, contrast, and color three months from now?<br /><br />
           At Asgard, we pride ourselves on showing before-and-after healing comparisons so you see the truth, not the hype.
         </p>
 
@@ -297,7 +297,7 @@ export const blogPosts = {
         </p>
 
         <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
-          5. Ask Questions — Smart Artists Love Smart Clients
+          5. Ask Questions - Smart Artists Love Smart Clients
         </h2>
         <p className="mb-8">
           If your artist can't explain needle depth, ink quality, or placement advice? Red flag.<br />
@@ -307,7 +307,7 @@ export const blogPosts = {
         <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">Bottom Line?</h2>
         <p className="mb-8">
           Don't rush the most permanent decision you'll ever make.<br />
-          Explore, ask, compare — and when you find the artist who gets you, you'll know.
+          Explore, ask, compare - and when you find the artist who gets you, you'll know.
         </p>
 
         <div className="bg-viking-navy/20 p-6 rounded-lg border border-metallic-gold/30 my-8">
@@ -315,7 +315,7 @@ export const blogPosts = {
             And if you're in Landshut?
           </p>
           <p className="text-xl text-[#D4AF37]">
-            🛡️ Asgard Tattoo isn't just another studio — we're the fortress of local ink legends.
+            🛡️ Asgard Tattoo isn't just another studio - we're the fortress of local ink legends.
           </p>
         </div>
 
@@ -339,11 +339,11 @@ export const blogPosts = {
     content: () => (
       <div className="prose prose-invert prose-lg max-w-none text-[#F5F5F5] prose-headings:text-[#D4AF37]">
         <p className="text-xl mb-6">
-          Let's get something straight — not all tattoo artists are created equal.
+          Let's get something straight - not all tattoo artists are created equal.
         </p>
 
         <p className="mb-8">
-          There are tattoo technicians… and then there are tattoo architects. Artists who listen. Design. Execute like maniacs.
+          There are tattoo technicians... and then there are tattoo architects. Artists who listen. Design. Execute like maniacs.
           You want a custom piece? Then you don't settle for the "guy with the walk-in sign."
         </p>
 
@@ -359,7 +359,7 @@ export const blogPosts = {
           Why Custom Work Requires a Different Breed of Artist
         </h2>
         <p className="mb-8">
-          Custom tattoos aren't just designs. They're stories — yours. And they deserve to be told in a way that hits hard and heals right.
+          Custom tattoos aren't just designs. They're stories - yours. And they deserve to be told in a way that hits hard and heals right.
         </p>
 
         <p className="mb-8">
@@ -370,7 +370,7 @@ export const blogPosts = {
           1. They Ask More Questions Than You Do
         </h2>
         <p className="mb-4">
-          The best artists don't just draw. They extract your vision — even if it's still foggy in your own head.
+          The best artists don't just draw. They extract your vision - even if it's still foggy in your own head.
         </p>
         <p className="mb-8">
           At Asgard, our consults are like a creative therapy session:
@@ -457,7 +457,7 @@ export const blogPosts = {
             🛡️ Asgard Tattoo = Custom Masterpieces. Real Stories. Ink That Hits Different.
           </p>
           <p className="text-lg text-[#D4AF37]">
-            🔥 Only 3 Spots Left This Month – Book Your Consultation Today Before They're Gone.
+            🔥 Only 3 Spots Left This Month - Book Your Consultation Today Before They're Gone.
           </p>
         </div>
       </div>
@@ -486,7 +486,7 @@ export const blogPosts = {
         </p>
 
         <p className="mb-8">
-          Here are the 7 biggest mistakes that'll screw up your ink — and how to avoid them.
+          Here are the 7 biggest mistakes that'll screw up your ink - and how to avoid them.
         </p>
 
         <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
@@ -504,7 +504,7 @@ export const blogPosts = {
         <p className="mb-8">
           No, your coconut-scented beach cream won't help.
           Some lotions clog pores or contain perfumes that irritate the healing skin.<br /><br />
-          Stick to unscented, tattoo-specific balms — or get our aftercare guide with every session at Asgard.
+          Stick to unscented, tattoo-specific balms - or get our aftercare guide with every session at Asgard.
         </p>
 
         <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
@@ -548,17 +548,17 @@ export const blogPosts = {
           "That one guy" with 12 tattoos and zero clue.<br /><br />
           He'll tell you to use Vaseline, or rub it with whiskey, or let your dog lick it for "natural healing enzymes."<br />
           Block that advice. And maybe block him too.<br /><br />
-          Follow your artist's instructions — not your cousin Steve.
+          Follow your artist's instructions - not your cousin Steve.
         </p>
 
         <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">
           7. Ignoring Touch-Up Advice
         </h2>
         <p className="mb-8">
-          A touch-up isn't a failure — it's a fine-tune.
+          A touch-up isn't a failure - it's a fine-tune.
           Sometimes, even when you do everything right, your body doesn't hold the ink 100%.<br /><br />
           That's why we offer free touch-up support at Asgard when you follow the aftercare guide.
-          Because your art deserves to shine — always.
+          Because your art deserves to shine - always.
         </p>
 
         <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">Bottom Line?</h2>
@@ -572,13 +572,13 @@ export const blogPosts = {
             💀 Want tattoos that heal right AND look legendary?
           </p>
           <p className="text-lg text-[#D4AF37]">
-            Asgard Tattoo gives you pro aftercare, step-by-step — and we're always here for questions after the needle's down.
+            Asgard Tattoo gives you pro aftercare, step-by-step - and we're always here for questions after the needle's down.
           </p>
         </div>
 
         <div className="bg-viking-navy/20 p-6 rounded-lg border border-metallic-gold/30 my-8">
           <p className="text-xl text-[#D4AF37]">
-            🔥 Book your consult today. We don't just ink — we make your story last.
+            🔥 Book your consult today. We don't just ink - we make your story last.
           </p>
         </div>
       </div>
