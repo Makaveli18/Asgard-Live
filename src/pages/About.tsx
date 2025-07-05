@@ -201,7 +201,7 @@ function About() {
                   </p>
                   
                   <p>
-                    But here's what sets Imre apart: <em>He doesn't just tattoo you. He listens to you.</em> 
+                    But here's what sets Imre apart: <em>He doesn't just tattoo you.  He listens to you.</em> 
                     Every consultation is a journey of discovery, where your vision meets his expertise 
                     to create something that's uniquely, powerfully, undeniably <strong>you</strong>.
                   </p>
