@@ -217,7 +217,7 @@ export const blogPosts = {
             🛡️ Asgard Tattoo - Where Warriors, Creators, and Legends Get Marked.
           </p>
           <p className="text-xl text-[#D4AF37]">
-            🔥 Only 3 Booking Slots Left This Month. Claim Your Spot Among the Chosen.
+            🔥 Only 6 Booking Slots Left This Month. Claim Your Spot Among the Chosen.
           </p>
         </div>
       </div>
@@ -324,7 +324,7 @@ export const blogPosts = {
             🔥 Want a Viking-Inspired Masterpiece?
           </p>
           <p className="text-lg text-[#D4AF37]">
-            Book Your Session Today. Only 3 Spots Left This Month!
+            Book Your Session Today. Only 6 Spots Left This Month!
           </p>
         </div>
       </div>
@@ -457,7 +457,7 @@ export const blogPosts = {
             🛡️ Asgard Tattoo = Custom Masterpieces. Real Stories. Ink That Hits Different.
           </p>
           <p className="text-lg text-[#D4AF37]">
-            🔥 Only 3 Spots Left This Month - Book Your Consultation Today Before They're Gone.
+            🔥 Only 6 Spots Left This Month - Book Your Consultation Today Before They're Gone.
           </p>
         </div>
       </div>
