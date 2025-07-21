@@ -165,7 +165,7 @@ function Blog() {
              💥 Want a Viking-Inspired Masterpiece?
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Book Your Session Today. Only 3 Spots Left This Month!
+              Only 6 Spots Left This Month!
             </p>
             <Link
               to="/booking#form"

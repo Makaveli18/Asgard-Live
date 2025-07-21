@@ -412,7 +412,7 @@ function About() {
               </Link>
               
               <p className="text-metallic-gold font-semibold text-lg animate-pulse">
-                Only 3 Spots Left This Month - Your Legend Can't Wait!
+                Only 6 Spots Left This Month - Your Legend Can't Wait!
               </p>
               
               <div className="bg-viking-navy/30 border border-metallic-gold/30 rounded-lg p-6 max-w-2xl mx-auto">
