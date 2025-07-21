@@ -112,11 +112,11 @@ function Home() {
           {/* Content Container */}
           <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
             <div className="max-w-4xl w-full mx-auto text-center">
-              <h1 className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-black animate-fade-in text-gray-100 leading-tight mb-6 hero-title">
-                The Best Tattoo Studio in Landshut, Trusted by Thousands of Warriors To Tell Their Tales Through Our Sacred Arts
-              </h1>
-              <p className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl subtitle text-metallic-gold mb-12 mx-auto max-w-3xl font-black leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black animate-fade-in text-metallic-gold leading-tight mb-6 hero-title">
                 Unleash Your Inner Warrior - Your Next Battle Mark Awaits
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl subtitle text-gray-100 mb-12 mx-auto max-w-3xl">
+                The Best Tattoo Studio in Landshut, Trusted by Thousands of Warriors To Tell Their Tales Through Our Sacred Arts
               </p>
               <div className="flex flex-col items-center space-y-8">
                 <Link 
