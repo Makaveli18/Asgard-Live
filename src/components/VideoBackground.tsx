@@ -98,10 +98,14 @@ export function VideoBackground({
       {videoUrl && !videoUrl.includes('youtube') && (
         <video
           ref={videoRef}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+          className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
             videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
           }`}
-          style={{ objectFit: 'cover' }}
+          style={{ 
+            objectFit: 'contain',
+            objectPosition: 'center',
+            backgroundColor: 'black'
+          }}
           autoPlay={autoplay}
           muted
           loop

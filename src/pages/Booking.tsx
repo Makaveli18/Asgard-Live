@@ -98,7 +98,7 @@ function Booking() {
           fallbackImage="/images/Viking-stone-blood-drawing.jpg"
           autoplay={true}
           showControls={false}
-          className="absolute inset-0"
+          className="absolute inset-0 bg-black"
         >
           {/* Content Container */}
           <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
