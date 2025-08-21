@@ -111,14 +111,12 @@ export function ResponsiveVideoBackground({
             modestbranding: true,
             rel: false
           })}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
-            videoLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
+          className="absolute inset-0 w-full h-full"
           style={{
-            objectFit: 'contain',
-            height: '56.25vw', // 16:9 aspect ratio
+            width: '100vw',
+            height: '56.25vw',
             minHeight: '100vh',
-            minWidth: '177.77vh', // 16:9 aspect ratio
+            minWidth: '177.77vh',
             transform: 'translate(-50%, -50%)',
             top: '50%',
             left: '50%'
@@ -127,30 +125,33 @@ export function ResponsiveVideoBackground({
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           title="Background Video"
-          onLoad={() => setVideoLoaded(true)}
         />
       ) : (
         /* Direct Video File Background for Desktop */
         <video
-        ref={videoRef}
-        className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
-          videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
-        }`}
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full"
           style={{ 
-            width: '100%',
-            height: '100%'
+            width: '100vw',
+            height: '56.25vw',
+            minHeight: '100vh',
+            minWidth: '177.77vh',
+            transform: 'translate(-50%, -50%)',
+            top: '50%',
+            left: '50%',
+            objectFit: 'cover'
           }}
-        autoPlay={autoplay}
-        muted
-        loop
-        playsInline
-        controls={showControls}
-        onLoadedData={() => setVideoLoaded(true)}
-        onError={() => setVideoError(true)}
-      >
-        <source src={videoSource} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+          autoPlay={autoplay}
+          muted
+          loop
+          playsInline
+          controls={showControls}
+          onLoadedData={() => setVideoLoaded(true)}
+          onError={() => setVideoError(true)}
+        >
+          <source src={videoSource} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       )}
 
       {/* Fallback Image for Desktop (if video fails) */}
@@ -162,6 +163,9 @@ export function ResponsiveVideoBackground({
           backgroundImage: `url(${fallbackImage})`
         }}
       />
+
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
       {/* Content */}
       {children && (
