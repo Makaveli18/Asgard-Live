@@ -221,7 +221,7 @@ export default function Portfolio() {
           className="absolute inset-0"
         >
           {/* Content Container */}
-          <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-['Uncial_Antiqua'] text-metallic-gold mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
                 Your Story Deserves A Masterpiece. Let's Ink It Today!

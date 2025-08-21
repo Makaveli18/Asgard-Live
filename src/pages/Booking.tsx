@@ -106,7 +106,7 @@ function Booking() {
           fallbackImage="/images/Viking-stone-blood-drawing.jpg"
           className="absolute inset-0"
         >
-          <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="font-['Uncial_Antiqua'] text-4xl md:text-6xl lg:text-7xl text-metallic-gold mb-6 leading-tight booking-hero-title">
                 Lock In Your Next Masterpiece

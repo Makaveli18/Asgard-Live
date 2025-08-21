@@ -86,7 +86,7 @@ function Blog() {
           <div className={`absolute inset-0 bg-gradient-to-b ${shouldUseMobile ? 'from-black/85 via-black/65 to-black/85' : 'from-black/70 via-black/50 to-black/80'}`} />
         </div>
 
-        <div className="container mx-auto px-4 relative z-20 py-32 md:py-40 mt-24">
+        <div className="container mx-auto px-4 relative z-20 py-20 md:py-24 mt-16">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-['Uncial_Antiqua'] text-metallic-gold mb-8 leading-tight blog-hero-title">
               Tattoo Stories, Viking Symbols & Ink Wisdom From the Best Tattoo Studio in Landshut

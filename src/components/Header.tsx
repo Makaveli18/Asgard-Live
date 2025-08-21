@@ -30,7 +30,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             <Link 
               to="/" 
               className={`nav-link font-bold ${location.pathname === '/' ? 'text-metallic-gold' : ''}`}
@@ -74,7 +74,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-          <nav className="flex flex-col items-center space-y-4 py-4">
+          <nav className="flex flex-col items-center space-y-3 py-3">
             <Link 
               to="/" 
               className={`nav-link font-bold ${location.pathname === '/' ? 'text-metallic-gold' : ''}`}

@@ -115,7 +115,7 @@ export function ResponsiveVideoBackground({
             videoLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
-            width: '100vw',
+            objectFit: 'contain',
             height: '56.25vw', // 16:9 aspect ratio
             minHeight: '100vh',
             minWidth: '177.77vh', // 16:9 aspect ratio
@@ -160,7 +160,7 @@ export function ResponsiveVideoBackground({
         }`}
         style={{ 
           backgroundImage: `url(${fallbackImage})`,
-          backgroundSize: 'cover',
+          backgroundSize: shouldUseMobile ? 'cover' : 'contain',
           backgroundPosition: 'center center'
         }}
       />

@@ -75,7 +75,7 @@ function About() {
         </div>
         
         <div className="relative h-full flex items-center justify-center min-h-screen z-10">
-          <div className="container mx-auto px-4 py-32 md:py-40 mt-24">
+          <div className="container mx-auto px-4 py-20 md:py-24 mt-16">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="
                 text-4xl sm:text-5xl md:text-6xl lg:text-7xl
