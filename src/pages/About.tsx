@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { isMobile, isTablet } from 'react-device-detect';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import valknutBg from '/images/ryan-crosby-valknut.jpg';
@@ -9,6 +10,13 @@ import { Star, Award, Users, Shield, Clock, Palette, Sword, Heart } from 'lucide
 function About() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const shouldUseMobile = isClient && (isMobile || isTablet);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,17 +48,17 @@ function About() {
         <div 
           ref={heroRef}
           className={`
-            absolute inset-0 w-full h-full pt-32 md:pt-40
+            absolute inset-0 w-full h-full ${shouldUseMobile ? 'pt-24' : 'pt-32 md:pt-40'}
             transition-opacity duration-700
             ${imageLoaded ? 'opacity-100' : 'opacity-0'}
           `}
         >
           <div
-            className="absolute inset-x-0 top-[4rem] md:top-[5rem] bottom-0 bg-center bg-no-repeat mx-auto max-w-[2000px] about-hero-bg"
+            className={`absolute inset-x-0 ${shouldUseMobile ? 'top-[3rem]' : 'top-[4rem] md:top-[5rem]'} bottom-0 bg-center bg-no-repeat mx-auto max-w-[2000px] about-hero-bg`}
             style={{
               backgroundImage: `url(${valknutBg})`,
-              backgroundSize: 'contain',
-              backgroundPosition: 'center 15%',
+              backgroundSize: shouldUseMobile ? 'cover' : 'contain',
+              backgroundPosition: shouldUseMobile ? 'center center' : 'center 15%',
               transform: 'scale(1.05)',
               willChange: 'transform',
               margin: '0 auto',
@@ -61,7 +69,7 @@ function About() {
           />
           
           <div 
-            className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/70"
+            className={`absolute inset-0 bg-gradient-to-b ${shouldUseMobile ? 'from-black/85 via-black/60 to-black/85' : 'from-black/80 via-black/50 to-black/70'}`}
             style={{ mixBlendMode: 'multiply' }}
           />
         </div>

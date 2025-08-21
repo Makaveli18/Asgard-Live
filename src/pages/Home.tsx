@@ -23,7 +23,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../components/ContactForm';
 import { ImageAutoSlider } from '../components/ui/image-auto-slider';
-import { VideoBackground } from '../components/VideoBackground';
+import { ResponsiveVideoBackground } from '../components/ResponsiveVideoBackground';
 import { extractYouTubeId } from '../utils/videoHelpers';
 
 // Service Icons Components
@@ -101,12 +101,10 @@ function Home() {
       
       {/* Hero Section with Video Background */}
       <section className="relative w-full overflow-hidden flex items-center justify-center min-h-screen">
-        {/* Video Background */}
-        <VideoBackground
-          youtubeId={heroVideoId}
+        {/* Responsive Video Background */}
+        <ResponsiveVideoBackground
+          videoUrl="https://www.youtube.com/watch?v=-OJpeMwcj1w"
           fallbackImage={vikingBackground}
-          autoplay={true}
-          showControls={false}
           className="absolute inset-0"
         >
           {/* Content Container */}
@@ -133,7 +131,7 @@ function Home() {
               </div>
             </div>
           </div>
-        </VideoBackground>
+        </ResponsiveVideoBackground>
       </section>
 
       {/* Introduction */}

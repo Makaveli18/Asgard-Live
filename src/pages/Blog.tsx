@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { isMobile, isTablet } from 'react-device-detect';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -51,6 +52,14 @@ const blogPosts = [
 ];
 
 function Blog() {
+  const [isClient, setIsClient] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const shouldUseMobile = isClient && (isMobile || isTablet);
+
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
@@ -68,13 +77,13 @@ function Blog() {
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: `url(/images/asgard-thor-loki-airbrush-wall.jpg)`,
-              backgroundSize: 'contain',
-              backgroundPosition: 'center 75%',
+              backgroundSize: shouldUseMobile ? 'cover' : 'contain',
+              backgroundPosition: shouldUseMobile ? 'center center' : 'center 75%',
               backgroundRepeat: 'no-repeat',
             }}
           />
           {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+          <div className={`absolute inset-0 bg-gradient-to-b ${shouldUseMobile ? 'from-black/85 via-black/65 to-black/85' : 'from-black/70 via-black/50 to-black/80'}`} />
         </div>
 
         <div className="container mx-auto px-4 relative z-20 py-32 md:py-40 mt-24">

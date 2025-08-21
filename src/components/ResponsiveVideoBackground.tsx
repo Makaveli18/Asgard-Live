@@ -74,7 +74,8 @@ export function ResponsiveVideoBackground({
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{ 
             backgroundImage: `url(${fallbackImage})`,
-            backgroundAttachment: 'fixed' // Parallax effect on mobile
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center'
           }}
         />
         
@@ -102,7 +103,7 @@ export function ResponsiveVideoBackground({
         }`}
         style={{ 
           objectFit: 'cover',
-          objectPosition: 'center'
+          objectPosition: 'center center'
         }}
         autoPlay={autoplay}
         muted
@@ -121,7 +122,11 @@ export function ResponsiveVideoBackground({
         className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-700 ${
           videoLoaded && !videoError ? 'opacity-0' : 'opacity-100'
         }`}
-        style={{ backgroundImage: `url(${fallbackImage})` }}
+        style={{ 
+          backgroundImage: `url(${fallbackImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center'
+        }}
       />
 
       {/* Desktop overlay for better text readability */}

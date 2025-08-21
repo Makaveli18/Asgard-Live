@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams, useLocation } from 'react-router-dom'
+import { isMobile, isTablet } from 'react-device-detect'
 import { useImages, ImageRecord } from '../hooks/useImages'
 import { PortfolioGallery } from '../components/PortfolioGallery'
 import { PortfolioNavigation } from '../components/PortfolioNavigation'
@@ -7,7 +8,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Breadcrumb } from '../components/Breadcrumb'
 import { Link } from 'react-router-dom'
-import { VideoBackground } from '../components/VideoBackground'
+import { ResponsiveVideoBackground } from '../components/ResponsiveVideoBackground'
 import { extractYouTubeId } from '../utils/videoHelpers'
 
 // your static category metadata with Asgard-themed descriptions
@@ -78,6 +79,13 @@ export default function Portfolio() {
   // 1️⃣ fetch all images from Supabase
   const { images, loading } = useImages()
   const location = useLocation()
+  const [isClient, setIsClient] = React.useState(false)
+
+  React.useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  const shouldUseMobile = isClient && (isMobile || isTablet)
 
   // 2️⃣ grab the ":category" param
   const { category } = useParams<{ category?: CategoryId }>()
@@ -206,12 +214,10 @@ export default function Portfolio() {
 
       {/* Hero Section with Thor/Loki Background */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-        {/* Video Background */}
-        <VideoBackground
-          youtubeId={heroVideoId}
+        {/* Responsive Video Background */}
+        <ResponsiveVideoBackground
+          videoUrl="https://www.youtube.com/watch?v=aySoSye9Lx8"
           fallbackImage="/images/asgard-thor-loki-airbrush-wall.jpg"
-          autoplay={true}
-          showControls={false}
           className="absolute inset-0"
         >
           {/* Content Container */}
@@ -225,7 +231,7 @@ export default function Portfolio() {
               </p>
             </div>
           </div>
-        </VideoBackground>
+        </ResponsiveVideoBackground>
 
         {/* Bottom fade to black */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20" />
