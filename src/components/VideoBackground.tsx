@@ -101,7 +101,7 @@ export function VideoBackground({
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
             videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
           }`}
-          style={{ objectFit: 'contain' }}
+          style={{ objectFit: 'cover' }}
           autoPlay={autoplay}
           muted
           loop
