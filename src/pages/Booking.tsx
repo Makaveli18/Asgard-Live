@@ -4,7 +4,7 @@ import { ChevronDown, Clock, Shield, AlertCircle } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../components/ContactForm';
-import { Component as Lightning } from '../components/ui/lightning';
+import { VideoBackground } from '../components/VideoBackground';
 
 const FAQ_ITEMS = [
   {
@@ -90,30 +90,28 @@ function Booking() {
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
 
-      {/* Hero Section with Lightning Background */}
+      {/* Hero Section with Video Background */}
       <section className="relative min-h-screen overflow-hidden flex items-center bg-black">
-        {/* Lightning Background */}
-        <div className="absolute inset-0 w-full h-full z-0">
-          <Lightning
-            hue={45}
-            xOffset={0.0}
-            speed={0.1}
-            intensity={1.2}
-            size={1.8}
-          />
-        </div>
-        
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"></div>
-        
-        <div className="container mx-auto px-4 text-center relative z-20 py-32 md:py-40 mt-24">
-          <h1 className="font-['Uncial_Antiqua'] text-4xl md:text-6xl lg:text-7xl text-metallic-gold mb-6 leading-tight">
-            Lock In Your Next Masterpiece
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-cinzel">
-            Join the ranks of warriors who've trusted us with their stories. Your legend awaits.
-          </p>
-        </div>
+        {/* Video Background */}
+        <VideoBackground
+          videoUrl="/src/assets/Asgard_Booking_HeroBackground.mp4"
+          fallbackImage="/images/Viking-stone-blood-drawing.jpg"
+          autoplay={true}
+          showControls={false}
+          className="absolute inset-0"
+        >
+          {/* Content Container */}
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
+            <div className="max-w-4xl w-full mx-auto text-center">
+              <h1 className="font-['Uncial_Antiqua'] text-4xl md:text-6xl lg:text-7xl text-metallic-gold mb-6 leading-tight booking-hero-title">
+                Lock In Your Next Masterpiece
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-cinzel booking-hero-text">
+                Join the ranks of warriors who've trusted us with their stories. Your legend awaits.
+              </p>
+            </div>
+          </div>
+        </VideoBackground>
       </section>
 
       {/* Booking Form Section */}
@@ -157,6 +155,38 @@ function Booking() {
       </section>
 
       <Footer />
+      
+      {/* Enhanced text shadows for video background readability */}
+      <style jsx>{`
+        .booking-hero-title {
+          text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6);
+        }
+        
+        .booking-hero-text {
+          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mobile optimizations for video background */
+        @media (max-width: 768px) {
+          .booking-hero-title {
+            text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.7);
+          }
+          
+          .booking-hero-text {
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6);
+          }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .booking-hero-title {
+            text-shadow: 3px 3px 16px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 0, 0, 0.65);
+          }
+          
+          .booking-hero-text {
+            text-shadow: 2px 2px 13px rgba(0, 0, 0, 0.75), 0 0 22px rgba(0, 0, 0, 0.55);
+          }
+        }
+      `}</style>
     </div>
   );
 }
