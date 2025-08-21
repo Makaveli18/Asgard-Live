@@ -104,7 +104,7 @@ function Booking() {
         <ResponsiveVideoBackground
           videoSource="/Asgard_Booking_HeroBackground.mp4"
           fallbackImage="/images/Viking-stone-blood-drawing.jpg"
-          className="absolute inset-0"
+          className="absolute inset-0 bg-black"
         >
           <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10">
             <div className="max-w-4xl w-full mx-auto text-center">
@@ -122,21 +122,21 @@ function Booking() {
       {/* Enhanced Text Shadow Styles for Better Readability */}
       <style jsx>{`
         .booking-hero-title {
-          text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6), 1px 1px 5px rgba(0, 0, 0, 0.9);
+          text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.8), 2px 2px 8px rgba(0, 0, 0, 1);
         }
         
         .booking-hero-text {
-          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5), 1px 1px 4px rgba(0, 0, 0, 0.8);
+          text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.7), 2px 2px 6px rgba(0, 0, 0, 0.9);
         }
 
         /* Mobile optimizations for better text readability */
         @media (max-width: 768px) {
           .booking-hero-title {
-            text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.7), 1px 1px 6px rgba(0, 0, 0, 0.95);
+            text-shadow: 4px 4px 22px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 0, 0, 0.8), 2px 2px 8px rgba(0, 0, 0, 1);
           }
           
           .booking-hero-text {
-            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6), 1px 1px 5px rgba(0, 0, 0, 0.9);
+            text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 0, 0, 0.75), 2px 2px 7px rgba(0, 0, 0, 0.95);
           }
         }
       `}</style>

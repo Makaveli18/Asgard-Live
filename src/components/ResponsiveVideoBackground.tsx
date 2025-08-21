@@ -136,10 +136,10 @@ export function ResponsiveVideoBackground({
         className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
           videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
         }`}
-        style={{ 
-          objectFit: 'cover',
-          objectPosition: 'center center'
-        }}
+          style={{ 
+            width: '100%',
+            height: '100%'
+          }}
         autoPlay={autoplay}
         muted
         loop
@@ -159,14 +159,9 @@ export function ResponsiveVideoBackground({
           videoLoaded && !videoError ? 'opacity-0' : 'opacity-100'
         }`}
         style={{ 
-          backgroundImage: `url(${fallbackImage})`,
-          backgroundSize: shouldUseMobile ? 'cover' : 'contain',
-          backgroundPosition: 'center center'
+          backgroundImage: `url(${fallbackImage})`
         }}
       />
-
-      {/* Desktop overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
       {/* Content */}
       {children && (
