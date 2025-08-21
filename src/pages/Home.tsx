@@ -103,7 +103,7 @@ function Home() {
       <section className="relative w-full overflow-hidden flex items-center justify-center min-h-screen">
         {/* Responsive Video Background */}
         <ResponsiveVideoBackground
-          videoSource="https://www.youtube.com/watch?v=-OJpeMwcj1w"
+          videoSource="https://youtu.be/-OJpeMwcj1w"
           fallbackImage={vikingBackground}
           className="absolute inset-0"
         >

@@ -101,7 +101,7 @@ export function ResponsiveVideoBackground({
   return (
     <div className={`relative w-full h-full overflow-hidden bg-black ${className}`}>
       {/* YouTube Video Background for Desktop */}
-      {isYouTubeVideo ? (
+      {isYouTubeVideo && (
         <iframe
           src={createYouTubeEmbedUrl(youtubeId, {
             autoplay: autoplay,
@@ -126,11 +126,13 @@ export function ResponsiveVideoBackground({
           allowFullScreen
           title="Background Video"
         />
-      ) : (
-        /* Direct Video File Background for Desktop */
+      )}
+
+      {/* Direct Video File Background for Desktop */}
+      {!isYouTubeVideo && (
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{ 
             width: '100vw',
             height: '56.25vw',
@@ -138,8 +140,7 @@ export function ResponsiveVideoBackground({
             minWidth: '177.77vh',
             transform: 'translate(-50%, -50%)',
             top: '50%',
-            left: '50%',
-            objectFit: 'cover'
+            left: '50%'
           }}
           autoPlay={autoplay}
           muted
@@ -157,7 +158,7 @@ export function ResponsiveVideoBackground({
       {/* Fallback Image for Desktop (if video fails) */}
       <div
         className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-700 ${
-          videoLoaded && !videoError ? 'opacity-0' : 'opacity-100'
+          (isYouTubeVideo || (videoLoaded && !videoError)) ? 'opacity-0' : 'opacity-100'
         }`}
         style={{ 
           backgroundImage: `url(${fallbackImage})`

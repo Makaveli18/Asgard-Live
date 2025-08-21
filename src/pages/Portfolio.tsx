@@ -216,7 +216,7 @@ export default function Portfolio() {
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         {/* Responsive Video Background */}
         <ResponsiveVideoBackground
-          videoSource="https://www.youtube.com/watch?v=aySoSye9Lx8"
+          videoSource="https://youtu.be/aySoSye9Lx8"
           fallbackImage="/images/asgard-thor-loki-airbrush-wall.jpg"
           className="absolute inset-0"
         >
