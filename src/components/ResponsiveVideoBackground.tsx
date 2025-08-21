@@ -1,9 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { isMobile, isTablet } from 'react-device-detect';
+import { extractYouTubeId, createYouTubeEmbedUrl } from '../utils/videoHelpers';
 
 interface ResponsiveVideoBackgroundProps {
-  /** Direct video file URL (.mp4, .webm, etc.) */
-  videoUrl: string;
+  /** Video source - can be YouTube URL or direct video file URL (.mp4, .webm, etc.) */
+  videoSource: string;
   /** Fallback image for mobile or if video fails */
   fallbackImage: string;
   /** Additional CSS classes */
@@ -19,7 +20,7 @@ interface ResponsiveVideoBackgroundProps {
 }
 
 export function ResponsiveVideoBackground({
-  videoUrl,
+  videoSource,
   fallbackImage,
   className = '',
   showControls = false,
@@ -40,8 +41,12 @@ export function ResponsiveVideoBackground({
   // Determine if we should use mobile optimization
   const shouldUseMobile = forceMobile || (isClient && (isMobile || isTablet));
 
+  // Check if the video source is a YouTube URL
+  const youtubeId = extractYouTubeId(videoSource);
+  const isYouTubeVideo = !!youtubeId;
+
   useEffect(() => {
-    if (videoRef.current && !shouldUseMobile) {
+    if (videoRef.current && !shouldUseMobile && !isYouTubeVideo) {
       const video = videoRef.current;
       
       const handleLoadedData = () => {
@@ -50,7 +55,7 @@ export function ResponsiveVideoBackground({
       };
 
       const handleError = () => {
-        console.error('Video failed to load:', videoUrl);
+        console.error('Video failed to load:', videoSource);
         setVideoError(true);
         setVideoLoaded(false);
       };
@@ -63,7 +68,7 @@ export function ResponsiveVideoBackground({
         video.removeEventListener('error', handleError);
       };
     }
-  }, [videoUrl, shouldUseMobile]);
+  }, [videoSource, shouldUseMobile, isYouTubeVideo]);
 
   // Mobile/Tablet: Use optimized image background
   if (shouldUseMobile) {
@@ -95,8 +100,38 @@ export function ResponsiveVideoBackground({
   // Desktop: Use video background
   return (
     <div className={`relative w-full h-full overflow-hidden bg-black ${className}`}>
-      {/* Video Background for Desktop */}
-      <video
+      {/* YouTube Video Background for Desktop */}
+      {isYouTubeVideo ? (
+        <iframe
+          src={createYouTubeEmbedUrl(youtubeId, {
+            autoplay: autoplay,
+            loop: true,
+            mute: true,
+            controls: showControls,
+            modestbranding: true,
+            rel: false
+          })}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
+            videoLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{
+            width: '100vw',
+            height: '56.25vw', // 16:9 aspect ratio
+            minHeight: '100vh',
+            minWidth: '177.77vh', // 16:9 aspect ratio
+            transform: 'translate(-50%, -50%)',
+            top: '50%',
+            left: '50%'
+          }}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="Background Video"
+          onLoad={() => setVideoLoaded(true)}
+        />
+      ) : (
+        /* Direct Video File Background for Desktop */
+        <video
         ref={videoRef}
         className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
           videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
@@ -113,9 +148,10 @@ export function ResponsiveVideoBackground({
         onLoadedData={() => setVideoLoaded(true)}
         onError={() => setVideoError(true)}
       >
-        <source src={videoUrl} type="video/mp4" />
+        <source src={videoSource} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      )}
 
       {/* Fallback Image for Desktop (if video fails) */}
       <div

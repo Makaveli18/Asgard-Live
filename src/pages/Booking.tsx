@@ -102,7 +102,7 @@ function Booking() {
       {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <ResponsiveVideoBackground
-          videoUrl="/Asgard_Booking_HeroBackground.mp4"
+          videoSource="/Asgard_Booking_HeroBackground.mp4"
           fallbackImage="/images/Viking-stone-blood-drawing.jpg"
           className="absolute inset-0"
         >
