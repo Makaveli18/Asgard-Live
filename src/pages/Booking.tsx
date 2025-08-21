@@ -94,7 +94,7 @@ function Booking() {
       <section className="relative min-h-screen overflow-hidden flex items-center bg-black">
         {/* Video Background */}
         <VideoBackground
-          videoUrl="/assets/Asgard_Booking_HeroBackground.mp4"
+          videoUrl="/Asgard_Booking_HeroBackground.mp4"
           fallbackImage="/images/Viking-stone-blood-drawing.jpg"
           autoplay={true}
           showControls={false}
