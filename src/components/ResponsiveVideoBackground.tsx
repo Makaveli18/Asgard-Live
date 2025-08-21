@@ -85,7 +85,7 @@ export function ResponsiveVideoBackground({
         />
         
         {/* Mobile-optimized overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
         {/* Content */}
         {children && (
@@ -103,24 +103,21 @@ export function ResponsiveVideoBackground({
       {/* YouTube Video Background for Desktop */}
       {isYouTubeVideo && (
         <iframe
-          src={createYouTubeEmbedUrl(youtubeId, {
-            autoplay: autoplay,
-            loop: true,
-            mute: true,
-            controls: showControls,
-            modestbranding: true,
-            rel: false
-          })}
-          className="absolute inset-0 w-full h-full"
+          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoplay ? 1 : 0}&mute=1&loop=1&playlist=${youtubeId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&disablekb=1&fs=0&cc_load_policy=0&cc_lang_pref=auto&widget_referrer=https%3A%2F%2Fasgardtattoo.com`}
+          className="absolute inset-0"
           style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center'
+            width: '100vw',
+            height: '56.25vw',
+            minHeight: '100vh',
+            minWidth: '177.77vh',
+            transform: 'translate(-50%, -50%)',
+            top: '50%',
+            left: '50%',
+            pointerEvents: 'none'
           }}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+          allowFullScreen={false}
           title="Background Video"
         />
       )}
@@ -129,10 +126,15 @@ export function ResponsiveVideoBackground({
       {!isYouTubeVideo && (
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0"
           style={{ 
-            width: '100%',
-            height: '100%',
+            width: '100vw',
+            height: '56.25vw',
+            minHeight: '100vh',
+            minWidth: '177.77vh',
+            transform: 'translate(-50%, -50%)',
+            top: '50%',
+            left: '50%',
             objectFit: 'cover',
             objectPosition: 'center'
           }}
