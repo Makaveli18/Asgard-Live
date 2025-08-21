@@ -213,7 +213,7 @@ export default function Portfolio() {
       <Breadcrumb items={breadcrumbItems} />
 
       {/* Hero Section with Thor/Loki Background */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative w-full overflow-hidden flex items-center justify-center min-h-screen">
         {/* Responsive Video Background */}
         <ResponsiveVideoBackground
           videoSource="https://youtu.be/aySoSye9Lx8"
@@ -221,7 +221,7 @@ export default function Portfolio() {
           className="absolute inset-0"
         >
           {/* Content Container */}
-          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10">
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10 min-h-screen">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-['Uncial_Antiqua'] text-metallic-gold mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
                 Your Story Deserves A Masterpiece. Let's Ink It Today!
@@ -239,8 +239,6 @@ export default function Portfolio() {
           </div>
         </ResponsiveVideoBackground>
 
-        {/* Bottom fade to black */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20" />
       </section>
 
 

@@ -100,13 +100,13 @@ function Booking() {
 
       {/* Hero Section */}
       {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative w-full overflow-hidden flex items-center justify-center min-h-screen">
         <ResponsiveVideoBackground
           videoSource="https://youtu.be/dT-XxHU_USs"
           fallbackImage="/images/Viking-stone-blood-drawing.jpg"
           className="absolute inset-0 bg-black"
         >
-          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10">
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10 min-h-screen">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="font-['Uncial_Antiqua'] text-4xl md:text-6xl lg:text-7xl text-metallic-gold mb-6 leading-tight booking-hero-title">
                 Lock In Your Next Masterpiece
