@@ -7,6 +7,8 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Breadcrumb } from '../components/Breadcrumb'
 import { Link } from 'react-router-dom'
+import { VideoBackground } from '../components/VideoBackground'
+import { extractYouTubeId } from '../utils/videoHelpers'
 
 // your static category metadata with Asgard-themed descriptions
 const categories = [
@@ -192,6 +194,10 @@ export default function Portfolio() {
     return 'Behold the complete arsenal of Asgard\'s legendary artistry - every style, every technique, every story waiting to be carved into your skin.'
   }
 
+  // YouTube video configuration for hero background
+  const heroVideoUrl = "https://youtu.be/aySoSye9Lx8"; // Blog's video
+  const heroVideoId = extractYouTubeId(heroVideoUrl);
+
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
@@ -200,32 +206,26 @@ export default function Portfolio() {
 
       {/* Hero Section with Thor/Loki Background */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full">
-          <div
-            className="w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(/images/asgard-thor-loki-airbrush-wall.jpg)`,
-              backgroundSize: 'contain',
-              backgroundPosition: 'center 75%',
-              backgroundRepeat: 'no-repeat',
-            }}
-          />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-        </div>
-
-        {/* Hero Content */}
-        <div className="container mx-auto px-4 relative z-10 text-center py-20">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-['Uncial_Antiqua'] text-metallic-gold mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
-              Your Story Deserves A Masterpiece. Let's Ink It Today!
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg max-w-3xl mx-auto font-cinzel portfolio-hero-text">
-              Behold the legendary tattoos forged in the fires of Asgard. Each piece tells a tale of Norse mythology, Viking valor, and ancient runes that echo through the halls of eternity.
-            </p>
+        {/* Video Background */}
+        <VideoBackground
+          youtubeId={heroVideoId}
+          fallbackImage="/images/asgard-thor-loki-airbrush-wall.jpg"
+          autoplay={true}
+          showControls={false}
+          className="absolute inset-0"
+        >
+          {/* Content Container */}
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-32 md:py-40 mt-24 z-10">
+            <div className="max-w-4xl w-full mx-auto text-center">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-['Uncial_Antiqua'] text-metallic-gold mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
+                Your Story Deserves A Masterpiece. Let's Ink It Today!
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg max-w-3xl mx-auto font-cinzel portfolio-hero-text">
+                Behold the legendary tattoos forged in the fires of Asgard. Each piece tells a tale of Norse mythology, Viking valor, and ancient runes that echo through the halls of eternity.
+              </p>
+            </div>
           </div>
-        </div>
+        </VideoBackground>
 
         {/* Bottom fade to black */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20" />
@@ -305,14 +305,14 @@ export default function Portfolio() {
 
       <Footer />
 
-      {/* Custom styles for responsive background and elegant text shadows */}
+      {/* Custom styles for elegant text shadows */}
       <style jsx>{`
         .portfolio-hero-title {
-          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
+          text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6);
         }
         
         .portfolio-hero-text {
-          text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
+          text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6), 1px 1px 5px rgba(0, 0, 0, 0.9);
         }
 
         .gallery-section-title {
@@ -328,19 +328,14 @@ export default function Portfolio() {
           letter-spacing: 0.15em;
         }
 
-        /* Responsive Background Optimization to Show Full Image */
+        /* Mobile optimizations for video background */
         @media (max-width: 768px) {
-          [style*="background-image"] {
-            background-size: contain !important;
-            background-position: center 85% !important;
-          }
-          
           .portfolio-hero-title {
-            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.7);
           }
           
           .portfolio-hero-text {
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 0, 0, 0.65), 1px 1px 6px rgba(0, 0, 0, 0.95);
           }
 
           .gallery-section-title {
@@ -357,11 +352,6 @@ export default function Portfolio() {
         }
         
         @media (min-width: 769px) and (max-width: 1024px) {
-          [style*="background-image"] {
-            background-size: contain !important;
-            background-position: center 80% !important;
-          }
-
           .gallery-section-title {
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
           }
@@ -372,13 +362,6 @@ export default function Portfolio() {
 
           .battle-tested-subtitle {
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
-          }
-        }
-        
-        @media (min-width: 1025px) {
-          [style*="background-image"] {
-            background-size: contain !important;
-            background-position: center 75% !important;
           }
         }
 

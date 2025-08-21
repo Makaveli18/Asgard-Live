@@ -62,39 +62,21 @@ function Blog() {
 
       {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* YouTube Video Background */}
+        {/* Static Background Image */}
         <div className="absolute inset-0 w-full h-full">
-          <iframe
-            src="https://www.youtube.com/embed/aySoSye9Lx8?autoplay=1&mute=1&loop=1&playlist=aySoSye9Lx8&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
-            className="absolute inset-0 w-full h-full object-cover"
+          <div
+            className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
-              width: '100vw',
-              height: '56.25vw', // 16:9 aspect ratio
-              minHeight: '100vh',
-              minWidth: '177.77vh', // 16:9 aspect ratio
-              transform: 'translate(-50%, -50%)',
-              top: '50%',
-              left: '50%'
+              backgroundImage: `url(/images/asgard-thor-loki-airbrush-wall.jpg)`,
+              backgroundSize: 'contain',
+              backgroundPosition: 'center 75%',
+              backgroundRepeat: 'no-repeat',
             }}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="Blog Hero Video Background"
           />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
         </div>
 
-        {/* Fallback Background Image */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/images/Mountain3.jpg')`,
-            zIndex: -1
-          }}
-        />
-        
-        {/* 20% Overlay */}
-        <div className="absolute inset-0 bg-black/20 z-10" />
-        
         <div className="container mx-auto px-4 relative z-20 py-32 md:py-40 mt-24">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-['Uncial_Antiqua'] text-metallic-gold mb-8 leading-tight blog-hero-title">
@@ -179,46 +161,63 @@ function Blog() {
 
       <Footer />
       
-      {/* Enhanced Text Shadow Styles for Video Background Readability */}
+      {/* Enhanced Text Shadow Styles for Static Background Readability */}
       <style jsx>{`
         .blog-hero-title {
-          text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6);
+          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
         }
         
         .blog-hero-text {
-          text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.6), 1px 1px 5px rgba(0, 0, 0, 0.9);
+          text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
         }
         
         .blog-hero-button {
           text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
         }
 
-        /* Mobile optimizations */
-        @media (max-width: 768px) {          
+        /* Responsive Background Optimization to Show Full Image */
+        @media (max-width: 768px) {
+          [style*="background-image"] {
+            background-size: contain !important;
+            background-position: center 85% !important;
+          }
+          
           .blog-hero-title {
-            text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.7);
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3);
           }
           
           .blog-hero-text {
-            text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 0, 0, 0.65), 1px 1px 6px rgba(0, 0, 0, 0.95);
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
           }
           
           .blog-hero-button {
-            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
           }
         }
         
         @media (min-width: 769px) and (max-width: 1024px) {
+          [style*="background-image"] {
+            background-size: contain !important;
+            background-position: center 80% !important;
+          }
+
           .blog-hero-title {
-            text-shadow: 3px 3px 16px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 0, 0, 0.65);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
           }
           
           .blog-hero-text {
-            text-shadow: 3px 3px 16px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 0, 0, 0.6), 1px 1px 5px rgba(0, 0, 0, 0.9);
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
           }
 
           .blog-hero-button {
-            text-shadow: 2px 2px 11px rgba(0, 0, 0, 0.65);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+          }
+        }
+        
+        @media (min-width: 1025px) {
+          [style*="background-image"] {
+            background-size: contain !important;
+            background-position: center 75% !important;
           }
         }
       `}</style>
