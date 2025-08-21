@@ -140,7 +140,6 @@ function Booking() {
           }
         }
       `}</style>
-      </section>
 
       {/* Booking Form Section */}
       <section ref={formRef} className="py-20 bg-black relative z-30" id="form">
