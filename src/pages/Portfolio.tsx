@@ -213,7 +213,7 @@ export default function Portfolio() {
       <Breadcrumb items={breadcrumbItems} />
 
       {/* Hero Section with Thor/Loki Background */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Responsive Video Background */}
         <ResponsiveVideoBackground
           videoSource="https://youtu.be/aySoSye9Lx8"
@@ -221,7 +221,7 @@ export default function Portfolio() {
           className="absolute inset-0"
         >
           {/* Content Container */}
-          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10">
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-12 z-10">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-['Uncial_Antiqua'] text-metallic-gold mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
                 Your Story Deserves A Masterpiece. Let's Ink It Today!
@@ -229,6 +229,12 @@ export default function Portfolio() {
               <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg max-w-3xl mx-auto font-cinzel portfolio-hero-text">
                 Behold the legendary tattoos forged in the fires of Asgard. Each piece tells a tale of Norse mythology, Viking valor, and ancient runes that echo through the halls of eternity.
               </p>
+              <Link
+                to="/booking#form"
+                className="inline-block cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg uppercase tracking-wider"
+              >
+                Book Your FREE Design Consult NOW
+              </Link>
             </div>
           </div>
         </ResponsiveVideoBackground>
@@ -237,22 +243,6 @@ export default function Portfolio() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20" />
       </section>
 
-      {/* CTA Section - Transparent like Homepage */}
-      <section className="py-12 bg-black/60 backdrop-blur-sm relative z-10">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto">
-            <Link
-              to="/booking#form"
-              className="inline-block cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg uppercase tracking-wider"
-            >
-              Book Your FREE Design Consult NOW
-            </Link>
-            <p className="text-metallic-gold font-semibold text-lg mt-4 animate-pulse">
-              💥 Limited Spots Available - Secure Yours Today!
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Static Navigation - Now Below CTA */}
       <PortfolioNavigation

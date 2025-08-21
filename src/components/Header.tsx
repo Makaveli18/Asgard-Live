@@ -19,13 +19,13 @@ const Header = () => {
   return (
     <header className={`main-header ${isScrolled ? 'py-2 shadow-lg' : 'py-4'}`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-12">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src="/SVG/Asgard_Logo.svg"
               alt="Asgard Tattoo"
-              className="h-16 md:h-20 w-auto transition-transform duration-300 hover:scale-105 filter drop-shadow-gold"
+              className="h-10 md:h-12 w-auto transition-transform duration-300 hover:scale-105 filter drop-shadow-gold"
             />
           </Link>
 

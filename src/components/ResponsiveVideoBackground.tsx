@@ -111,16 +111,12 @@ export function ResponsiveVideoBackground({
             modestbranding: true,
             rel: false
           })}
-          className="absolute inset-0"
+          className="absolute inset-0 w-full h-full"
           style={{
-            width: '100vw',
-            height: '56.25vw',
-            minHeight: '100vh',
-            minWidth: '177.77vh',
-            transform: 'translate(-50%, -50%)',
-            top: '50%',
-            left: '50%',
-            objectFit: 'cover'
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center'
           }}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -133,16 +129,12 @@ export function ResponsiveVideoBackground({
       {!isYouTubeVideo && (
         <video
           ref={videoRef}
-          className="absolute inset-0"
+          className="absolute inset-0 w-full h-full"
           style={{ 
-            width: '100vw',
-            height: '56.25vw',
-            minHeight: '100vh',
-            minWidth: '177.77vh',
-            transform: 'translate(-50%, -50%)',
-            top: '50%',
-            left: '50%',
-            objectFit: 'cover'
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center'
           }}
           autoPlay={autoplay}
           muted

@@ -284,8 +284,9 @@
   @apply fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm transition-all duration-300;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  height: 60px;
 }
 
 .nav-link {

@@ -108,7 +108,7 @@ function Home() {
           className="absolute inset-0"
         >
           {/* Content Container */}
-          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10">
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-12 z-10">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black animate-fade-in text-metallic-gold leading-tight mb-6 hero-title">
                 The Best Tattoo Studio in Landshut, Trusted by Thousands of Warriors To Tell Their Tales Through Our Sacred Arts
