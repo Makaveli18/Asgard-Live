@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { isMobile, isTablet } from 'react-device-detect';
 import { extractYouTubeId, createYouTubeEmbedUrl } from '../utils/videoHelpers';
 
 interface ResponsiveVideoBackgroundProps {
@@ -30,23 +29,14 @@ export function ResponsiveVideoBackground({
 }: ResponsiveVideoBackgroundProps) {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
-  const [isClient, setIsClient] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Ensure we're on the client side
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Determine if we should use mobile optimization
-  const shouldUseMobile = forceMobile || (isClient && (isMobile || isTablet));
 
   // Check if the video source is a YouTube URL
   const youtubeId = extractYouTubeId(videoSource);
   const isYouTubeVideo = !!youtubeId;
 
   useEffect(() => {
-    if (videoRef.current && !shouldUseMobile && !isYouTubeVideo) {
+    if (videoRef.current && !isYouTubeVideo) {
       const video = videoRef.current;
       
       const handleLoadedData = () => {
@@ -68,36 +58,8 @@ export function ResponsiveVideoBackground({
         video.removeEventListener('error', handleError);
       };
     }
-  }, [videoSource, shouldUseMobile, isYouTubeVideo]);
+  }, [videoSource, isYouTubeVideo]);
 
-  // Mobile/Tablet: Use optimized image background
-  if (shouldUseMobile) {
-    return (
-      <div className={`relative w-full h-full overflow-hidden ${className}`}>
-        {/* Mobile optimized background image */}
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{ 
-            backgroundImage: `url(${fallbackImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center'
-          }}
-        />
-        
-        {/* Mobile-optimized overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-
-        {/* Content */}
-        {children && (
-          <div className="relative z-10 w-full h-full">
-            {children}
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // Desktop: Use video background
   return (
     <div className={`relative w-full h-full overflow-hidden bg-black ${className}`}>
       {/* YouTube Video Background for Desktop */}
