@@ -125,7 +125,7 @@ function Home() {
                 </Link>
                 <div className="disclaimer-box bg-black/60 backdrop-blur-sm border border-metallic-gold/30 text-white py-3 md:py-4 px-4 md:px-6 rounded-lg w-full max-w-xl mx-auto">
                   <p className="text-xs md:text-sm font-semibold">
-                    🔥 Only 6 Spots Left This Month! Don't let someone else get the tattoo you've been dreaming of. Skip the regret of saying "I should have booked" 🔥
+                    🔥 Spots are limited this month, and they're filling faster than your mead horn after a battle. 🔥
                   </p>
                 </div>
               </div>
