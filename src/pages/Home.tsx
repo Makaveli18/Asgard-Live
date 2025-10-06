@@ -110,21 +110,21 @@ function Home() {
           {/* Content Container */}
           <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10">
             <div className="max-w-4xl w-full mx-auto text-center">
-              <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black animate-fade-in text-metallic-gold leading-tight mb-6 hero-title">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black animate-fade-in text-metallic-gold leading-tight mb-4 md:mb-6 hero-title">
                 The Best Tattoo Studio in Landshut, Trusted by Thousands of Warriors To Tell Their Tales Through Our Sacred Arts
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl subtitle text-gray-100 mb-12 mx-auto max-w-3xl">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl subtitle text-gray-100 mb-6 md:mb-12 mx-auto max-w-3xl">
                 Unleash Your Inner Warrior - Your Next Battle Mark Awaits
               </p>
-              <div className="flex flex-col items-center space-y-8">
+              <div className="flex flex-col items-center space-y-4 md:space-y-8">
                 <Link 
                   to="/booking#form" 
-                  className="cta-button bg-firebrick text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-md transition-all duration-300 text-lg uppercase tracking-wider w-full max-w-lg mx-auto"
+                  className="cta-button bg-firebrick text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-md transition-all duration-300 text-sm md:text-lg uppercase tracking-wider w-full max-w-lg mx-auto"
                 >
                   DM us NOW to Secure Your Spot
                 </Link>
-                <div className="disclaimer-box bg-black/60 backdrop-blur-sm border border-metallic-gold/30 text-white py-4 px-6 rounded-lg w-full max-w-xl mx-auto">
-                  <p className="text-sm font-semibold">
+                <div className="disclaimer-box bg-black/60 backdrop-blur-sm border border-metallic-gold/30 text-white py-3 md:py-4 px-4 md:px-6 rounded-lg w-full max-w-xl mx-auto">
+                  <p className="text-xs md:text-sm font-semibold">
                     🔥 Only 6 Spots Left This Month! Don't let someone else get the tattoo you've been dreaming of. Skip the regret of saying "I should have booked" 🔥
                   </p>
                 </div>

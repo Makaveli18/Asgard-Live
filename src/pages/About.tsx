@@ -78,18 +78,18 @@ function About() {
           <div className="container mx-auto px-4 py-20 md:py-24 mt-16">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="
-                text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+                text-2xl sm:text-3xl md:text-4xl lg:text-5xl
                 font-['Uncial_Antiqua'] text-metallic-gold
                 leading-tight
                 animate-fade-in
                 drop-shadow-gold
-                mb-6
+                mb-4 md:mb-6
                 about-hero-title
               ">
                 Meet The Legends Behind Your Next Masterpiece
               </h1>
               <p className="
-                text-xl md:text-2xl text-gray-200 mb-8 
+                text-base sm:text-lg md:text-xl text-gray-200 mb-6 md:mb-8 
                 font-cinzel leading-relaxed max-w-3xl mx-auto
                 about-hero-subtitle
               ">

@@ -88,15 +88,15 @@ function Blog() {
 
         <div className="container mx-auto px-4 relative z-20 py-20 md:py-24 mt-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-['Uncial_Antiqua'] text-metallic-gold mb-8 leading-tight blog-hero-title">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-['Uncial_Antiqua'] text-metallic-gold mb-4 md:mb-8 leading-tight blog-hero-title">
               Tattoo Stories, Viking Symbols & Ink Wisdom From the Best Tattoo Studio in Landshut
             </h1>
-            <p className="text-lg md:text-xl text-white mb-12 font-cinzel leading-relaxed max-w-3xl mx-auto blog-hero-text">
+            <p className="text-base sm:text-lg md:text-xl text-white mb-6 md:mb-12 font-cinzel leading-relaxed max-w-3xl mx-auto blog-hero-text">
               From aftercare secrets to Norse meanings and custom ink inspiration - this is where warriors learn before they burn. Every blog post is handcrafted by the artists at Asgard Tattoo to guide your journey, one drop of ink at a time.
             </p>
             <Link
               to="/booking#form"
-              className="inline-block cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg blog-hero-button"
+              className="inline-block cta-button bg-firebrick text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-sm md:text-lg blog-hero-button"
             >
               Book Your Free Design Consult NOW
             </Link>

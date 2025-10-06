@@ -223,15 +223,15 @@ export default function Portfolio() {
           {/* Content Container */}
           <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10 min-h-screen">
             <div className="max-w-4xl w-full mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-['Uncial_Antiqua'] text-metallic-gold mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-['Uncial_Antiqua'] text-metallic-gold mb-4 md:mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
                 Your Story Deserves A Masterpiece. Let's Ink It Today!
               </h1>
-              <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg max-w-3xl mx-auto font-cinzel portfolio-hero-text">
+              <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 md:mb-8 drop-shadow-lg max-w-3xl mx-auto font-cinzel portfolio-hero-text">
                 Behold the legendary tattoos forged in the fires of Asgard. Each piece tells a tale of Norse mythology, Viking valor, and ancient runes that echo through the halls of eternity.
               </p>
               <Link
                 to="/booking#form"
-                className="inline-block cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-lg uppercase tracking-wider"
+                className="inline-block cta-button bg-firebrick text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-sm md:text-lg uppercase tracking-wider"
               >
                 Book Your FREE Design Consult NOW
               </Link>

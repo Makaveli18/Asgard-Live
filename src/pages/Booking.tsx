@@ -108,10 +108,10 @@ function Booking() {
         >
           <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10 min-h-screen">
             <div className="max-w-4xl w-full mx-auto text-center">
-              <h1 className="font-['Uncial_Antiqua'] text-4xl md:text-6xl lg:text-7xl text-metallic-gold mb-6 leading-tight booking-hero-title">
+              <h1 className="font-['Uncial_Antiqua'] text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-metallic-gold mb-4 md:mb-6 leading-tight booking-hero-title">
                 Lock In Your Next Masterpiece
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-cinzel booking-hero-text">
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-cinzel booking-hero-text">
                 Join the ranks of warriors who've trusted us with their stories. Your legend awaits.
               </p>
             </div>
