@@ -73,8 +73,8 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-          <nav className="flex flex-col items-center space-y-3 py-3">
+        <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md border-t border-metallic-gold/30 shadow-lg z-50`}>
+          <nav className="flex flex-col items-center space-y-4 py-6 px-4">
             <Link 
               to="/" 
               className={`nav-link font-bold ${location.pathname === '/' ? 'text-metallic-gold' : ''}`}
