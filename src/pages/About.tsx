@@ -156,70 +156,60 @@ function About() {
         </div>
       </section>
 
-      {/* Master Artist Section */}
+      {/* Artists Section */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto space-y-24">
+
+            {/* Imre */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Artist Image */}
               <div className="relative">
                 <div className="aspect-[4/5] w-full max-w-[400px] mx-auto overflow-hidden rounded-lg border-3 border-metallic-gold/30 hover:border-metallic-gold transition-all duration-300 group">
                   <img
                     src={imrePortrait}
-                    alt="Imre - Master Tattoo Artist at Asgard Tattoo"
+                    alt="Imre - Master Tattoo Artist bei Asgard Tattoo"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     style={{ objectPosition: 'center 40%' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                
-                {/* Floating Achievement Badges */}
                 <div className="absolute -top-4 -right-4 bg-firebrick text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                   Master Artist
                 </div>
                 <div className="absolute -bottom-4 -left-4 bg-metallic-gold text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                  5+ Years Experience
+                  5+ Jahre Erfahrung
                 </div>
               </div>
 
-              {/* Artist Story */}
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-4xl md:text-5xl font-bold text-metallic-gold mb-4">
-                    Meet Imre
-                  </h2>
+                  <h2 className="text-4xl md:text-5xl font-bold text-metallic-gold mb-4">Imre</h2>
                   <p className="text-xl text-firebrick font-semibold mb-6">
-                    Master Artist & Founder of Asgard Tattoo
+                    Grunder & Master Artist
                   </p>
                 </div>
-
                 <div className="space-y-4 text-gray-300 leading-relaxed">
                   <p className="text-lg">
-                    <strong className="text-metallic-gold">Every legend has an origin story.</strong> 
-                    Imre's began not with a needle, but with a vision—to create a sanctuary where 
-                    art meets soul, where stories become eternal, and where every client leaves 
-                    not just with ink, but with a piece of their true self.
+                    <strong className="text-metallic-gold">Jede Legende hat eine Entstehungsgeschichte.</strong>{' '}
+                    Imres begann nicht mit einer Nadel, sondern mit einer Vision: einen Ort zu schaffen,
+                    an dem Kunst auf Seele trifft, Geschichten ewig werden und jeder Kunde nicht nur mit
+                    Tinte geht, sondern mit einem Stuck seines wahren Selbst.
                   </p>
-                  
                   <p>
-                    With over 5 years of mastering the sacred arts of tattooing, Imre has transformed 
-                    thousands of blank canvases into living masterpieces. His specialty? 
-                    <span className="text-metallic-gold font-semibold"> Norse mythology, Viking symbolism, and custom realism</span> 
-                    that doesn't just look incredible - it tells your story.
+                    Mit uber 5 Jahren Meisterschaft hat Imre tausende leere Leinwande in lebende
+                    Kunstwerke verwandelt. Seine Spezialitat?{' '}
+                    <span className="text-metallic-gold font-semibold">Norse Mythologie, Wikinger-Symbolik und Custom Realism</span>{' '}
+                    - Tattoos die nicht nur atemberaubend aussehen, sondern deine Geschichte erzahlen.
                   </p>
-                  
                   <p>
-                    But here's what sets Imre apart: <em>He doesn't just tattoo you.  He listens to you.</em> 
-                    Every consultation is a journey of discovery, where your vision meets his expertise 
-                    to create something that's uniquely, powerfully, undeniably <strong>you</strong>.
+                    Was Imre besonders macht: <em>Er tatowiert dich nicht einfach. Er hort dir zu.</em>{' '}
+                    Jede Beratung ist eine Reise, bei der deine Vision auf seine Expertise trifft.
                   </p>
                 </div>
-
-                {/* Specialties */}
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <div className="flex items-center space-x-3">
                     <Sword className="w-6 h-6 text-firebrick" />
-                    <span className="text-metallic-gold font-semibold">Norse & Viking Art</span>
+                    <span className="text-metallic-gold font-semibold">Norse & Viking</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Palette className="w-6 h-6 text-firebrick" />
@@ -227,24 +217,97 @@ function About() {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Heart className="w-6 h-6 text-firebrick" />
-                    <span className="text-metallic-gold font-semibold">Portrait Work</span>
+                    <span className="text-metallic-gold font-semibold">Portraits</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Award className="w-6 h-6 text-firebrick" />
                     <span className="text-metallic-gold font-semibold">Cover-ups</span>
                   </div>
                 </div>
-
-                {/* Quote */}
                 <blockquote className="border-l-4 border-metallic-gold pl-6 py-4 bg-viking-navy/30 rounded-r-lg mt-8">
                   <p className="text-lg italic text-gray-300 mb-2">
-                    "Every tattoo is a conversation between the client's soul and my needle. 
-                    My job isn't just to create art - it's to help you discover the warrior within."
+                    "Jedes Tattoo ist ein Gesprach zwischen der Seele des Kunden und meiner Nadel.
+                    Mein Job ist es nicht nur Kunst zu schaffen - sondern dir zu helfen, den Krieger in dir zu entdecken."
                   </p>
-                  <cite className="text-metallic-gold font-semibold">- Imre, Master Artist</cite>
+                  <cite className="text-metallic-gold font-semibold">- Imre</cite>
                 </blockquote>
               </div>
             </div>
+
+            {/* Eszter */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="relative lg:order-2">
+                <div className="aspect-[4/5] w-full max-w-[400px] mx-auto overflow-hidden rounded-lg border-3 border-metallic-gold/30 hover:border-metallic-gold transition-all duration-300 group">
+                  <img
+                    src="/images/WhatsApp_Image_2026-05-14_at_3.26.59_PM.jpeg"
+                    alt="Eszter Rajo - Fine Line Artist bei Asgard Tattoo"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    style={{ objectPosition: 'center 20%' }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="absolute -top-4 -left-4 lg:-left-auto lg:-right-4 bg-firebrick text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                  Fine Line Spezialistin
+                </div>
+                <div className="absolute -bottom-4 -right-4 lg:-right-auto lg:-left-4 bg-metallic-gold text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                  Co-Founderin
+                </div>
+              </div>
+
+              <div className="space-y-6 lg:order-1">
+                <div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-metallic-gold mb-4">Eszter</h2>
+                  <p className="text-xl text-firebrick font-semibold mb-6">
+                    Fine Line Kunstlerin & Co-Founderin
+                  </p>
+                </div>
+                <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <p className="text-lg">
+                    <strong className="text-metallic-gold">Manche Geschichten brauchen keine laute Stimme.</strong>{' '}
+                    Eszter entdeckte ihre Leidenschaft fur das Tatowieren durch ihren Mann Imre, der
+                    anfangs auch ihr Mentor war. Was als gemeinsame Faszination begann, wurde schnell
+                    zu einer eigenen kunstlerischen Stimme.
+                  </p>
+                  <p>
+                    Heute arbeiten sie Seite an Seite und fuhren Asgard Tattoo als das, was es wirklich
+                    ist:{' '}
+                    <span className="text-metallic-gold font-semibold">eine Familie</span>. Nicht nur
+                    die beiden, sondern alle treuen Stammkunden, die langst Teil dieser Gemeinschaft geworden sind.
+                  </p>
+                  <p>
+                    Eszters Spezialitat sind{' '}
+                    <span className="text-metallic-gold font-semibold">filigrane Fine-Line Arbeiten, Dotwork und feminine Custom Designs</span>{' '}
+                    - Motive die mit Prazision und Feingefuhl gestochen werden und durch ihre Zartheit bestechen.
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-4 mt-8">
+                  <div className="flex items-center space-x-3">
+                    <Palette className="w-6 h-6 text-firebrick" />
+                    <span className="text-metallic-gold font-semibold">Fine Line</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Award className="w-6 h-6 text-firebrick" />
+                    <span className="text-metallic-gold font-semibold">Dotwork</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Heart className="w-6 h-6 text-firebrick" />
+                    <span className="text-metallic-gold font-semibold">Custom Design</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Sword className="w-6 h-6 text-firebrick" />
+                    <span className="text-metallic-gold font-semibold">Ornamental</span>
+                  </div>
+                </div>
+                <blockquote className="border-l-4 border-metallic-gold pl-6 py-4 bg-viking-navy/30 rounded-r-lg mt-8">
+                  <p className="text-lg italic text-gray-300 mb-2">
+                    "Die schonsten Tattoos sind die, bei denen du die Nadel vergisst und nur noch
+                    die Geschichte spurst, die auf deiner Haut zum Leben erwacht."
+                  </p>
+                  <cite className="text-metallic-gold font-semibold">- Eszter</cite>
+                </blockquote>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

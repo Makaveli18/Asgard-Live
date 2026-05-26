@@ -11,6 +11,7 @@ import Privacy from './pages/legal/Privacy';
 import Cookies from './pages/legal/Cookies';
 import Terms from './pages/legal/Terms';
 import { CookieConsent } from './components/CookieConsent';
+import { WhatsAppButton } from './components/WhatsAppButton';
 import { initGA, logPageView } from './lib/analytics';
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
         <Route path="/legal/cookies" element={<Cookies />} />
         <Route path="/legal/terms" element={<Terms />} />
       </Routes>
+      <WhatsAppButton />
       <CookieConsent />
     </>
   );

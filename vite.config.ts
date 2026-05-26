@@ -11,7 +11,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui': ['framer-motion', '@splinetool/react-spline'],
+          'ui': ['framer-motion'],
         }
       }
     },

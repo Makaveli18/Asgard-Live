@@ -8,18 +8,39 @@ import { ResponsiveVideoBackground } from '../components/ResponsiveVideoBackgrou
 
 const FAQ_ITEMS = [
   {
-    question: "How much does a tattoo cost?",
-    answer: "Tattoo prices vary based on size, complexity, and time required. Our minimum charge is €80. Small pieces typically range from €150-300, while larger pieces and full-day sessions start from €600. We'll provide a detailed quote during your consultation."
+    question: "Was kostet ein Tattoo bei Asgard?",
+    answer: "Die Preise richten sich nach Grosse, Komplexitat und Zeitaufwand. Unser Mindestpreis liegt bei 80\u20AC. Kleine Motive kosten in der Regel 150-300\u20AC, grossere Arbeiten und Ganztags-Sessions starten ab 600\u20AC. Den genauen Preis besprechen wir in deiner kostenlosen Beratung."
   },
   {
-    question: "How do I prepare for my appointment?",
-    answer: "Get a good night's sleep, eat a proper meal before coming in, stay hydrated, and avoid alcohol 24 hours before your session. Wear comfortable clothing that provides easy access to the tattoo area. If you're feeling unwell, please let us know to reschedule."
+    question: "Wie bereite ich mich auf meinen Termin vor?",
+    answer: "Schlaf gut, iss eine ordentliche Mahlzeit vorher, trink genug Wasser und verzichte 24 Stunden vor deiner Session auf Alkohol. Trag bequeme Kleidung, die den Zugang zur Tatowierstelle erleichtert. Falls du dich unwohl fuhlst, sag uns Bescheid und wir verschieben den Termin."
   },
   {
-    question: "Pain Levels According to Body Area",
-    answer: "Pain tolerance varies by person, but generally:\n- Least painful: Outer arms, calves, thighs\n- Moderate: Inner arms, forearms, back\n- More sensitive: Ribs, ankles, hands\n- Most sensitive: Head, inner elbows, knees\nOur experienced artists will guide you through the process and ensure your comfort."
+    question: "Wie stark sind die Schmerzen je nach Korperpartie?",
+    answer: "Schmerzempfinden ist individuell, aber grundsatzlich gilt:\n- Am wenigsten: Aussenarme, Waden, Oberschenkel\n- Mittel: Innenarme, Unterarme, Rucken\n- Empfindlicher: Rippen, Knochel, Hande\n- Am sensibelsten: Kopf, Ellenbogeninnenseite, Knie\nUnsere erfahrenen Kunstler begleiten dich durch den gesamten Prozess."
+  },
+  {
+    question: "Bietet ihr kostenlose Beratungen an?",
+    answer: "Ja! Jede Beratung und Design-Planung bei Asgard ist komplett kostenlos und unverbindlich. Wir nehmen uns die Zeit, deine Vision zu verstehen und dir einen massgeschneiderten Vorschlag zu machen, bevor du dich entscheidest."
+  },
+  {
+    question: "Kann ich ein Referenzbild mitbringen?",
+    answer: "Auf jeden Fall! Referenzbilder helfen uns enorm, deinen Stil und deine Vorstellungen zu verstehen. Du kannst sie direkt uber unser Formular hochladen oder per WhatsApp schicken. Wir erstellen dann ein individuelles Design basierend auf deinen Wunschen."
   }
 ];
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ_ITEMS.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
 
 const AccordionItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -96,6 +117,10 @@ function Booking() {
   };
   return (
     <div className="min-h-screen bg-black text-gray-100">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+      />
       <Header />
 
       {/* Hero Section */}
@@ -109,10 +134,10 @@ function Booking() {
           <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10 min-h-screen">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="font-['Uncial_Antiqua'] text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-metallic-gold mb-4 md:mb-6 leading-tight booking-hero-title">
-                Lock In Your Next Masterpiece
+                Dein Meisterwerk wartet
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-cinzel booking-hero-text">
-                Join the ranks of warriors who've trusted us with their stories. Your legend awaits.
+                Hunderte Krieger vertrauen uns ihre Geschichte an. Jetzt bist du dran.
               </p>
             </div>
           </div>
@@ -145,7 +170,7 @@ function Booking() {
       <section ref={formRef} className="py-20 bg-black relative z-30" id="form">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto bg-viking-navy p-8 rounded-lg shadow-[0_0_20px_rgba(30,58,95,0.5)]">
-            <h2 className="text-3xl font-bold text-center mb-8 text-metallic-gold">Book Your Session</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-metallic-gold">Termin buchen</h2>
             <ContactForm />
           </div>
         </div>
@@ -155,7 +180,7 @@ function Booking() {
       <section className="py-16 bg-viking-navy/20 relative z-30">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-metallic-gold">
-            Pre-Booking FAQ
+            Haufig gestellte Fragen
           </h2>
           <div className="max-w-2xl mx-auto">
             {FAQ_ITEMS.map((item, index) => (
@@ -173,10 +198,10 @@ function Booking() {
               onClick={scrollToForm}
               className="cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md transition-all duration-300 inline-flex items-center justify-center space-x-2 w-full md:w-auto"
             >
-              Embrace Your Hero's Journey - Secure Your Spot NOW
+              Kostenlose Beratung anfragen
             </button>
             <p className="text-lg text-white/80 mt-4">
-              The best tattoos come to those who book first. Don't wait!
+              Individuelle Beratung, massgeschneidertes Design, null Risiko.
             </p>
           </div>
         </div>

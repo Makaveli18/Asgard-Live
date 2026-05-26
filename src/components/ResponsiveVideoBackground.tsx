@@ -1,21 +1,27 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { extractYouTubeId, createYouTubeEmbedUrl } from '../utils/videoHelpers';
+import { extractYouTubeId } from '../utils/videoHelpers';
 
 interface ResponsiveVideoBackgroundProps {
-  /** Video source - can be YouTube URL or direct video file URL (.mp4, .webm, etc.) */
   videoSource: string;
-  /** Fallback image for mobile or if video fails */
   fallbackImage: string;
-  /** Additional CSS classes */
   className?: string;
-  /** Whether to show video controls */
   showControls?: boolean;
-  /** Whether video should autoplay */
   autoplay?: boolean;
-  /** Children content to overlay */
   children?: React.ReactNode;
-  /** Force mobile behavior */
   forceMobile?: boolean;
+}
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  return isMobile;
 }
 
 export function ResponsiveVideoBackground({
@@ -30,22 +36,22 @@ export function ResponsiveVideoBackground({
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isMobile = useIsMobile();
 
-  // Check if the video source is a YouTube URL
   const youtubeId = extractYouTubeId(videoSource);
   const isYouTubeVideo = !!youtubeId;
+  const showVideo = !isMobile && !forceMobile;
 
   useEffect(() => {
-    if (videoRef.current && !isYouTubeVideo) {
+    if (videoRef.current && !isYouTubeVideo && showVideo) {
       const video = videoRef.current;
-      
+
       const handleLoadedData = () => {
         setVideoLoaded(true);
         setVideoError(false);
       };
 
       const handleError = () => {
-        console.error('Video failed to load:', videoSource);
         setVideoError(true);
         setVideoLoaded(false);
       };
@@ -58,12 +64,12 @@ export function ResponsiveVideoBackground({
         video.removeEventListener('error', handleError);
       };
     }
-  }, [videoSource, isYouTubeVideo]);
+  }, [videoSource, isYouTubeVideo, showVideo]);
 
   return (
     <div className={`relative w-full h-full overflow-hidden bg-black ${className}`}>
-      {/* YouTube Video Background for Desktop */}
-      {isYouTubeVideo && (
+      {/* YouTube Video Background - Desktop Only */}
+      {isYouTubeVideo && showVideo && (
         <iframe
           src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoplay ? 1 : 0}&mute=1&loop=1&playlist=${youtubeId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&disablekb=1&fs=0&cc_load_policy=0&cc_lang_pref=auto&widget_referrer=https%3A%2F%2Fasgardtattoo.com`}
           className="absolute inset-0"
@@ -81,15 +87,16 @@ export function ResponsiveVideoBackground({
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen={false}
           title="Background Video"
+          loading="lazy"
         />
       )}
 
-      {/* Direct Video File Background for Desktop */}
-      {!isYouTubeVideo && (
+      {/* Direct Video File Background - Desktop Only */}
+      {!isYouTubeVideo && showVideo && (
         <video
           ref={videoRef}
           className="absolute inset-0"
-          style={{ 
+          style={{
             width: '100vw',
             height: '56.25vw',
             minHeight: '100vh',
@@ -109,21 +116,18 @@ export function ResponsiveVideoBackground({
           onError={() => setVideoError(true)}
         >
           <source src={videoSource} type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
       )}
 
-      {/* Fallback Image for Desktop (if video fails) */}
+      {/* Fallback Image - Always shown on mobile, shown on desktop if video fails */}
       <div
         className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-700 ${
-          (isYouTubeVideo || (videoLoaded && !videoError)) ? 'opacity-0' : 'opacity-100'
+          showVideo && (isYouTubeVideo || (videoLoaded && !videoError)) ? 'opacity-0' : 'opacity-100'
         }`}
-        style={{ 
-          backgroundImage: `url(${fallbackImage})`
-        }}
+        style={{ backgroundImage: `url(${fallbackImage})` }}
       />
 
-      {/* Overlay for better text readability */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
       {/* Content */}
