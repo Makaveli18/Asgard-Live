@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { isMobile, isTablet } from 'react-device-detect';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useTranslation } from '../i18n';
 
 const BlogSchema = {
   "@context": "https://schema.org",
@@ -52,6 +53,7 @@ const blogPosts = [
 ];
 
 function Blog() {
+  const { t } = useTranslation();
   const [isClient, setIsClient] = React.useState(false);
 
   React.useEffect(() => {
@@ -63,15 +65,14 @@ function Blog() {
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
-      
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(BlogSchema) }}
       />
 
-      {/* Hero Section with Video Background */}
+      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Static Background Image */}
         <div className="absolute inset-0 w-full h-full">
           <div
             className="w-full h-full bg-cover bg-center bg-no-repeat"
@@ -82,23 +83,22 @@ function Blog() {
               backgroundRepeat: 'no-repeat',
             }}
           />
-          {/* Dark overlay for text readability */}
           <div className={`absolute inset-0 bg-gradient-to-b ${shouldUseMobile ? 'from-black/85 via-black/65 to-black/85' : 'from-black/70 via-black/50 to-black/80'}`} />
         </div>
 
         <div className="container mx-auto px-4 relative z-20 py-20 md:py-24 mt-16">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-['Uncial_Antiqua'] text-metallic-gold mb-4 md:mb-8 leading-tight blog-hero-title">
-              Tattoo Stories, Viking Symbols & Ink Wisdom From the Best Tattoo Studio in Landshut
+              {t.blog.heroTitle}
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-white mb-6 md:mb-12 font-cinzel leading-relaxed max-w-3xl mx-auto blog-hero-text">
-              From aftercare secrets to Norse meanings and custom ink inspiration - this is where warriors learn before they burn. Every blog post is handcrafted by the artists at Asgard Tattoo to guide your journey, one drop of ink at a time.
+              {t.blog.heroSubtitle}
             </p>
             <Link
               to="/booking#form"
               className="inline-block cta-button bg-firebrick text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-md hover:bg-firebrick/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-firebrick/50 text-sm md:text-lg blog-hero-button"
             >
-              Book Your Free Design Consult NOW
+              {t.blog.heroCta}
             </Link>
           </div>
         </div>
@@ -108,12 +108,12 @@ function Blog() {
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-cinzel text-metallic-gold text-center mb-12">
-            Tattoo Tips, Norse Symbols & Local Legends
+            {t.blog.sectionTitle}
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {blogPosts.map((post, index) => (
-              <article 
+              <article
                 key={index}
                 className="bg-viking-navy/20 rounded-lg overflow-hidden border border-metallic-gold/30 hover:border-metallic-gold transition-all duration-300"
               >
@@ -138,7 +138,7 @@ function Blog() {
                     to={`/blog/${post.slug}`}
                     className="inline-flex items-center text-firebrick hover:text-metallic-gold transition-colors"
                   >
-                    Read More
+                    {t.blog.readMore}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </div>
@@ -153,81 +153,37 @@ function Blog() {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-metallic-gold mb-6">
-             💥 Want a Viking-Inspired Masterpiece?
+              {t.blog.ctaTitle}
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Only 6 Spots Left This Month!
+              {t.blog.ctaText}
             </p>
             <Link
               to="/booking#form"
               className="cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md transition-all duration-300 inline-flex items-center justify-center space-x-2"
             >
-              Book Your Session Now
+              {t.blog.ctaButton}
             </Link>
           </div>
         </div>
       </section>
 
       <Footer />
-      
-      {/* Enhanced Text Shadow Styles for Static Background Readability */}
+
+      {/* Text Shadow Styles */}
       <style jsx>{`
         .blog-hero-title {
           text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
         }
-        
         .blog-hero-text {
           text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
         }
-        
         .blog-hero-button {
           text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
         }
-
-        /* Responsive Background Optimization to Show Full Image */
         @media (max-width: 768px) {
-          [style*="background-image"] {
-            background-size: contain !important;
-            background-position: center 85% !important;
-          }
-          
-          .blog-hero-title {
-            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3);
-          }
-          
-          .blog-hero-text {
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
-          }
-          
-          .blog-hero-button {
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-          }
-        }
-        
-        @media (min-width: 769px) and (max-width: 1024px) {
-          [style*="background-image"] {
-            background-size: contain !important;
-            background-position: center 80% !important;
-          }
-
-          .blog-hero-title {
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 0, 0, 0.3);
-          }
-          
-          .blog-hero-text {
-            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
-          }
-
-          .blog-hero-button {
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-          }
-        }
-        
-        @media (min-width: 1025px) {
-          [style*="background-image"] {
-            background-size: contain !important;
-            background-position: center 75% !important;
-          }
+          .blog-hero-title { text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.3); }
+          .blog-hero-text { text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3); }
         }
       `}</style>
     </div>

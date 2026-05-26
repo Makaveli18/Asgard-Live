@@ -2,12 +2,14 @@ import React, { useState, useRef } from 'react';
 import { Upload, X, CheckCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { logEvent } from '../lib/analytics';
+import { useTranslation } from '../i18n';
 
 interface ContactFormProps {
   className?: string;
 }
 
 export function ContactForm({ className }: ContactFormProps) {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -19,7 +21,7 @@ export function ContactForm({ className }: ContactFormProps) {
     if (!file) return;
 
     if (file.size > 10 * 1024 * 1024) {
-      alert('Datei zu gross. Maximal 10MB erlaubt.');
+      alert(t.contact.fileTooLarge);
       return;
     }
 
@@ -62,7 +64,6 @@ export function ContactForm({ className }: ContactFormProps) {
 
     const formData = new FormData(e.currentTarget);
 
-    // Honeypot check
     const honeypot = formData.get('website') as string;
     if (honeypot) {
       setSubmitStatus('success');
@@ -113,23 +114,23 @@ export function ContactForm({ className }: ContactFormProps) {
       <div className={`text-center py-12 ${className}`}>
         <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
         <h3 className="text-2xl font-bold text-metallic-gold mb-4">
-          Anfrage erfolgreich gesendet!
+          {t.contact.successTitle}
         </h3>
         <p className="text-gray-300 mb-4 text-lg">
-          Wir melden uns innerhalb von 24 Stunden per WhatsApp oder E-Mail bei dir.
+          {t.contact.successText}
         </p>
         <p className="text-gray-400 text-sm">
-          In der Zwischenzeit: Schau dir unser{' '}
+          {t.contact.successPortfolio.split('Portfolio')[0]}
           <a href="/portfolio" className="text-metallic-gold hover:text-firebrick transition-colors">
             Portfolio
-          </a>{' '}
-          an fur weitere Inspiration.
+          </a>
+          {t.contact.successPortfolio.split('Portfolio')[1]}
         </p>
         <button
           onClick={() => setSubmitStatus('idle')}
           className="mt-8 text-metallic-gold hover:text-firebrick transition-colors text-sm underline"
         >
-          Weitere Anfrage senden
+          {t.contact.successAnother}
         </button>
       </div>
     );
@@ -137,120 +138,120 @@ export function ContactForm({ className }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className={`space-y-5 contact-form ${className}`}>
-      {/* Honeypot - hidden from real users */}
+      {/* Honeypot */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <input type="text" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-2">Name *</label>
+          <label htmlFor="name" className="block text-sm font-medium mb-2">{t.contact.nameLabel}</label>
           <input
             type="text"
             id="name"
             name="name"
             className="w-full bg-black/50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-firebrick border border-metallic-gold/30"
-            placeholder="Dein Name"
+            placeholder={t.contact.namePlaceholder}
             required
           />
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium mb-2">Telefon / WhatsApp *</label>
+          <label htmlFor="phone" className="block text-sm font-medium mb-2">{t.contact.phoneLabel}</label>
           <input
             type="tel"
             id="phone"
             name="phone"
             className="w-full bg-black/50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-firebrick border border-metallic-gold/30"
-            placeholder="Deine Nummer"
+            placeholder={t.contact.phonePlaceholder}
             required
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-2">E-Mail *</label>
+        <label htmlFor="email" className="block text-sm font-medium mb-2">{t.contact.emailLabel}</label>
         <input
           type="email"
           id="email"
           name="email"
           className="w-full bg-black/50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-firebrick border border-metallic-gold/30"
-          placeholder="Deine E-Mail-Adresse"
+          placeholder={t.contact.emailPlaceholder}
           required
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="tattoo_type" className="block text-sm font-medium mb-2">Tattoo-Stil *</label>
+          <label htmlFor="tattoo_type" className="block text-sm font-medium mb-2">{t.contact.styleLabel}</label>
           <select
             id="tattoo_type"
             name="tattoo_type"
             className="w-full bg-black/50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-firebrick border border-metallic-gold/30"
             required
           >
-            <option value="">Stil wahlen...</option>
-            <option value="Fine Line">Fine Line</option>
-            <option value="Realism">Realism</option>
-            <option value="Norse & Viking">Norse & Viking</option>
-            <option value="Blackwork">Blackwork</option>
-            <option value="Neo-Traditional">Neo-Traditional</option>
-            <option value="Custom Design">Custom Design</option>
-            <option value="Ornamental / Dotwork">Ornamental / Dotwork</option>
-            <option value="Cover-Up">Cover-Up</option>
-            <option value="Anderer Stil">Anderer Stil</option>
+            <option value="">{t.contact.stylePlaceholder}</option>
+            <option value="Fine Line">{t.contact.styleFineLine}</option>
+            <option value="Realism">{t.contact.styleRealism}</option>
+            <option value="Norse & Viking">{t.contact.styleNorse}</option>
+            <option value="Blackwork">{t.contact.styleBlackwork}</option>
+            <option value="Neo-Traditional">{t.contact.styleNeoTraditional}</option>
+            <option value="Custom Design">{t.contact.styleCustom}</option>
+            <option value="Ornamental / Dotwork">{t.contact.styleOrnamental}</option>
+            <option value="Cover-Up">{t.contact.styleCoverUp}</option>
+            <option value="Other">{t.contact.styleOther}</option>
           </select>
         </div>
         <div>
-          <label htmlFor="preferred_artist" className="block text-sm font-medium mb-2">Bevorzugter Kunstler</label>
+          <label htmlFor="preferred_artist" className="block text-sm font-medium mb-2">{t.contact.artistLabel}</label>
           <select
             id="preferred_artist"
             name="preferred_artist"
             className="w-full bg-black/50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-firebrick border border-metallic-gold/30"
           >
-            <option value="">Egal / Kein Favorit</option>
-            <option value="Imre">Imre - Norse, Realism, Custom</option>
-            <option value="Eszter">Eszter - Fine Line, Dotwork, Custom</option>
+            <option value="">{t.contact.artistPlaceholder}</option>
+            <option value="Imre">{t.contact.artistImre}</option>
+            <option value="Eszter">{t.contact.artistEszter}</option>
           </select>
         </div>
       </div>
 
       <div>
-        <label htmlFor="preferred_timeframe" className="block text-sm font-medium mb-2">Wunschzeitraum</label>
+        <label htmlFor="preferred_timeframe" className="block text-sm font-medium mb-2">{t.contact.timeframeLabel}</label>
         <select
           id="preferred_timeframe"
           name="preferred_timeframe"
           className="w-full bg-black/50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-firebrick border border-metallic-gold/30"
         >
-          <option value="">Flexibel / So schnell wie moglich</option>
-          <option value="Diese Woche">Diese Woche</option>
-          <option value="Nachste Woche">Nachste Woche</option>
-          <option value="In 2-4 Wochen">In 2-4 Wochen</option>
-          <option value="In 1-2 Monaten">In 1-2 Monaten</option>
-          <option value="Nur Beratung">Erstmal nur Beratung</option>
+          <option value="">{t.contact.timeframePlaceholder}</option>
+          <option value="This Week">{t.contact.timeframeThisWeek}</option>
+          <option value="Next Week">{t.contact.timeframeNextWeek}</option>
+          <option value="2-4 Weeks">{t.contact.timeframe2to4}</option>
+          <option value="1-2 Months">{t.contact.timeframe1to2months}</option>
+          <option value="Consultation Only">{t.contact.timeframeConsultOnly}</option>
         </select>
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">Beschreibung *</label>
+        <label htmlFor="message" className="block text-sm font-medium mb-2">{t.contact.messageLabel}</label>
         <textarea
           id="message"
           name="message"
           className="w-full bg-black/50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-firebrick border border-metallic-gold/30"
           rows={5}
-          placeholder="Beschreibe dein Wunsch-Tattoo: Motiv, Grosse (ca. in cm), Korperpartie, und alles was dir wichtig ist."
+          placeholder={t.contact.messagePlaceholder}
           required
         />
       </div>
 
       {/* Reference Image Upload */}
       <div>
-        <label className="block text-sm font-medium mb-2">Referenzbild (optional)</label>
+        <label className="block text-sm font-medium mb-2">{t.contact.referenceLabel}</label>
         <div className="relative">
           {filePreview ? (
             <div className="relative inline-block">
               <img
                 src={filePreview}
-                alt="Referenz-Vorschau"
+                alt="Reference preview"
                 className="w-32 h-32 object-cover rounded-lg border border-metallic-gold/30"
               />
               <button
@@ -267,7 +268,7 @@ export function ContactForm({ className }: ContactFormProps) {
               className="flex items-center justify-center gap-3 w-full py-4 px-4 border-2 border-dashed border-metallic-gold/30 rounded-lg cursor-pointer hover:border-metallic-gold/60 transition-colors bg-black/30"
             >
               <Upload className="w-5 h-5 text-metallic-gold" />
-              <span className="text-gray-400 text-sm">Bild hochladen (max. 10MB)</span>
+              <span className="text-gray-400 text-sm">{t.contact.uploadText}</span>
             </label>
           )}
           <input
@@ -286,12 +287,12 @@ export function ContactForm({ className }: ContactFormProps) {
         disabled={isSubmitting}
         className="cta-button w-full bg-firebrick text-white font-bold py-4 rounded-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-lg"
       >
-        {isSubmitting ? 'Wird gesendet...' : 'Kostenlose Beratung anfragen'}
+        {isSubmitting ? t.contact.submitting : t.contact.submitButton}
       </button>
 
       {submitStatus === 'error' && (
         <div className="text-red-500 text-center text-sm" role="alert">
-          Etwas ist schiefgelaufen. Bitte versuche es erneut oder kontaktiere uns direkt per WhatsApp.
+          {t.contact.errorText}
         </div>
       )}
     </form>

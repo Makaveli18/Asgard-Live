@@ -1,46 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { ChevronDown, Clock, Shield, AlertCircle } from 'lucide-react';
+import { useInView } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../components/ContactForm';
 import { ResponsiveVideoBackground } from '../components/ResponsiveVideoBackground';
-
-const FAQ_ITEMS = [
-  {
-    question: "Was kostet ein Tattoo bei Asgard?",
-    answer: "Die Preise richten sich nach Grosse, Komplexitat und Zeitaufwand. Unser Mindestpreis liegt bei 80\u20AC. Kleine Motive kosten in der Regel 150-300\u20AC, grossere Arbeiten und Ganztags-Sessions starten ab 600\u20AC. Den genauen Preis besprechen wir in deiner kostenlosen Beratung."
-  },
-  {
-    question: "Wie bereite ich mich auf meinen Termin vor?",
-    answer: "Schlaf gut, iss eine ordentliche Mahlzeit vorher, trink genug Wasser und verzichte 24 Stunden vor deiner Session auf Alkohol. Trag bequeme Kleidung, die den Zugang zur Tatowierstelle erleichtert. Falls du dich unwohl fuhlst, sag uns Bescheid und wir verschieben den Termin."
-  },
-  {
-    question: "Wie stark sind die Schmerzen je nach Korperpartie?",
-    answer: "Schmerzempfinden ist individuell, aber grundsatzlich gilt:\n- Am wenigsten: Aussenarme, Waden, Oberschenkel\n- Mittel: Innenarme, Unterarme, Rucken\n- Empfindlicher: Rippen, Knochel, Hande\n- Am sensibelsten: Kopf, Ellenbogeninnenseite, Knie\nUnsere erfahrenen Kunstler begleiten dich durch den gesamten Prozess."
-  },
-  {
-    question: "Bietet ihr kostenlose Beratungen an?",
-    answer: "Ja! Jede Beratung und Design-Planung bei Asgard ist komplett kostenlos und unverbindlich. Wir nehmen uns die Zeit, deine Vision zu verstehen und dir einen massgeschneiderten Vorschlag zu machen, bevor du dich entscheidest."
-  },
-  {
-    question: "Kann ich ein Referenzbild mitbringen?",
-    answer: "Auf jeden Fall! Referenzbilder helfen uns enorm, deinen Stil und deine Vorstellungen zu verstehen. Du kannst sie direkt uber unser Formular hochladen oder per WhatsApp schicken. Wir erstellen dann ein individuelles Design basierend auf deinen Wunschen."
-  }
-];
-
-const FAQ_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": FAQ_ITEMS.map(item => ({
-    "@type": "Question",
-    "name": item.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": item.answer
-    }
-  }))
-};
+import { useTranslation } from '../i18n';
 
 const AccordionItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -70,60 +35,64 @@ const AccordionItem = ({ question, answer }) => {
 };
 
 function Booking() {
+  const { t } = useTranslation();
   const formRef = useRef(null);
   const isInView = useInView(formRef, { once: true });
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": t.booking.faq.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   useEffect(() => {
-    // Handle hash navigation with proper timing
     const scrollToForm = () => {
       if (formRef.current) {
-        formRef.current.scrollIntoView({ 
+        formRef.current.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });
       }
     };
 
-    // Check for hash on mount
     if (window.location.hash === '#form') {
-      setTimeout(() => {
-        scrollToForm();
-      }, 500); // Longer delay to ensure everything is rendered
+      setTimeout(() => scrollToForm(), 500);
     }
 
-    // Listen for hash changes
     const handleHashChange = () => {
       if (window.location.hash === '#form') {
-        setTimeout(() => {
-          scrollToForm();
-        }, 100);
+        setTimeout(() => scrollToForm(), 100);
       }
     };
 
     window.addEventListener('hashchange', handleHashChange);
-    
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   const scrollToForm = () => {
     if (formRef.current) {
-      formRef.current.scrollIntoView({ 
+      formRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
     }
   };
+
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Header />
 
-      {/* Hero Section */}
       {/* Hero Section with Video Background */}
       <section className="relative w-full overflow-hidden flex items-center justify-center min-h-screen">
         <ResponsiveVideoBackground
@@ -134,32 +103,28 @@ function Booking() {
           <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10 min-h-screen">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="font-['Uncial_Antiqua'] text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-metallic-gold mb-4 md:mb-6 leading-tight booking-hero-title">
-                Dein Meisterwerk wartet
+                {t.booking.heroTitle}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-cinzel booking-hero-text">
-                Hunderte Krieger vertrauen uns ihre Geschichte an. Jetzt bist du dran.
+                {t.booking.heroSubtitle}
               </p>
             </div>
           </div>
         </ResponsiveVideoBackground>
       </section>
 
-      {/* Enhanced Text Shadow Styles for Better Readability */}
+      {/* Enhanced Text Shadow Styles */}
       <style jsx>{`
         .booking-hero-title {
           text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.8), 2px 2px 8px rgba(0, 0, 0, 1);
         }
-        
         .booking-hero-text {
           text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.7), 2px 2px 6px rgba(0, 0, 0, 0.9);
         }
-
-        /* Mobile optimizations for better text readability */
         @media (max-width: 768px) {
           .booking-hero-title {
             text-shadow: 4px 4px 22px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 0, 0, 0.8), 2px 2px 8px rgba(0, 0, 0, 1);
           }
-          
           .booking-hero-text {
             text-shadow: 3px 3px 18px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 0, 0, 0.75), 2px 2px 7px rgba(0, 0, 0, 0.95);
           }
@@ -170,7 +135,7 @@ function Booking() {
       <section ref={formRef} className="py-20 bg-black relative z-30" id="form">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto bg-viking-navy p-8 rounded-lg shadow-[0_0_20px_rgba(30,58,95,0.5)]">
-            <h2 className="text-3xl font-bold text-center mb-8 text-metallic-gold">Termin buchen</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-metallic-gold">{t.booking.formTitle}</h2>
             <ContactForm />
           </div>
         </div>
@@ -180,10 +145,10 @@ function Booking() {
       <section className="py-16 bg-viking-navy/20 relative z-30">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-metallic-gold">
-            Haufig gestellte Fragen
+            {t.booking.faqTitle}
           </h2>
           <div className="max-w-2xl mx-auto">
-            {FAQ_ITEMS.map((item, index) => (
+            {t.booking.faq.map((item, index) => (
               <AccordionItem key={index} {...item} />
             ))}
           </div>
@@ -198,10 +163,10 @@ function Booking() {
               onClick={scrollToForm}
               className="cta-button bg-firebrick text-white font-bold py-4 px-8 rounded-md transition-all duration-300 inline-flex items-center justify-center space-x-2 w-full md:w-auto"
             >
-              Kostenlose Beratung anfragen
+              {t.booking.ctaButton}
             </button>
             <p className="text-lg text-white/80 mt-4">
-              Individuelle Beratung, massgeschneidertes Design, null Risiko.
+              {t.booking.ctaSubtext}
             </p>
           </div>
         </div>
