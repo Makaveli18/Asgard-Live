@@ -590,7 +590,7 @@ export const blogPosts = {
     titleDe: "Was kostet ein Tattoo in Landshut? Preise, Stundensatze & was du wirklich bezahlst",
     description: "Transparent breakdown of tattoo pricing in Landshut. From small motifs starting at 100 EUR to full-day sessions. Learn what determines cost and why cheap tattoos always cost more.",
     descriptionDe: "Transparenter Einblick in Tattoo-Preise in Landshut. Von kleinen Motiven ab 100 EUR bis Ganztags-Sessions. Erfahre, was den Preis bestimmt und warum billige Tattoos am Ende teurer sind.",
-    image: "/images/Portfolio/realism/custom ink/realism-mountain-forest-father-son-half-sleeve-tattoo.jpg",
+    image: "/images/Blog/WhatsApp_Image_2026-05-14_at_3.26.51_PM.jpeg",
     date: "June 3, 2026",
     dateDe: "3. Juni 2026",
     readTime: "9 min",

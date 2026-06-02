@@ -27,8 +27,8 @@ const blogPosts = [
     titleDe: "Was kostet ein Tattoo in Landshut? Preise, Stundensatze & was du wirklich bezahlst",
     preview: "Transparent breakdown of tattoo pricing in Landshut. From small motifs starting at 100 EUR to full-day sessions. Learn what determines cost and why cheap tattoos always cost more.",
     previewDe: "Transparenter Einblick in Tattoo-Preise in Landshut. Von kleinen Motiven ab 100 EUR bis Ganztags-Sessions. Erfahre, was den Preis bestimmt und warum billige Tattoos am Ende teurer sind.",
-    image: "/images/Portfolio/realism/custom ink/realism-mountain-forest-father-son-half-sleeve-tattoo.jpg",
-    alt: "Custom tattoo artwork showing pricing value",
+    image: "/images/Blog/WhatsApp_Image_2026-05-14_at_3.26.51_PM.jpeg",
+    alt: "Realistic wolf tattoo on forearm at Asgard Tattoo studio",
     slug: "was-kostet-ein-tattoo-landshut"
   },
   {
