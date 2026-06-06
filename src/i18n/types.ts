@@ -107,6 +107,13 @@ export interface Translations {
     faqTitle: string;
     ctaButton: string;
     ctaSubtext: string;
+    processStep1Title: string;
+    processStep1Text: string;
+    processStep2Title: string;
+    processStep2Text: string;
+    processStep3Title: string;
+    processStep3Text: string;
+    processPromise: string;
     faq: Array<{ question: string; answer: string }>;
   };
   portfolio: {

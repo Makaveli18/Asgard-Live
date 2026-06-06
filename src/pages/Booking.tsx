@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useInView } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, MessageCircle, PenTool, CheckCircle2 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../components/ContactForm';
@@ -130,6 +130,38 @@ function Booking() {
           }
         }
       `}</style>
+
+      {/* Design Certainty Strip */}
+      <section className="py-16 bg-viking-navy/40 relative z-30 border-b border-metallic-gold/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-metallic-gold/10 border border-metallic-gold/30 flex items-center justify-center">
+                  <MessageCircle className="w-6 h-6 text-metallic-gold" />
+                </div>
+                <h3 className="text-lg font-bold text-metallic-gold mb-2">{t.booking.processStep1Title}</h3>
+                <p className="text-gray-300 text-sm">{t.booking.processStep1Text}</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-metallic-gold/10 border border-metallic-gold/30 flex items-center justify-center">
+                  <PenTool className="w-6 h-6 text-metallic-gold" />
+                </div>
+                <h3 className="text-lg font-bold text-metallic-gold mb-2">{t.booking.processStep2Title}</h3>
+                <p className="text-gray-300 text-sm">{t.booking.processStep2Text}</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-metallic-gold/10 border border-metallic-gold/30 flex items-center justify-center">
+                  <CheckCircle2 className="w-6 h-6 text-metallic-gold" />
+                </div>
+                <h3 className="text-lg font-bold text-metallic-gold mb-2">{t.booking.processStep3Title}</h3>
+                <p className="text-gray-300 text-sm">{t.booking.processStep3Text}</p>
+              </div>
+            </div>
+            <p className="text-center text-white/70 text-sm mt-10 italic">{t.booking.processPromise}</p>
+          </div>
+        </div>
+      </section>
 
       {/* Booking Form Section */}
       <section ref={formRef} className="py-20 bg-black relative z-30" id="form">

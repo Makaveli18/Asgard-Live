@@ -12,7 +12,7 @@ export const de: Translations = {
     heroTitle: 'Landshuts bestes Tattoo Studio. Deine Geschichte, auf ewig verewigt.',
     heroSubtitle: 'Norse, Fine Line, Realism & Custom Design - individuell gezeichnet, meisterhaft gestochen.',
     heroCta: 'Kostenlose Beratung anfragen',
-    heroDisclaimer: 'Jede Beratung und Design-Planung ist komplett kostenlos. Null Risiko, volle Kreativpower.',
+    heroDisclaimer: 'Du entscheidest erst, wenn das Design perfekt ist. Beratung & Planung komplett kostenlos.',
     intro: 'Stell dir vor, du stehst vor dem Spiegel und siehst endlich das Tattoo, das du dir immer gewunscht hast - perfekt gestochen, ohne Kompromisse. Genau das machen wir bei Asgard.',
     testimonialsTitle: 'Das sagen unsere Kunden',
     trustLicensed: 'Lizenziert & Zertifiziert',
@@ -41,7 +41,7 @@ export const de: Translations = {
     ctaTitle: 'Warum Durchschnitt, wenn Meisterwerk geht?',
     ctaText: 'Uber 1000 zufriedene Kunden vertrauen auf Asgard. Ob Full-Sleeve, feines Fineline-Motiv oder Custom-Design nach deiner Vorlage - bei uns bekommst du keine Massenware, sondern ein Unikat fur die Ewigkeit.',
     ctaButton: 'Jetzt kostenlose Beratung sichern',
-    ctaSubtext: 'Beratung & Design-Planung immer gratis. Schreib uns jetzt.',
+    ctaSubtext: 'Wir zeichnen so lange, bis du sicher bist. Erst dann startet die Session.',
     formTitle: 'Termin anfragen',
     portfolioLink: 'Portfolio ansehen →',
     inquireLink: 'Anfragen →',
@@ -92,7 +92,7 @@ export const de: Translations = {
     step1Title: 'Beratung',
     step1Text: 'Wir horen deine Geschichte, verstehen deine Vision und beginnen mit der Gestaltung deines einzigartigen Designs.',
     step2Title: 'Design',
-    step2Text: 'Individuelles Artwork, speziell fur dich geschaffen - keine Vorlagen, keine Abkurzungen, nur pure Kunst.',
+    step2Text: 'Individuelles Artwork, speziell fur dich geschaffen. Wir zeichnen so lange, bis du sagst: Das ist es. Keine Vorlagen, keine Abkurzungen.',
     step3Title: 'Umsetzung',
     step3Text: 'Hier passiert die Magie - deine Vision wird durch meisterhafte Technik und Kunstfertigkeit lebendig.',
     step4Title: 'Legende',
@@ -109,10 +109,41 @@ export const de: Translations = {
     faqTitle: 'Haufig gestellte Fragen',
     ctaButton: 'Kostenlose Beratung anfragen',
     ctaSubtext: 'Individuelle Beratung, massgeschneidertes Design, null Risiko.',
+    processStep1Title: 'Erzahl uns deine Idee',
+    processStep1Text: 'Auch wenn sie noch unfertig ist. Wir formen sie gemeinsam.',
+    processStep2Title: 'Wir zeichnen, bis es sitzt',
+    processStep2Text: 'Unbegrenzte Anpassungen. Kein Kompromiss. Kein Zeitdruck.',
+    processStep3Title: 'Du sagst Ja - oder nicht',
+    processStep3Text: 'Erst wenn du das Design siehst und denkst "Das bin ich" geht die Nadel an.',
+    processPromise: 'Beratung & Design-Planung immer kostenlos. Du bezahlst erst, wenn du bereit bist.',
     faq: [
+      {
+        question: 'Wie lange muss ich auf einen Termin warten?',
+        answer: 'Deutlich kurzer als du denkst. Je nach Design-Komplexitat konnen wir dich oft schon innerhalb derselben Woche einschieben - manchmal sogar am nachsten Tag. Es gibt bei uns keine monatelangen Wartelisten. Schreib uns einfach und wir finden den nachsten freien Slot fur dich. Antwort garantiert innerhalb von 24 Stunden.',
+      },
+      {
+        question: 'Was wenn ich mir noch nicht sicher bin, welches Motiv ich will?',
+        answer: 'Genau dafur ist unsere Beratung da. Die meisten Kunden kommen mit einer groben Idee - ein Gefuhl, ein Bild auf dem Handy, manchmal nur ein Wort. Wir setzen uns zusammen, entwickeln das Konzept Schritt fur Schritt, und zeichnen so lange, bis du das Design siehst und weisst: Das ist es. Du siehst das fertige Motiv bevor auch nur ein Tropfen Tinte deine Haut beruhrt. Kein Druck, keine Eile.',
+      },
       {
         question: 'Was kostet ein Tattoo bei Asgard?',
         answer: 'Die Preise richten sich nach Grosse, Komplexitat und Zeitaufwand. Unser Mindestpreis liegt bei 80\u20AC. Kleine Motive kosten in der Regel 150-300\u20AC, grossere Arbeiten und Ganztags-Sessions starten ab 600\u20AC. Den genauen Preis besprechen wir in deiner kostenlosen Beratung.',
+      },
+      {
+        question: 'Kann ich ein altes Tattoo bei euch uberstechen lassen?',
+        answer: 'Ja, Cover-Ups sind eine unserer Starken. Dafur ist eine personliche Beratung vor Ort notwendig, damit wir die alte Arbeit richtig einschatzen konnen - Farbdichte, Narbengewebe, Grosse. Auf dieser Basis entwerfen wir ein neues Motiv, das dein altes Tattoo in etwas verwandelt, auf das du stolz bist. Termin zur kostenlosen Ersteinschatzung einfach uber das Formular anfragen.',
+      },
+      {
+        question: 'Bietet ihr kostenlose Beratungen an?',
+        answer: 'Ja! Jede Beratung und Design-Planung bei Asgard ist komplett kostenlos und unverbindlich. Wir nehmen uns die Zeit, deine Vision zu verstehen, zeichnen Entwurfe, passen an - alles bevor du dich entscheidest. Du gehst erst eine Verpflichtung ein, wenn du dein Design siehst und sicher bist.',
+      },
+      {
+        question: 'Kann ich ein Referenzbild mitbringen?',
+        answer: 'Auf jeden Fall! Referenzbilder helfen uns enorm, deinen Stil und deine Vorstellungen zu verstehen. Du kannst sie direkt uber unser Formular hochladen oder per WhatsApp schicken. Wir erstellen dann ein individuelles Design basierend auf deinen Wunschen.',
+      },
+      {
+        question: 'Ich mochte mein erstes Tattoo - was muss ich wissen?',
+        answer: 'Willkommen! Unser Prozess ist speziell darauf ausgelegt, Erstlingen die Unsicherheit zu nehmen. So lauft es ab: Du schreibst uns deine Idee, wir beraten dich kostenlos, entwerfen gemeinsam das Motiv, und erst wenn du das Design siehst und komplett zufrieden bist, setzen wir den Termin. Nervositat ist vollig normal - du bestimmst das Tempo, Pausen jederzeit moglich. Mindestalter: 18 Jahre.',
       },
       {
         question: 'Wie bereite ich mich auf meinen Termin vor?',
@@ -123,12 +154,8 @@ export const de: Translations = {
         answer: 'Schmerzempfinden ist individuell, aber grundsatzlich gilt:\n- Am wenigsten: Aussenarme, Waden, Oberschenkel\n- Mittel: Innenarme, Unterarme, Rucken\n- Empfindlicher: Rippen, Knochel, Hande\n- Am sensibelsten: Kopf, Ellenbogeninnenseite, Knie\nUnsere erfahrenen Kunstler begleiten dich durch den gesamten Prozess.',
       },
       {
-        question: 'Bietet ihr kostenlose Beratungen an?',
-        answer: 'Ja! Jede Beratung und Design-Planung bei Asgard ist komplett kostenlos und unverbindlich. Wir nehmen uns die Zeit, deine Vision zu verstehen und dir einen massgeschneiderten Vorschlag zu machen, bevor du dich entscheidest.',
-      },
-      {
-        question: 'Kann ich ein Referenzbild mitbringen?',
-        answer: 'Auf jeden Fall! Referenzbilder helfen uns enorm, deinen Stil und deine Vorstellungen zu verstehen. Du kannst sie direkt uber unser Formular hochladen oder per WhatsApp schicken. Wir erstellen dann ein individuelles Design basierend auf deinen Wunschen.',
+        question: 'Wie pflege ich mein frisches Tattoo richtig?',
+        answer: 'Die richtige Nachpflege entscheidet uber das Endergebnis. Unsere Anleitung: 2-3x taglich mit milder Seife waschen, dunn mit parfumfreier Feuchtigkeitscreme eincremen, fur 2 Wochen keine Sonne, kein Pool, keine Sauna, und niemals kratzen oder Krusten abziehen. Du bekommst von uns eine gedruckte Pflegeanleitung nach jeder Session. Falls im Heilungsprozess etwas nicht optimal verheilt: kostenloses Touch-Up inklusive.',
       },
     ],
   },
