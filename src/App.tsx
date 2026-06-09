@@ -6,6 +6,7 @@ import Portfolio from './pages/Portfolio';
 import Booking from './pages/Booking';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import LegacyEvent from './pages/LegacyEvent';
 import Imprint from './pages/legal/Imprint';
 import Privacy from './pages/legal/Privacy';
 import Cookies from './pages/legal/Cookies';
@@ -66,6 +67,7 @@ function App() {
         <Route path="/legal/privacy" element={<Privacy />} />
         <Route path="/legal/cookies" element={<Cookies />} />
         <Route path="/legal/terms" element={<Terms />} />
+        <Route path="/legacy" element={<LegacyEvent />} />
       </Routes>
       <WhatsAppButton />
       <CookieConsent />
