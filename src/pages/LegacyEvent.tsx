@@ -73,7 +73,7 @@ function LegacyEvent() {
     '/images/Portfolio/realism/portraits/hyperrealistic-queen-of-earth-elephant-afro-sleeve-tattoo.jpg',
     '/images/Portfolio/ornamental/realism-dotwork/ornamental-back-floral-mandala-dotwork-realism-tattoo.jpg',
     '/images/Portfolio/norse/realistic-portraits/ragnar-realism-viking-side-torso-finished.jpg',
-    '/images/Portfolio/fine line/floral/peony-flowers-fineline-side-tattoo.jpg',
+    '/images/Portfolio/custom fine art/calf-cheetah-heart-tree-geometric-fine-line-tattoo.jpg',
     '/images/Portfolio/neo-traditional/mythic/neo-traditional-archangel-michael-arm-tattoo1.jpg',
     '/images/Portfolio/realism/animals/realism-gorilla-sleeve-tattoo-with-geometry.jpg',
   ];
