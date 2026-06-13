@@ -35,7 +35,7 @@ export const currentPromotion: PromotionConfig = {
   discount: '30% Rabatt',
   discountNote: 'Fur Tattoos ab 12 cm',
   deadline: 'Montag bis Freitag -- Nur nach Terminvereinbarung',
-  deadlineDate: '2026-06-20',
+  deadlineDate: '2026-06-22',
   categories: [
     'Minimal Tattoos',
     'Fine Line Tattoos',

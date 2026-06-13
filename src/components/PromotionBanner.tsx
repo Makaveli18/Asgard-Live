@@ -1,22 +1,47 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { MessageCircle, Sparkles, Clock, Send } from 'lucide-react';
+import { MessageCircle, Sparkles, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { currentPromotion } from '../data/promotion-config';
 import { logEvent } from '../lib/analytics';
 
 const WHATSAPP_NUMBER = '4915114386124';
 
+function useCountdown(targetDate: string) {
+  const deadline = new Date(targetDate + 'T00:00:00').getTime();
+
+  const calcRemaining = () => {
+    const diff = Math.max(0, deadline - Date.now());
+    return {
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((diff / (1000 * 60)) % 60),
+      seconds: Math.floor((diff / 1000) % 60),
+      isExpired: diff <= 0,
+    };
+  };
+
+  const [time, setTime] = useState(calcRemaining);
+
+  useEffect(() => {
+    const id = setInterval(() => setTime(calcRemaining()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return time;
+}
+
 export function PromotionBanner() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const countdown = useCountdown(currentPromotion.deadlineDate);
 
   const now = new Date();
   const deadline = new Date(currentPromotion.deadlineDate + 'T23:59:59');
   const isExpired = now > deadline;
 
-  if (!currentPromotion.active || isExpired) {
-    if (currentPromotion.showComingSoon && isExpired) {
+  if (!currentPromotion.active || isExpired || countdown.isExpired) {
+    if (currentPromotion.showComingSoon) {
       return (
         <section className="py-10 bg-viking-navy/20 border-y border-metallic-gold/10">
           <div className="container mx-auto px-4 text-center">
@@ -31,6 +56,8 @@ export function PromotionBanner() {
   }
 
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(currentPromotion.ctaWhatsappMessage)}`;
+
+  const pad = (n: number) => String(n).padStart(2, '0');
 
   return (
     <section ref={ref} className="py-16 md:py-20 bg-gradient-to-b from-black via-viking-navy/30 to-black border-y border-metallic-gold/20 relative overflow-hidden">
@@ -103,11 +130,24 @@ export function PromotionBanner() {
               ))}
             </div>
 
-            {/* Deadline */}
-            <div className="flex items-center justify-center gap-2 mb-8 text-gray-400 text-sm">
-              <Clock className="w-4 h-4 text-metallic-gold" />
-              <span>{currentPromotion.deadline}</span>
+            {/* Countdown Timer */}
+            <div className="mb-8">
+              <p className="text-center text-gray-400 text-xs uppercase tracking-widest mb-4">Angebot endet in</p>
+              <div className="flex items-center justify-center gap-2 md:gap-3">
+                <CountdownBlock value={pad(countdown.days)} label="Tage" />
+                <span className="text-metallic-gold/60 text-xl md:text-2xl font-light countdown-flicker-colon">:</span>
+                <CountdownBlock value={pad(countdown.hours)} label="Std" />
+                <span className="text-metallic-gold/60 text-xl md:text-2xl font-light countdown-flicker-colon">:</span>
+                <CountdownBlock value={pad(countdown.minutes)} label="Min" />
+                <span className="text-metallic-gold/60 text-xl md:text-2xl font-light countdown-flicker-colon">:</span>
+                <CountdownBlock value={pad(countdown.seconds)} label="Sek" />
+              </div>
             </div>
+
+            {/* Deadline note */}
+            <p className="text-center text-gray-500 text-xs mb-8">
+              {currentPromotion.deadline}
+            </p>
 
             {/* Dual CTA */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -134,5 +174,18 @@ export function PromotionBanner() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function CountdownBlock({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="bg-black/80 border border-metallic-gold/20 rounded-lg px-3 py-2 md:px-4 md:py-3 min-w-[52px] md:min-w-[64px]">
+        <span className="countdown-flicker text-2xl md:text-3xl font-bold font-oswald text-metallic-gold block text-center tabular-nums">
+          {value}
+        </span>
+      </div>
+      <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider mt-1.5">{label}</span>
+    </div>
   );
 }

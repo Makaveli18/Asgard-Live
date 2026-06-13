@@ -238,6 +238,26 @@
   }
 }
 
+@keyframes countdown-flicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    opacity: 0.65;
+    text-shadow: 0 0 2px rgba(212, 175, 55, 0.1);
+  }
+}
+
+.countdown-flicker {
+  animation: countdown-flicker 3.5s ease-in-out infinite;
+}
+
+.countdown-flicker-colon {
+  animation: countdown-flicker 3.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
 /* Swiper styles */
 .swiper {
   width: 100%;
