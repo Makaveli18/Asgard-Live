@@ -17,6 +17,7 @@
   --color-rust: #A64228;
   --color-steel-gray: #444444;
   --color-black: #000000;
+  --announcement-bar-height: 0px;
 }
 
 /* Import fonts */
@@ -281,7 +282,8 @@
 
 /* Header styles */
 .main-header {
-  @apply fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm transition-all duration-300;
+  @apply fixed left-0 right-0 z-50 bg-black/90 backdrop-blur-sm transition-all duration-300;
+  top: var(--announcement-bar-height, 0px);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   padding-top: 0.25rem;

@@ -13,6 +13,7 @@ import Cookies from './pages/legal/Cookies';
 import Terms from './pages/legal/Terms';
 import { CookieConsent } from './components/CookieConsent';
 import { WhatsAppButton } from './components/WhatsAppButton';
+import { AnnouncementBar } from './components/AnnouncementBar';
 import { initGA, logPageView } from './lib/analytics';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
 
   return (
     <>
+      <AnnouncementBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

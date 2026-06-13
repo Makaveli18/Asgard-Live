@@ -17,6 +17,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../components/ContactForm';
 import { ImageAutoSlider } from '../components/ui/image-auto-slider';
+import { PromotionBanner } from '../components/PromotionBanner';
 import { ResponsiveVideoBackground } from '../components/ResponsiveVideoBackground';
 import { useTranslation } from '../i18n';
 
@@ -118,6 +119,11 @@ function Home() {
 
       {/* Image Auto-Slider Section */}
       <ImageAutoSlider />
+
+      {/* Promotion Section */}
+      <div id="promo">
+        <PromotionBanner />
+      </div>
 
       {/* Testimonials */}
       <section className="py-20 bg-black">
