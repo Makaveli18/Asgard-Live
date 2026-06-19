@@ -125,7 +125,7 @@ function LegacyEvent() {
             Erst wenn du sicher bist, geht es los.
           </p>
           <p className="text-sm text-gray-400 mb-10">
-            Limitierte Platze bis 30. Juni 2026
+            Limitierte Platze bis 13. Juli 2026
           </p>
           <button
             onClick={scrollToForm}
@@ -335,15 +335,15 @@ function LegacyEvent() {
               <div className="space-y-4 text-left max-w-md mx-auto mb-8">
                 <div className="flex items-center gap-3">
                   <Shield className="w-5 h-5 text-metallic-gold flex-shrink-0" />
-                  <span className="text-gray-200">Anniversary-Rate: <strong className="text-white">150&#8364;/Stunde</strong></span>
+                  <span className="text-gray-200">Stundenpreis: <strong className="text-white">150&#8364;/Stunde</strong></span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Shield className="w-5 h-5 text-metallic-gold flex-shrink-0" />
-                  <span className="text-gray-200"><strong className="text-white">10% Rabatt</strong> auf Projekte uber 600&#8364;</span>
+                  <span className="text-gray-200"><strong className="text-white">Extra-Rabatte</strong> vor Ort fur grosse Tattoos</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Clock className="w-5 h-5 text-metallic-gold flex-shrink-0" />
-                  <span className="text-gray-200">Gilt fur alle Buchungen <strong className="text-white">bis 30. Juni</strong></span>
+                  <span className="text-gray-200">Gilt fur alle Buchungen <strong className="text-white">bis 13. Juli</strong></span>
                 </div>
               </div>
               <button
