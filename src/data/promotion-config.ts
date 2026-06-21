@@ -25,7 +25,7 @@ export const currentPromotion: PromotionConfig = {
   showComingSoon: false,
   title: 'Minimal Tattoo Aktionswoche',
   subtitle: 'Exklusive Aktionspreise fur Minimal Tattoos',
-  badge: 'Nur diese Woche',
+  badge: 'Verlangert!',
   artist: 'Eszter',
   priceTiers: [
     { size: '3-5 cm', price: '60\u20AC' },
@@ -34,8 +34,8 @@ export const currentPromotion: PromotionConfig = {
   ],
   discount: '30% Rabatt',
   discountNote: 'Fur Tattoos ab 12 cm',
-  deadline: 'Montag bis Freitag -- Nur nach Terminvereinbarung',
-  deadlineDate: '2026-06-22',
+  deadline: 'Bis zum 27. Juni -- Nur nach Terminvereinbarung',
+  deadlineDate: '2026-06-28',
   categories: [
     'Minimal Tattoos',
     'Fine Line Tattoos',
