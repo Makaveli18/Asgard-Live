@@ -241,7 +241,7 @@ function About() {
                   Fine Line Spezialistin
                 </div>
                 <div className="absolute -bottom-4 -right-4 lg:-right-auto lg:-left-4 bg-metallic-gold text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                  Co-Founderin
+                  Grunderin
                 </div>
               </div>
 
@@ -259,8 +259,8 @@ function About() {
                   </p>
                   <p>
                     {t.about.eszterBio2}{' '}
-                    <span className="text-metallic-gold font-semibold">{t.about.eszterBio2Highlight}</span>. Nicht nur
-                    die beiden, sondern alle treuen Stammkunden, die langst Teil dieser Gemeinschaft geworden sind.
+                    <span className="text-metallic-gold font-semibold">{t.about.eszterBio2Highlight}</span>.
+                    Stammkunden, Erstlinge, treue Gesichter - alle, die langst Teil dieser Gemeinschaft geworden sind.
                   </p>
                   <p>
                     {t.about.eszterBio3}{' '}
