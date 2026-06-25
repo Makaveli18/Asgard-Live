@@ -9,6 +9,7 @@ const WHATSAPP_NUMBER = '4915114386124';
 function LegacyEvent() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [utmParams, setUtmParams] = useState<Record<string, string>>({});
+  const [isScrolled, setIsScrolled] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
   const proofRef = useRef<HTMLDivElement>(null);
   const processRef = useRef<HTMLDivElement>(null);
@@ -17,6 +18,12 @@ function LegacyEvent() {
   const proofInView = useInView(proofRef, { once: true, margin: '-100px' });
   const processInView = useInView(processRef, { once: true, margin: '-100px' });
   const offerInView = useInView(offerRef, { once: true, margin: '-100px' });
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -81,7 +88,7 @@ function LegacyEvent() {
   return (
     <div className="min-h-screen bg-black text-gray-100 overflow-x-hidden">
       {/* Minimal Header - Logo only */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-metallic-gold/10">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-sm border-b border-metallic-gold/10' : ''}`}>
         <div className="container mx-auto px-4 py-3 flex justify-center">
           <img
             src="/SVG/Asgard_Logo.svg"
