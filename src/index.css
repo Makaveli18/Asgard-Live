@@ -311,6 +311,13 @@
   height: 60px;
 }
 
+.main-header.header-transparent {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+
 .nav-link {
   @apply relative text-metallic-gold font-oswald text-lg uppercase tracking-wider transition-colors duration-300;
   touch-action: manipulation;

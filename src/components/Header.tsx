@@ -27,8 +27,11 @@ const Header = () => {
     { to: '/booking', label: t.nav.bookNow },
   ];
 
+  const isHeroPage = location.pathname === '/legacy';
+  const isTransparent = isHeroPage && !isScrolled;
+
   return (
-    <header className={`main-header ${isScrolled ? 'py-2 shadow-lg' : 'py-4'}`}>
+    <header className={`main-header ${isScrolled ? 'py-2 shadow-lg' : 'py-4'} ${isTransparent ? 'header-transparent' : ''}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
