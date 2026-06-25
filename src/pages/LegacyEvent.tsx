@@ -101,13 +101,13 @@ function LegacyEvent() {
             className="w-full h-full object-contain object-center"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black z-[2]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black z-[2]" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative z-10 max-w-3xl mx-auto text-center flex-1 flex flex-col items-center justify-center pb-16"
+          className="relative z-10 max-w-3xl mx-auto text-center flex-1 flex flex-col items-center justify-end pb-20 md:pb-24"
         >
           <p className="text-metallic-gold font-cinzel text-sm md:text-base tracking-[0.2em] uppercase mb-6">
             6 Jahre Asgard Tattoo
