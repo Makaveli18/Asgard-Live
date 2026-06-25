@@ -92,22 +92,22 @@ function LegacyEvent() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 pb-16 px-4">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(/images/Viking-stone-blood-drawing.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black z-[1]" />
+      <section className="relative min-h-screen flex flex-col pt-20 px-4">
+        <div className="absolute inset-0 z-0 bg-black" />
+        <div className="absolute inset-0 z-[1] flex items-center justify-center overflow-hidden">
+          <img
+            src="/images/Paint-Brushed_Wall.jpg"
+            alt="Asgard Tattoo Studio - Thor & Loki Airbrush Mural"
+            className="w-full h-full object-contain object-center"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black z-[2]" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative z-10 max-w-3xl mx-auto text-center"
+          className="relative z-10 max-w-3xl mx-auto text-center flex-1 flex flex-col items-center justify-center pb-16"
         >
           <p className="text-metallic-gold font-cinzel text-sm md:text-base tracking-[0.2em] uppercase mb-6">
             6 Jahre Asgard Tattoo
