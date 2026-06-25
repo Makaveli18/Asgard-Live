@@ -27,7 +27,7 @@ const Header = () => {
     { to: '/booking', label: t.nav.bookNow },
   ];
 
-  const isHeroPage = location.pathname === '/legacy';
+  const isHeroPage = location.pathname.replace(/\/$/, '') === '/legacy';
   const isTransparent = isHeroPage && !isScrolled;
 
   return (
