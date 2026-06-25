@@ -98,7 +98,7 @@ function LegacyEvent() {
           <img
             src="/Imre_and_Eszter_Portrait_800x1400px.png"
             alt="Imre & Eszter - Asgard Tattoo Artists"
-            className="w-full h-full object-cover object-top md:hidden"
+            className="w-full h-full object-cover object-[center_15%] md:hidden"
           />
           <img
             src="/images/Paint-Brushed_Wall.jpg"
