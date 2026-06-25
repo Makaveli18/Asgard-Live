@@ -96,12 +96,17 @@ function LegacyEvent() {
         <div className="absolute inset-0 z-0 bg-black" />
         <div className="absolute inset-0 z-[1] flex items-center justify-center overflow-hidden">
           <img
+            src="/Imre_and_Eszter_Portrait_800x1400px.png"
+            alt="Imre & Eszter - Asgard Tattoo Artists"
+            className="w-full h-full object-cover object-top md:hidden"
+          />
+          <img
             src="/images/Paint-Brushed_Wall.jpg"
             alt="Asgard Tattoo Studio - Thor & Loki Airbrush Mural"
-            className="w-full h-full object-contain object-center scale-[1.3] md:scale-100"
+            className="w-full h-full object-contain object-center hidden md:block"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black z-[2]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black md:from-black/40 md:via-black/30 md:to-black z-[2]" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
