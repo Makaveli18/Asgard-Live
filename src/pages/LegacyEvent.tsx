@@ -98,7 +98,7 @@ function LegacyEvent() {
           <img
             src="/images/Paint-Brushed_Wall.jpg"
             alt="Asgard Tattoo Studio - Thor & Loki Airbrush Mural"
-            className="w-full h-full object-contain object-center"
+            className="w-full h-full object-contain object-center scale-[1.3] md:scale-100"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black z-[2]" />
