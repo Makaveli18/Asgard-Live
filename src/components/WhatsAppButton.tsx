@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 import { useTranslation } from '../i18n';
+import { logPixelEvent } from '../lib/analytics';
 
 const WHATSAPP_NUMBER = '4915114386124';
 
@@ -13,6 +14,7 @@ export function WhatsAppButton() {
       href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => logPixelEvent('Contact')}
       className="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
       aria-label={t.whatsapp.tooltip}
     >

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { MessageCircle, PenTool, CheckCircle2, Shield, Clock, Star, Send, ChevronDown } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { logEvent } from '../lib/analytics';
+import { logEvent, logPixelEvent } from '../lib/analytics';
 
 const WHATSAPP_NUMBER = '4915114386124';
 
@@ -66,6 +66,7 @@ function LegacyEvent() {
       if (error) throw error;
       setFormState('success');
       logEvent('Campaign', 'Legacy Lead Submit', data.utm_campaign || 'direct');
+      logPixelEvent('Lead', { content_name: 'Legacy Event', utm_campaign: data.utm_campaign });
     } catch (err) {
       console.error('Error submitting lead:', err);
       setFormState('error');
@@ -386,7 +387,10 @@ function LegacyEvent() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => logEvent('Campaign', 'Legacy WhatsApp Click', utmParams.utm_campaign || 'direct')}
+                onClick={() => {
+                  logEvent('Campaign', 'Legacy WhatsApp Click', utmParams.utm_campaign || 'direct');
+                  logPixelEvent('Contact', { content_name: 'Legacy Event WhatsApp' });
+                }}
                 className="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 px-6 rounded-md transition-all duration-300 hover:scale-[1.02]"
               >
                 <MessageCircle className="w-5 h-5" />

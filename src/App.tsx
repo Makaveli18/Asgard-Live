@@ -14,13 +14,14 @@ import Terms from './pages/legal/Terms';
 import { CookieConsent } from './components/CookieConsent';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { AnnouncementBar } from './components/AnnouncementBar';
-import { initGA, logPageView } from './lib/analytics';
+import { initGA, logPageView, initMetaPixel, logPixelPageView } from './lib/analytics';
 
 function App() {
   const location = useLocation();
 
   useEffect(() => {
     initGA();
+    initMetaPixel();
   }, []);
 
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
     sessionStorage.setItem('lastPath', location.pathname);
     
     logPageView(location.pathname);
+    logPixelPageView();
   }, [location.pathname]);
 
   // Separate effect for hash navigation

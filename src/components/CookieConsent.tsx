@@ -42,8 +42,10 @@ export function CookieConsent() {
 
     if (prefs.analytics) {
       window.gtag?.('consent', 'update', { analytics_storage: 'granted' });
+      window.fbq?.('consent', 'grant');
     } else {
       window.gtag?.('consent', 'update', { analytics_storage: 'denied' });
+      window.fbq?.('consent', 'revoke');
     }
   };
 
