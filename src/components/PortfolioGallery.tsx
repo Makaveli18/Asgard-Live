@@ -60,15 +60,12 @@ export function PortfolioGallery({ images, style }: PortfolioGalleryProps) {
         const sectionMap = new Map<string, PortfolioImage[]>();
 
         images.forEach(image => {
-          // Extract subfolder from the path
-          // Path structure: /images/Portfolio/{main-category}/{sub-category}/{filename}
-          const pathParts = image.src.split('/');
-          let subfolder = 'Main Gallery';
-          
-          // For images in subfolders, get the sub-category (index 4 in the URL path)
-          if (pathParts.length >= 6 && pathParts[4]) {
-            subfolder = pathParts[4]; // This is the sub-category folder
-          }
+          // Extract sub-category from path after /Portfolio/{main-category}/
+          // Works for any URL form: relative /images/..., https://domain/..., or Supabase Storage URLs
+          const afterPortfolio = image.src.split('/Portfolio/')[1];
+          const segments = afterPortfolio ? afterPortfolio.split('/') : [];
+          // segments[0] = main category, segments[1] = sub-category (if present)
+          const subfolder = segments.length >= 2 ? segments[1] : 'Main Gallery';
 
           if (!sectionMap.has(subfolder)) {
             sectionMap.set(subfolder, []);
