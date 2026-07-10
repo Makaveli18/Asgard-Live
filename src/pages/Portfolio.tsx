@@ -1,7 +1,6 @@
 import React from 'react'
-import { useParams, useLocation } from 'react-router-dom'
-import { isMobile, isTablet } from 'react-device-detect'
-import { useImages, ImageRecord } from '../hooks/useImages'
+import { useParams } from 'react-router-dom'
+import { useImages } from '../hooks/useImages'
 import { PortfolioGallery } from '../components/PortfolioGallery'
 import { PortfolioNavigation } from '../components/PortfolioNavigation'
 import Header from '../components/Header'
@@ -9,7 +8,6 @@ import Footer from '../components/Footer'
 import { Breadcrumb } from '../components/Breadcrumb'
 import { Link } from 'react-router-dom'
 import { ResponsiveVideoBackground } from '../components/ResponsiveVideoBackground'
-import { extractYouTubeId } from '../utils/videoHelpers'
 import { useTranslation } from '../i18n'
 
 const categories = [
@@ -26,29 +24,9 @@ const categories = [
 
 type CategoryId = typeof categories[number]['id']
 
-const categoryToFolderMapping: Record<string, string> = {
-  'realism': 'realism',
-  'fine-line': 'fine line',
-  'norse': 'norse',
-  'blackwork': 'blackwork',
-  'neo-traditional': 'neo-traditional',
-  'custom-fine-art': 'custom fine art',
-  'abstract': 'abstract',
-  'ornamental': 'ornamental',
-  'studio-bts': 'studio-bts',
-}
-
 export default function Portfolio() {
   const { t } = useTranslation()
   const { images, loading } = useImages()
-  const location = useLocation()
-  const [isClient, setIsClient] = React.useState(false)
-
-  React.useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  const shouldUseMobile = isClient && (isMobile || isTablet)
   const { category } = useParams<{ category?: CategoryId }>()
 
   React.useEffect(() => {
@@ -80,28 +58,15 @@ export default function Portfolio() {
 
   const allIds = categories.map((c) => c.id)
 
-  const portfolioImages = images
-    .filter(img => img.url.includes('/Portfolio/'))
-    .map(img => {
-      const portfolioPath = img.url.split('/Portfolio/')[1]
-      const folderName = portfolioPath?.split('/')[0]
-
-      const categoryId = Object.entries(categoryToFolderMapping).find(
-        ([key, folderPattern]) => folderName === folderPattern
-      )?.[0]
-
-      return {
-        ...img,
-        derivedMainCategory: categoryId
-      }
-    })
-    .filter(img => img.derivedMainCategory && allIds.includes(img.derivedMainCategory as CategoryId))
+  const portfolioImages = images.filter(
+    img => img.category && allIds.includes(img.category as CategoryId)
+  )
 
   let filtered: typeof portfolioImages
 
   if (category) {
     if (allIds.includes(category as CategoryId)) {
-      filtered = portfolioImages.filter((img) => img.derivedMainCategory === category)
+      filtered = portfolioImages.filter((img) => img.category === category)
     } else {
       filtered = portfolioImages
     }
