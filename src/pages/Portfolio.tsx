@@ -9,25 +9,12 @@ import { Breadcrumb } from '../components/Breadcrumb'
 import { Link } from 'react-router-dom'
 import { ResponsiveVideoBackground } from '../components/ResponsiveVideoBackground'
 import { useTranslation } from '../i18n'
-
-const categories = [
-  { id: 'realism', title: 'Realism' },
-  { id: 'fine-line', title: 'Fine Line' },
-  { id: 'norse', title: 'Norse & Viking' },
-  { id: 'blackwork', title: 'Blackwork' },
-  { id: 'neo-traditional', title: 'Neo-Traditional' },
-  { id: 'custom-fine-art', title: 'Custom Fine Art' },
-  { id: 'abstract', title: 'Abstract' },
-  { id: 'ornamental', title: 'Ornamental' },
-  { id: 'studio-bts', title: 'Studio' },
-] as const
-
-type CategoryId = typeof categories[number]['id']
+import { portfolioCategories, allCategoryIds, findCategory, findSubcategory } from '../data/portfolio-config'
 
 export default function Portfolio() {
   const { t } = useTranslation()
   const { images, loading } = useImages()
-  const { category } = useParams<{ category?: CategoryId }>()
+  const { category, subcategory } = useParams<{ category?: string; subcategory?: string }>()
 
   React.useEffect(() => {
     const referrer = document.referrer;
@@ -41,7 +28,7 @@ export default function Portfolio() {
     setTimeout(() => {
       sessionStorage.removeItem('portfolioNavigation');
     }, 1000);
-  }, [category]);
+  }, [category, subcategory]);
 
   if (loading) {
     return (
@@ -56,22 +43,20 @@ export default function Portfolio() {
     )
   }
 
-  const allIds = categories.map((c) => c.id)
-
   const portfolioImages = images.filter(
-    img => img.category && allIds.includes(img.category as CategoryId)
+    img => img.category && allCategoryIds.includes(img.category)
   )
 
-  let filtered: typeof portfolioImages
+  let filtered = portfolioImages
 
-  if (category) {
-    if (allIds.includes(category as CategoryId)) {
-      filtered = portfolioImages.filter((img) => img.category === category)
-    } else {
-      filtered = portfolioImages
+  const currentCat = findCategory(category)
+  const currentSub = category ? findSubcategory(category, subcategory) : undefined
+
+  if (currentCat) {
+    filtered = portfolioImages.filter((img) => img.category === category)
+    if (currentSub) {
+      filtered = filtered.filter((img) => img.subcategory === subcategory)
     }
-  } else {
-    filtered = portfolioImages
   }
 
   const galleryImages = filtered.map((r) => ({
@@ -80,21 +65,23 @@ export default function Portfolio() {
     filename: r.file_name,
   }))
 
-  const currentCategory = categories.find(cat => cat.id === category)
-
-  const breadcrumbItems = [{ label: t.nav.portfolio }]
+  const breadcrumbItems: { label: string; href?: string }[] = [{ label: t.nav.portfolio, href: '/portfolio' }]
+  if (currentCat) {
+    breadcrumbItems.push({ label: currentCat.title, href: `/portfolio/${currentCat.id}` })
+  }
+  if (currentCat && currentSub) {
+    breadcrumbItems.push({ label: currentSub.title })
+  }
 
   const getGalleryTitle = () => {
-    if (category && currentCategory) {
-      return currentCategory.title
-    }
+    if (currentCat && currentSub) return currentSub.title
+    if (currentCat) return currentCat.title
     return t.portfolio.allPortfolio
   }
 
   const getGalleryDescription = () => {
-    if (category && currentCategory) {
-      return currentCategory.title
-    }
+    if (currentCat && currentSub) return currentSub.title
+    if (currentCat) return currentCat.title
     return t.portfolio.galleryDescription
   }
 
@@ -132,8 +119,9 @@ export default function Portfolio() {
 
       {/* Navigation */}
       <PortfolioNavigation
-        categories={categories}
+        categories={portfolioCategories}
         currentCategory={category}
+        currentSubcategory={subcategory}
       />
 
       {/* Dynamic Gallery Header */}
@@ -143,7 +131,7 @@ export default function Portfolio() {
             <h2 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-6 gallery-section-title">
               {getGalleryTitle()}
             </h2>
-            {!category && (
+            {!category && !subcategory && (
               <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 gallery-section-description">
                 {getGalleryDescription()}
               </p>
@@ -164,7 +152,7 @@ export default function Portfolio() {
           {galleryImages.length > 0 ? (
             <PortfolioGallery
               images={galleryImages}
-              style={category}
+              style={currentSub ? subcategory : category}
             />
           ) : (
             <div className="text-center py-20">

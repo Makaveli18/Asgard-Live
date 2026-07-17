@@ -7,6 +7,7 @@ export interface ImageRecord {
   url:         string
   description: string | null
   category:    string | null
+  subcategory: string | null
   metadata:    { category?: string }
 }
 

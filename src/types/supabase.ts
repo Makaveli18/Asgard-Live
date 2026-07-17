@@ -56,6 +56,7 @@ export interface Database {
           metadata: Json | null
           created_at: string
           category: string | null
+          subcategory: string | null
         }
         Insert: {
           id?: string
@@ -65,6 +66,7 @@ export interface Database {
           metadata?: Json | null
           created_at?: string
           category?: string | null
+          subcategory?: string | null
         }
         Update: {
           id?: string
@@ -74,6 +76,7 @@ export interface Database {
           metadata?: Json | null
           created_at?: string
           category?: string | null
+          subcategory?: string | null
         }
       }
       categories: {
@@ -88,6 +91,26 @@ export interface Database {
         Update: {
           id?: string
           title?: string
+        }
+      }
+      subcategories: {
+        Row: {
+          id: string
+          category_id: string
+          title: string
+          sort_order: number
+        }
+        Insert: {
+          id: string
+          category_id: string
+          title: string
+          sort_order?: number
+        }
+        Update: {
+          id?: string
+          category_id?: string
+          title?: string
+          sort_order?: number
         }
       }
     }
