@@ -32,7 +32,7 @@ export function PortfolioGallery({ images, style }: PortfolioGalleryProps) {
 
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-6">
         {sortedImages.map((image, imageIndex) => {
           const fileName = image.filename;
           const caption = captions[fileName] || "";

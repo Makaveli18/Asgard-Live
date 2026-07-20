@@ -50,8 +50,8 @@ export function PortfolioNavigation({
   };
 
   return (
-    <div className="bg-viking-navy/30 border-y border-metallic-gold/30 sticky top-[60px] z-30 backdrop-blur-md">
-      <div className="container mx-auto px-4 py-4">
+    <div className="bg-viking-navy/30 border-y border-metallic-gold/30 md:sticky top-[60px] z-30 backdrop-blur-md">
+      <div className="container mx-auto px-4 py-2 md:py-4">
         {/* Main Categories - horizontally scrollable on mobile */}
         <div
           ref={scrollContainerRef}
@@ -111,7 +111,7 @@ export function PortfolioNavigation({
               transition={{ duration: 0.3, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className="pt-3 mt-3 border-t border-metallic-gold/20">
+              <div className="pt-2 mt-2 md:pt-3 md:mt-3 border-t border-metallic-gold/20">
                 <div className="flex items-center justify-start md:justify-center gap-2 md:gap-2.5 overflow-x-auto pb-1 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
                   style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >

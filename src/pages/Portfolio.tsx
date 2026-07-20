@@ -92,13 +92,13 @@ export default function Portfolio() {
       <Breadcrumb items={breadcrumbItems} />
 
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden flex items-center justify-center min-h-screen">
+      <section className="relative w-full overflow-hidden flex items-center justify-center min-h-[60vh] md:min-h-screen">
         <ResponsiveVideoBackground
           videoSource="https://youtu.be/aySoSye9Lx8"
           fallbackImage="/images/asgard-thor-loki-airbrush-wall.jpg"
           className="absolute inset-0"
         >
-          <div className="relative w-full h-full flex items-center justify-center px-4 py-20 md:py-24 mt-16 z-10 min-h-screen">
+          <div className="relative w-full h-full flex items-center justify-center px-4 py-12 md:py-24 mt-16 z-10 min-h-[60vh] md:min-h-screen">
             <div className="max-w-4xl w-full mx-auto text-center">
               <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-['Uncial_Antiqua'] text-metallic-gold mb-4 md:mb-6 leading-tight drop-shadow-2xl portfolio-hero-title">
                 {t.portfolio.heroTitle}
@@ -125,9 +125,9 @@ export default function Portfolio() {
       />
 
       {/* Dynamic Gallery Header */}
-      <section className="bg-black relative z-10 py-12">
+      <section className="bg-black relative z-10 py-6 md:py-12">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6 md:mb-12">
             <h2 className="text-4xl md:text-5xl font-cinzel text-metallic-gold mb-6 gallery-section-title">
               {getGalleryTitle()}
             </h2>
@@ -137,7 +137,7 @@ export default function Portfolio() {
               </p>
             )}
 
-            <div className="border-t border-b border-metallic-gold/30 py-6 max-w-2xl mx-auto">
+            <div className="border-t border-b border-metallic-gold/30 py-4 md:py-6 max-w-2xl mx-auto">
               <h3 className="text-2xl md:text-3xl font-bold text-firebrick uppercase tracking-wider battle-tested-subtitle">
                 {t.portfolio.battleTested}
               </h3>
